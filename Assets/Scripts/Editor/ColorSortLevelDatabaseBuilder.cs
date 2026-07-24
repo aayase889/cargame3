@@ -1,0 +1,105 @@
+using System.Collections.Generic;
+using System.IO;
+using UnityEditor;
+using UnityEngine;
+
+public static class ColorSortLevelDatabaseBuilder
+{
+    private const int LevelCount = 60;
+    private const string AssetPath = "Assets/Resources/ColorSortLevelDatabase.asset";
+
+    [MenuItem("Color Sort/Regenerate Fixed Level Database")]
+    public static void RegenerateFixedLevelDatabase()
+    {
+        try
+        {
+            EditorUtility.DisplayProgressBar("Color Sort Levels", "Generating fixed solvable levels...", 0.25f);
+            List<UnityGameManager.LevelConfig> generatedLevels = ColorSortLevelBuilder.BuildLevels(LevelCount);
+
+            EditorUtility.DisplayProgressBar("Color Sort Levels", "Validating generated levels...", 0.75f);
+            ColorSortLevelDesignValidator.ValidateLevels(generatedLevels);
+
+            Directory.CreateDirectory("Assets/Resources");
+            ColorSortLevelDatabase database = AssetDatabase.LoadAssetAtPath<ColorSortLevelDatabase>(AssetPath);
+            if (database == null)
+            {
+                database = ScriptableObject.CreateInstance<ColorSortLevelDatabase>();
+                AssetDatabase.CreateAsset(database, AssetPath);
+            }
+
+            database.levels = CloneLevelList(generatedLevels);
+            EditorUtility.SetDirty(database);
+            AssetDatabase.SaveAssets();
+            AssetDatabase.ImportAsset(AssetPath);
+            Debug.Log($"Saved {database.levels.Count} fixed Color Sort levels to {AssetPath}.");
+        }
+        finally
+        {
+            EditorUtility.ClearProgressBar();
+        }
+    }
+
+    [MenuItem("Color Sort/Add 5x5 Boards 51-60")]
+    public static void AddFiveByFiveBoards()
+    {
+        try
+        {
+            ColorSortLevelDatabase database = AssetDatabase.LoadAssetAtPath<ColorSortLevelDatabase>(AssetPath);
+            if (database == null || database.levels == null || database.levels.Count < 50)
+                throw new System.InvalidOperationException("The existing first 50 fixed boards are unavailable.");
+
+            var updatedLevels = new List<UnityGameManager.LevelConfig>(LevelCount);
+            for (int index = 0; index < 50; index++)
+                updatedLevels.Add(CloneLevel(database.levels[index]));
+
+            for (int boardIndex = 50; boardIndex < LevelCount; boardIndex++)
+            {
+                EditorUtility.DisplayProgressBar("Color Sort Levels", $"Generating 5x5 Board {boardIndex + 1}...", (boardIndex - 50) / 10f);
+                UnityGameManager.LevelConfig level = ColorSortLevelBuilder.BuildLevel(boardIndex);
+                if (level.boardSize != 5 || level.matchTarget != 5)
+                    throw new System.InvalidOperationException($"Board {boardIndex + 1} was not generated as 5x5.");
+                updatedLevels.Add(CloneLevel(level));
+            }
+
+            database.levels = updatedLevels;
+            EditorUtility.SetDirty(database);
+            AssetDatabase.SaveAssets();
+            AssetDatabase.ImportAsset(AssetPath);
+            Debug.Log("Saved the original Boards 1-50 plus new 5x5 Boards 51-60.");
+        }
+        finally
+        {
+            EditorUtility.ClearProgressBar();
+        }
+    }
+
+    private static List<UnityGameManager.LevelConfig> CloneLevelList(List<UnityGameManager.LevelConfig> source)
+    {
+        var result = new List<UnityGameManager.LevelConfig>(source.Count);
+        foreach (UnityGameManager.LevelConfig level in source)
+        {
+            result.Add(new UnityGameManager.LevelConfig
+            {
+                id = level.id,
+                name = level.name,
+                boardSize = level.boardSize,
+                matchTarget = level.matchTarget,
+                blocks = new List<UnityGameManager.BlockData>(level.blocks)
+            });
+        }
+
+        return result;
+    }
+
+    private static UnityGameManager.LevelConfig CloneLevel(UnityGameManager.LevelConfig level)
+    {
+        return new UnityGameManager.LevelConfig
+        {
+            id = level.id,
+            name = level.name,
+            boardSize = level.boardSize,
+            matchTarget = level.matchTarget,
+            blocks = new List<UnityGameManager.BlockData>(level.blocks)
+        };
+    }
+}
