@@ -61,7 +61,7 @@ public sealed class CarPrototypeHudLayout : ScriptableObject
 
     [Header("Compact Top HUD")]
     public Vector2 levelPillPosition = new Vector2(0f, 820f);
-    public Vector2 levelPillSize = new Vector2(400f, 120f);
+    public Vector2 levelPillSize = new Vector2(450f, 170f);
     public Vector2 levelTextPosition = new Vector2(0f, 820f);
     public Vector2 levelTextSize = new Vector2(360f, 90f);
     public float levelTextFontSize = 55f;
@@ -81,39 +81,49 @@ public sealed class CarPrototypeHudLayout : ScriptableObject
     public Vector2 mainMenuSelectedLabelSize = new Vector2(260f, 70f);
     public float mainMenuSelectedLabelFontSize = 42f;
 
-    [Header("Color Progress")]
-    public Vector2 redDotPosition = new Vector2(-365f, 855f);
-    public Vector2 greenDotPosition = new Vector2(-365f, 790f);
-    public Vector2 blueDotPosition = new Vector2(-365f, 725f);
-    public Vector2 yellowDotPosition = new Vector2(-365f, 660f);
-    public Vector2 dotSize = new Vector2(38f, 38f);
-    public Vector2 redTextPosition = new Vector2(-280f, 855f);
-    public Vector2 greenTextPosition = new Vector2(-280f, 790f);
-    public Vector2 blueTextPosition = new Vector2(-280f, 725f);
-    public Vector2 yellowTextPosition = new Vector2(-280f, 660f);
-    public Vector2 progressTextSize = new Vector2(160f, 58f);
-    public float progressFontSize = 38f;
-    public Vector2 heartsPosition = new Vector2(-285f, 600f);
-    public Vector2 heartsSize = new Vector2(210f, 52f);
-    public float heartsFontSize = 38f;
+    [Header("Car Objectives")]
+    public Vector2 redObjectiveCarPosition = new Vector2(-365f, 855f);
+    public Vector2 greenObjectiveCarPosition = new Vector2(-365f, 777f);
+    public Vector2 blueObjectiveCarPosition = new Vector2(-365f, 699f);
+    public Vector2 yellowObjectiveCarPosition = new Vector2(-365f, 621f);
+    public Vector2 objectiveCarSize = new Vector2(88f, 74f);
+    public Vector2 redObjectiveStatusPosition = new Vector2(-270f, 855f);
+    public Vector2 greenObjectiveStatusPosition = new Vector2(-270f, 777f);
+    public Vector2 blueObjectiveStatusPosition = new Vector2(-270f, 699f);
+    public Vector2 yellowObjectiveStatusPosition = new Vector2(-270f, 621f);
+    public Vector2 objectiveStatusSize = new Vector2(86f, 64f);
+    public Vector2 objectiveCheckSize = new Vector2(58f, 58f);
+    public float objectiveStatusFontSize = 46f;
+
+    [Header("Lives")]
+    [Tooltip("Center of the three-heart row, directly below the level badge.")]
+    public Vector2 heartsPosition = new Vector2(0f, 680f);
+    public Vector2 heartSize = new Vector2(82f, 82f);
+    [Min(1f)]
+    public float heartSpacing = 92f;
+    [Min(1f)]
+    public float heartLossFallDistance = 160f;
+    [Min(0.1f)]
+    public float heartLossDuration = 0.58f;
 
     [Header("Bottom Controls")]
     public Vector2 extraSlotPosition = new Vector2(-80f, -765f);
     public Vector2 undoPosition = new Vector2(80f, -765f);
     public Vector2 boosterSize = new Vector2(126f, 126f);
-    public Vector2 pausePosition = new Vector2(300f, 820f);
-    public Vector2 pauseSize = new Vector2(100f, 100f);
+    public Vector2 pausePosition = new Vector2(390f, 820f);
+    public Vector2 pauseSize = new Vector2(126f, 126f);
 
     [Header("Level Preview Navigation")]
     [Tooltip("Developer preview controls. Turn this off before a player build.")]
-    public bool showLevelPreviewButtons = true;
+    public bool showLevelPreviewButtons = false;
     public Vector2 previousLevelPosition = new Vector2(365f, -555f);
     public Vector2 nextLevelPosition = new Vector2(365f, -655f);
     public Vector2 levelPreviewButtonSize = new Vector2(150f, 64f);
 
     [Header("Settings")]
-    public Vector2 settingsPanelPosition = new Vector2(0f, 20f);
-    public Vector2 settingsPanelSize = new Vector2(1000f, 2000f);
+    [Tooltip("The supplied settings artwork uses the full 1125 x 2436 source canvas. Its transparent margins keep the visible panel centered in the phone safe area.")]
+    public Vector2 settingsPanelPosition = Vector2.zero;
+    public Vector2 settingsPanelSize = new Vector2(1125f, 2436f);
     public Vector2 settingsTitlePosition = new Vector2(0f, 550f);
     public Vector2 hapticsPosition = new Vector2(0f, 380f);
     public Vector2 soundsPosition = new Vector2(0f, 200f);
@@ -121,19 +131,20 @@ public sealed class CarPrototypeHudLayout : ScriptableObject
     public Vector2 resumePosition = new Vector2(0f, -180f);
     public Vector2 quitPosition = new Vector2(0f, -400f);
     public Vector2 morePosition = new Vector2(0f, -550f);
-    public Vector2 settingsClosePosition = new Vector2(400f, 600f);
+    [Tooltip("Transparent hit target aligned to the close button baked into the supplied settings artwork.")]
+    public Vector2 settingsClosePosition = new Vector2(365f, 675f);
 
     [Header("More Page")]
-    public Vector2 morePanelPosition = new Vector2(0f, 20f);
-    public Vector2 morePanelSize = new Vector2(800f, 1500f);
+    public Vector2 morePanelPosition = Vector2.zero;
+    public Vector2 morePanelSize = new Vector2(1125f, 2436f);
     public Vector2 moreTitlePosition = new Vector2(0f, 400f);
     public Vector2 termsPosition = new Vector2(0f, 100f);
     public Vector2 privacyPosition = new Vector2(0f, -200f);
     public Vector2 moreBackPosition = new Vector2(0f, -400f);
-    public Vector2 moreClosePosition = new Vector2(360f, 480f);
+    public Vector2 moreClosePosition = new Vector2(365f, 675f);
 
     [Header("Leave Confirmation")]
-    public Vector2 leavePanelSize = new Vector2(760f, 620f);
+    public Vector2 leavePanelSize = new Vector2(960f, 1020f);
     public Vector2 leaveTitlePosition = new Vector2(0f, 125f);
     public Vector2 leaveDescriptionPosition = new Vector2(0f, 30f);
     public Vector2 leaveCancelPosition = new Vector2(-170f, -150f);

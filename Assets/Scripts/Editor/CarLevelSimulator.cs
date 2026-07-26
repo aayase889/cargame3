@@ -30,6 +30,9 @@ public sealed class CarLevelSimulatorWindow : EditorWindow
         if (GUILayout.Button("Validate Fixed Boards 1-60", GUILayout.Height(32f)))
             report = CarLevelSimulator.ValidateRange(0, 60);
 
+        if (GUILayout.Button("Validate 1-60 Without +Slot", GUILayout.Height(28f)))
+            report = CarLevelSimulator.ValidateStandardTrayRange(0, 60);
+
         EditorGUILayout.Space(6f);
         boardNumber = EditorGUILayout.IntField("Board", Mathf.Max(1, boardNumber));
         if (GUILayout.Button("Validate This Board"))
@@ -117,6 +120,13 @@ public static class CarLevelSimulator
         Debug.Log(report);
     }
 
+    [MenuItem("Color Sort/Validate First 60 Without +Slot")]
+    public static void ValidateFirstSixtyWithoutExtraSlot()
+    {
+        string report = ValidateStandardTrayRangeOrThrow(0, 60);
+        Debug.Log(report);
+    }
+
     [MenuItem("Color Sort/Validate Post-30 Limousine Boards")]
     public static void ValidatePostThirtyLimousineLevels()
     {
@@ -164,30 +174,56 @@ public static class CarLevelSimulator
 
     public static string ValidateRange(int startIndex, int count)
     {
+        return ValidateRangeInternal(startIndex, count, true, out _);
+    }
+
+    public static string ValidateStandardTrayRange(int startIndex, int count)
+    {
+        return ValidateRangeInternal(startIndex, count, false, out _);
+    }
+
+    public static string ValidateStandardTrayRangeOrThrow(int startIndex, int count)
+    {
+        string report = ValidateRangeInternal(startIndex, count, false, out int failed);
+        if (failed > 0)
+        {
+            Debug.LogError(report);
+            throw new InvalidOperationException("At least one fixed board is not proven solvable with the normal tray. See the simulator report.");
+        }
+
+        return report;
+    }
+
+    private static string ValidateRangeInternal(int startIndex, int count, bool allowExtraSlot, out int failed)
+    {
         ColorSortLevelDatabase database = AssetDatabase.LoadAssetAtPath<ColorSortLevelDatabase>("Assets/Resources/ColorSortLevelDatabase.asset");
         if (database == null || database.levels == null)
+        {
+            failed = 1;
             return "Could not load Assets/Resources/ColorSortLevelDatabase.asset.";
+        }
 
         int start = Mathf.Clamp(startIndex, 0, database.levels.Count);
         int end = Mathf.Min(start + Mathf.Max(1, count), database.levels.Count);
         var report = new StringBuilder();
         int solved = 0;
-        int failed = 0;
+        failed = 0;
 
         for (int index = start; index < end; index++)
         {
             UnityGameManager.LevelConfig level = database.levels[index];
-            string result = ValidateLevel(level, out bool isSolved);
+            string result = ValidateLevel(level, allowExtraSlot, out bool isSolved);
             if (isSolved) solved++;
             else failed++;
             report.AppendLine(result);
         }
 
-        report.Insert(0, string.Format("Checked Boards {0}-{1}: {2} solvable, {3} need attention.\n\n", start + 1, end, solved, failed));
+        string mode = allowExtraSlot ? "all legal tools" : "normal tray + parking (no +Slot)";
+        report.Insert(0, string.Format("Checked Boards {0}-{1} with {2}: {3} solvable, {4} need attention.\n\n", start + 1, end, mode, solved, failed));
         return report.ToString();
     }
 
-    private static string ValidateLevel(UnityGameManager.LevelConfig level, out bool isSolved)
+    private static string ValidateLevel(UnityGameManager.LevelConfig level, bool allowExtraSlot, out bool isSolved)
     {
         if (!TryCreateRules(level, out Rules rules, out string setupError))
         {
@@ -195,10 +231,10 @@ public static class CarLevelSimulator
             return "Board " + level.id + ": INVALID DATA - " + setupError;
         }
 
-        return ValidateRules(level.id, rules, out isSolved);
+        return ValidateRules(level.id, rules, out isSolved, true, allowExtraSlot);
     }
 
-    private static string ValidateRules(int boardNumber, Rules rules, out bool isSolved)
+    private static string ValidateRules(int boardNumber, Rules rules, out bool isSolved, bool allowParking = true, bool allowExtraSlot = true)
     {
         var start = new State
         {
@@ -226,7 +262,7 @@ public static class CarLevelSimulator
 
             if (visited.Count >= MaxBreadthFirstStates)
             {
-                if (TryFocusedSolve(start, rules, out List<string> actions, out int focusedStates))
+                if (TryFocusedSolve(start, rules, allowParking, allowExtraSlot, out List<string> actions, out int focusedStates))
                 {
                     isSolved = true;
                     return "Board " + boardNumber + ": SOLVABLE in " + actions.Count + " legal actions after a focused search of " + focusedStates + " states. " + string.Join(" -> ", actions.ToArray());
@@ -237,9 +273,12 @@ public static class CarLevelSimulator
             }
 
             AddBoardMoves(state, nodeIndex, rules, nodes, frontier, visited);
-            AddParkingMoves(state, nodeIndex, rules, nodes, frontier, visited);
+            if (allowParking)
+            {
+                AddParkingMoves(state, nodeIndex, rules, nodes, frontier, visited);
+            }
 
-            if (!state.extraSlotUsed && rules.baseTrayCapacity < 5)
+            if (allowExtraSlot && !state.extraSlotUsed && rules.baseTrayCapacity < 5)
             {
                 State boosted = state;
                 boosted.extraSlotUsed = true;
@@ -495,7 +534,7 @@ public static class CarLevelSimulator
         AddState(swapped, parent, "Return parked car and swap", nodes, frontier, visited);
     }
 
-    private static bool TryFocusedSolve(State start, Rules rules, out List<string> actions, out int explored)
+    private static bool TryFocusedSolve(State start, Rules rules, bool allowParking, bool allowExtraSlot, out List<string> actions, out int explored)
     {
         var nodes = new List<Node> { new Node(start, -1, string.Empty) };
         var frontier = new Stack<int>();
@@ -513,7 +552,7 @@ public static class CarLevelSimulator
                 return true;
             }
 
-            List<Node> candidates = GetCandidates(current, rules);
+            List<Node> candidates = GetCandidates(current, rules, allowParking, allowExtraSlot);
             candidates.Sort((left, right) => ScoreCandidate(right.state, current, rules).CompareTo(ScoreCandidate(left.state, current, rules)));
             for (int index = candidates.Count - 1; index >= 0; index--)
             {
@@ -529,15 +568,18 @@ public static class CarLevelSimulator
         return false;
     }
 
-    private static List<Node> GetCandidates(State state, Rules rules)
+    private static List<Node> GetCandidates(State state, Rules rules, bool allowParking, bool allowExtraSlot)
     {
         var nodes = new List<Node> { new Node(state, -1, string.Empty) };
         var frontier = new Queue<int>();
         var visited = new HashSet<string>();
         AddBoardMoves(state, 0, rules, nodes, frontier, visited);
-        AddParkingMoves(state, 0, rules, nodes, frontier, visited);
+        if (allowParking)
+        {
+            AddParkingMoves(state, 0, rules, nodes, frontier, visited);
+        }
 
-        if (!state.extraSlotUsed && rules.baseTrayCapacity < 5)
+        if (allowExtraSlot && !state.extraSlotUsed && rules.baseTrayCapacity < 5)
         {
             State boosted = state;
             boosted.extraSlotUsed = true;

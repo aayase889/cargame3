@@ -27,6 +27,7 @@ public sealed class CarPrototype3D : MonoBehaviour
     private const float OutsideCarDriveSpeed = 25f;
     private const float RouteCornerRadius = 0.78f;
     private const float TapAssistRadiusPixels = 88f;
+    private const float FullScreenAsphaltPadding = 0.5f;
 
     private static Texture2D asphaltTexture;
     private static Material backgroundAsphaltMaterial;
@@ -185,6 +186,8 @@ public sealed class CarPrototype3D : MonoBehaviour
     private bool extraSlotUsed;
     private bool isAnimating;
     private bool isClearingTrayMatch;
+    private bool outcomeResolved;
+    private bool isEvaluatingAvailableMoves;
     private int boardCarsInTransit;
     private ExperimentalRuleSet activeExperimentalRules;
 
@@ -197,10 +200,14 @@ public sealed class CarPrototype3D : MonoBehaviour
     public int MatchGoal => activeMatchTarget;
     public int BlueGoal => activeBlueTarget;
     public int YellowGoal => activeYellowTarget;
+    public int RedObjectiveRemaining => GetObjectiveRemaining(PieceColor.Red);
+    public int GreenObjectiveRemaining => GetObjectiveRemaining(PieceColor.Green);
+    public int BlueObjectiveRemaining => GetObjectiveRemaining(PieceColor.Blue);
+    public int YellowObjectiveRemaining => GetObjectiveRemaining(PieceColor.Yellow);
     public int TrayCapacity => trayCapacity;
     public bool ExtraSlotUsed => extraSlotUsed;
-    public bool CanUseExtraSlot => activeExperimentalRules == null && !isAnimating && !extraSlotUsed && trayCapacity < MaximumTraySlots;
-    public bool CanUseUndo => !isAnimating && lastMovedPiece != null;
+    public bool CanUseExtraSlot => !outcomeResolved && activeExperimentalRules == null && !isAnimating && !extraSlotUsed && trayCapacity < MaximumTraySlots;
+    public bool CanUseUndo => !outcomeResolved && !isAnimating && lastMovedPiece != null;
     public string ExperimentalRuleStatus => BuildExperimentalRuleStatus();
 
     private void Awake()
@@ -244,6 +251,12 @@ public sealed class CarPrototype3D : MonoBehaviour
 
         float boardWidth = activeBoardSize >= 4 ? 7.2f : 6.9f;
         float roadDepth = Mathf.Max(1f, sceneLayout.sceneRoadDepth);
+        CalculateFullScreenAsphaltSurface(
+            boardWidth - 0.65f,
+            Mathf.Max(0.35f, roadDepth - 0.65f),
+            sceneLayout.sceneRoadCenterZ,
+            out Vector3 roadSurfacePosition,
+            out Vector3 roadSurfaceScale);
         if (asphaltGroundTransform != null)
         {
             asphaltGroundTransform.position = sceneLayout.sceneAsphaltGroundPosition;
@@ -251,13 +264,13 @@ public sealed class CarPrototype3D : MonoBehaviour
         }
         if (roadBoardTransform != null)
         {
-            roadBoardTransform.position = new Vector3(0f, -0.25f, sceneLayout.sceneRoadCenterZ);
-            roadBoardTransform.localScale = new Vector3(boardWidth, 0.5f, roadDepth);
+            roadBoardTransform.position = new Vector3(roadSurfacePosition.x, -0.25f, roadSurfacePosition.z);
+            roadBoardTransform.localScale = new Vector3(roadSurfaceScale.x + 0.65f, 0.5f, roadSurfaceScale.z + 0.65f);
         }
         if (roadInsetTransform != null)
         {
-            roadInsetTransform.position = new Vector3(0f, 0.02f, sceneLayout.sceneRoadCenterZ);
-            roadInsetTransform.localScale = new Vector3(boardWidth - 0.65f, 0.06f, Mathf.Max(0.35f, roadDepth - 0.65f));
+            roadInsetTransform.position = roadSurfacePosition;
+            roadInsetTransform.localScale = roadSurfaceScale;
         }
 
         UpdateMatchTrayRoadMarkings();
@@ -295,7 +308,7 @@ public sealed class CarPrototype3D : MonoBehaviour
 
     private void Update()
     {
-        if (Time.timeScale == 0f) return;
+        if (outcomeResolved || Time.timeScale == 0f) return;
 
 #if ENABLE_INPUT_SYSTEM
         if (Touchscreen.current != null && Touchscreen.current.primaryTouch.press.wasPressedThisFrame)
@@ -340,6 +353,7 @@ public sealed class CarPrototype3D : MonoBehaviour
 
     private void TrySelectPiece(Vector2 screenPosition)
     {
+        if (outcomeResolved) return;
         if (EventSystem.current != null && EventSystem.current.IsPointerOverGameObject()) return;
 
         CarPuzzlePiece piece = PickPiece(screenPosition);
@@ -453,6 +467,7 @@ public sealed class CarPrototype3D : MonoBehaviour
             trayPieces.Add(piece);
             trayTarget = GetTraySlotPosition(trayIndex);
             UpdateTrayHighlights();
+            RefreshHud();
         }
 
         boardCarsInTransit++;
@@ -752,6 +767,7 @@ public sealed class CarPrototype3D : MonoBehaviour
         UpdateExperimentalLocks();
         lastMovedPiece = null;
         isClearingTrayMatch = true;
+        RefreshHud();
         StartCoroutine(ClearMatchedCars(matchingCars));
     }
 
@@ -794,6 +810,22 @@ public sealed class CarPrototype3D : MonoBehaviour
         if (color == PieceColor.Blue) return activeBlueTarget;
         if (color == PieceColor.Yellow) return activeYellowTarget;
         return color == PieceColor.Trash ? 0 : activeMatchTarget;
+    }
+
+    private int GetObjectiveRemaining(PieceColor color)
+    {
+        int target = GetMatchTarget(color);
+        if (target <= 0) return 0;
+        if (IsColorCleared(color)) return 0;
+
+        int carsInTray = 0;
+        for (int index = 0; index < trayPieces.Count; index++)
+        {
+            if (trayPieces[index].PieceColor == color)
+                carsInTray++;
+        }
+
+        return Mathf.Max(0, target - carsInTray);
     }
 
     private bool HasCompletedAllColorGoals()
@@ -841,8 +873,14 @@ public sealed class CarPrototype3D : MonoBehaviour
 
     private IEnumerator CompleteLevel()
     {
-        yield return new WaitForSeconds(0.65f);
-        LoadNextLevel();
+        outcomeResolved = true;
+        isAnimating = true;
+        yield return new WaitForSecondsRealtime(0.65f);
+
+        isAnimating = false;
+        isClearingTrayMatch = false;
+        if (hud != null)
+            hud.ShowVictory();
     }
 
     private void LoadLevel(int targetIndex)
@@ -852,6 +890,8 @@ public sealed class CarPrototype3D : MonoBehaviour
         StopAllCoroutines();
         isAnimating = false;
         isClearingTrayMatch = false;
+        outcomeResolved = false;
+        isEvaluatingAvailableMoves = false;
         boardCarsInTransit = 0;
         queuedBoardPieces.Clear();
         boardCarsCurrentlyDriving.Clear();
@@ -1247,6 +1287,52 @@ public sealed class CarPrototype3D : MonoBehaviour
         prototypeCamera.transform.rotation = Quaternion.LookRotation(lookDirection.normalized, Vector3.up);
     }
 
+    private void CalculateFullScreenAsphaltSurface(
+        float minimumWidth,
+        float minimumDepth,
+        float fallbackCenterZ,
+        out Vector3 position,
+        out Vector3 scale)
+    {
+        const float surfaceY = 0.02f;
+        position = new Vector3(0f, surfaceY, fallbackCenterZ);
+        scale = new Vector3(minimumWidth, 0.06f, minimumDepth);
+        if (prototypeCamera == null) return;
+
+        Plane surfacePlane = new Plane(Vector3.up, new Vector3(0f, surfaceY, 0f));
+        float minX = float.PositiveInfinity;
+        float maxX = float.NegativeInfinity;
+        float minZ = float.PositiveInfinity;
+        float maxZ = float.NegativeInfinity;
+        bool foundIntersection = false;
+
+        for (int viewportY = 0; viewportY <= 1; viewportY++)
+        {
+            for (int viewportX = 0; viewportX <= 1; viewportX++)
+            {
+                Ray cornerRay = prototypeCamera.ViewportPointToRay(new Vector3(viewportX, viewportY, 0f));
+                if (!surfacePlane.Raycast(cornerRay, out float distance)) continue;
+
+                Vector3 corner = cornerRay.GetPoint(distance);
+                minX = Mathf.Min(minX, corner.x);
+                maxX = Mathf.Max(maxX, corner.x);
+                minZ = Mathf.Min(minZ, corner.z);
+                maxZ = Mathf.Max(maxZ, corner.z);
+                foundIntersection = true;
+            }
+        }
+
+        if (!foundIntersection) return;
+
+        float visibleWidth = maxX - minX + FullScreenAsphaltPadding * 2f;
+        float visibleDepth = maxZ - minZ + FullScreenAsphaltPadding * 2f;
+        position = new Vector3((minX + maxX) * 0.5f, surfaceY, (minZ + maxZ) * 0.5f);
+        scale = new Vector3(
+            Mathf.Max(minimumWidth, visibleWidth),
+            0.06f,
+            Mathf.Max(minimumDepth, visibleDepth));
+    }
+
     private static void CreateLighting()
     {
         // A cool-to-warm ambient gradient keeps the colorful materials readable
@@ -1307,8 +1393,13 @@ public sealed class CarPrototype3D : MonoBehaviour
         CarPrototypeHudLayout currentLayout = GetSceneLayout();
 
         float boardWidth = size >= 4 ? 7.2f : 6.9f;
-        float roadCenterZ = currentLayout.sceneRoadCenterZ;
         float roadDepth = Mathf.Max(1f, currentLayout.sceneRoadDepth);
+        CalculateFullScreenAsphaltSurface(
+            boardWidth - 0.65f,
+            Mathf.Max(0.35f, roadDepth - 0.65f),
+            currentLayout.sceneRoadCenterZ,
+            out Vector3 roadSurfacePosition,
+            out Vector3 roadSurfaceScale);
 
         // This broad surface sits beneath every visible world-space element. It
         // replaces the flat camera clear color behind the tray and booster area.
@@ -1320,13 +1411,17 @@ public sealed class CarPrototype3D : MonoBehaviour
             false);
         asphaltGroundTransform = asphaltGround.transform;
 
-        GameObject roadBoard = CreateEnvironmentBox("Road Board", new Vector3(0f, -0.25f, roadCenterZ), new Vector3(boardWidth, 0.5f, roadDepth), currentLayout.sceneRoadBorderColor);
+        GameObject roadBoard = CreateEnvironmentBox(
+            "Road Board",
+            new Vector3(roadSurfacePosition.x, -0.25f, roadSurfacePosition.z),
+            new Vector3(roadSurfaceScale.x + 0.65f, 0.5f, roadSurfaceScale.z + 0.65f),
+            currentLayout.sceneRoadBorderColor);
         roadBoardTransform = roadBoard.transform;
         roadBoardRenderer = roadBoard.GetComponent<Renderer>();
         GameObject roadInset = CreateEnvironmentBox(
             "Road Inset",
-            new Vector3(0f, 0.02f, roadCenterZ),
-            new Vector3(boardWidth - 0.65f, 0.06f, Mathf.Max(0.35f, roadDepth - 0.65f)),
+            roadSurfacePosition,
+            roadSurfaceScale,
             GetAsphaltMaterial(true),
             true);
         roadInsetTransform = roadInset.transform;
@@ -1739,6 +1834,7 @@ public sealed class CarPrototype3D : MonoBehaviour
             parkedPiece = selectedPiece;
             UpdateTrayHighlights();
             UpdateParkingHighlight();
+            RefreshHud();
             StartCoroutine(DriveTrayPieceToParking(selectedPiece));
             return;
         }
@@ -1748,6 +1844,7 @@ public sealed class CarPrototype3D : MonoBehaviour
         parkedPiece = selectedPiece;
         UpdateTrayHighlights();
         UpdateParkingHighlight();
+        RefreshHud();
         StartCoroutine(AnimateParkingSwap(selectedPiece, previouslyParked, trayIndex));
     }
 
@@ -1763,6 +1860,7 @@ public sealed class CarPrototype3D : MonoBehaviour
             parkedPiece = null;
             UpdateTrayHighlights();
             UpdateParkingHighlight();
+            RefreshHud();
             StartCoroutine(DriveParkingPieceToTray(returningPiece, trayPieces.Count - 1));
             return;
         }
@@ -1791,6 +1889,7 @@ public sealed class CarPrototype3D : MonoBehaviour
         RegisterParkingEntry();
         UpdateTrayHighlights();
         UpdateParkingHighlight();
+        RefreshHud();
         StartCoroutine(AnimateReturnParkingSwap(returningParkedPiece, trayPiece, swapIndex));
     }
 
@@ -1804,6 +1903,7 @@ public sealed class CarPrototype3D : MonoBehaviour
         StartCoroutine(AnimateTrayLayout(0.24f));
         yield return StartCoroutine(FinishParkingEntry(piece, parkingTarget));
         isAnimating = false;
+        RefreshHud();
     }
 
     private IEnumerator AnimateParkingSwap(CarPuzzlePiece trayPiece, CarPuzzlePiece previouslyParked, int trayIndex)
@@ -1985,18 +2085,81 @@ public sealed class CarPrototype3D : MonoBehaviour
 
     private void RegisterWrongMove()
     {
-        if (hearts <= 0) return;
+        if (hearts <= 0 || outcomeResolved) return;
 
         hearts--;
+        bool lostAllHearts = hearts == 0;
+        if (lostAllHearts)
+            outcomeResolved = true;
         RefreshHud();
-        if (hearts == 0 && hud != null)
-            hud.ShowDefeat();
+        if (lostAllHearts && hud != null)
+            hud.ShowDefeat(true);
     }
 
     private void RefreshHud()
     {
         if (hud != null)
             hud.Refresh(BoardNumber, redCleared, greenCleared, blueCleared, yellowCleared, activeMatchTarget, activeBlueTarget, activeYellowTarget, hearts, trayCapacity, extraSlotUsed);
+
+        EvaluateAvailableMoves();
+    }
+
+    private void EvaluateAvailableMoves()
+    {
+        if (isEvaluatingAvailableMoves || outcomeResolved || hearts <= 0 || HasCompletedAllColorGoals())
+            return;
+        if (isAnimating || isClearingTrayMatch || boardCarsInTransit > 0 || queuedBoardPieces.Count > 0)
+            return;
+
+        isEvaluatingAvailableMoves = true;
+        bool hasClearBoardExit = false;
+        for (int index = 0; index < boardPieces.Count; index++)
+        {
+            CarPuzzlePiece piece = boardPieces[index];
+            if (piece == null || piece.IsLocked || !IsExitPathClear(piece)) continue;
+
+            hasClearBoardExit = true;
+            if (piece.IsTrash || trayPieces.Count < trayCapacity)
+            {
+                isEvaluatingAvailableMoves = false;
+                return;
+            }
+        }
+
+        if (CanUseUndo || CanUseExtraSlot)
+        {
+            isEvaluatingAvailableMoves = false;
+            return;
+        }
+
+        // An empty parking bay can free one tray slot for a car that already has
+        // a clear road exit. A filled bay is useful only when it can return to an
+        // open slot or make a tray match through the game's validated swap rule.
+        if (CanEnterSideParking())
+        {
+            if (parkedPiece == null && trayPieces.Count > 0 && hasClearBoardExit)
+            {
+                isEvaluatingAvailableMoves = false;
+                return;
+            }
+
+            if (parkedPiece != null
+                && (trayPieces.Count < trayCapacity || FindTraySwapIndexForParkingMatch() >= 0))
+            {
+                isEvaluatingAvailableMoves = false;
+                return;
+            }
+        }
+        else if (parkedPiece != null && trayPieces.Count < trayCapacity)
+        {
+            isEvaluatingAvailableMoves = false;
+            return;
+        }
+
+        outcomeResolved = true;
+        isEvaluatingAvailableMoves = false;
+        if (hud != null)
+            hud.ShowDefeat(false);
     }
 
     private bool CanEnterSideParking()
@@ -2010,7 +2173,6 @@ public sealed class CarPrototype3D : MonoBehaviour
     {
         if (activeExperimentalRules != null && activeExperimentalRules.parkingUseLimit > 0)
             parkingUses++;
-        RefreshHud();
     }
 
     private bool IsColorCleared(PieceColor color)
@@ -2295,7 +2457,7 @@ public sealed class CarPuzzlePiece : MonoBehaviour
     private const string ImportedPoliceCarResourcePath = "CarModels/PoliceCar/policecar";
     private const string ImportedPoliceCarTexturePath = "CarModels/PoliceCar/carPolice";
     private const string ImportedRedCarResourcePath = "CarModels/RedCar/redcar";
-    private const string ImportedRedCarTexturePath = "CarModels/RedCar/Material-color";
+    private const string ImportedRedCarTexturePath = "CarModels/RedCar/Material-color-eyes";
     private const string ImportedRedCarMetallicPath = "CarModels/RedCar/Material-metallic";
     private const string ImportedGreenCarResourcePath = "CarModels/GreenCar/greencar";
     private const string ImportedGreenCarTexturePath = "CarModels/GreenCar/Material-color";
@@ -2948,12 +3110,54 @@ public sealed class CarPuzzlePiece : MonoBehaviour
     private void BuildAnimatedEyes()
     {
         CarEyeController eyeController = gameObject.AddComponent<CarEyeController>();
-        Vector3 windshieldPosition = usesLimousineVisual
-            ? new Vector3(0f, 0.93f, 1.21f)
-            : usesImportedRedCar || usesImportedGreenCar
-                ? new Vector3(0f, 1.15f, 0.27f)
-                : new Vector3(0f, 0.88f, 0.43f);
-        eyeController.Initialize(windshieldPosition);
+        Vector3 windshieldPosition;
+        Vector2 windshieldSize;
+        Vector2 windshieldSurfaceScale;
+        float windshieldTiltDegrees;
+
+        if (usesLimousineVisual)
+        {
+            windshieldPosition = new Vector3(0f, 0.78f, 1.36f);
+            windshieldSize = new Vector2(0.98f, 0.18f);
+            windshieldSurfaceScale = new Vector2(0.90f, 0.84f);
+            windshieldTiltDegrees = 90f;
+        }
+        else if (usesImportedRedCar)
+        {
+            // Measured from the imported red-car windshield triangles in
+            // piece-local space: center ~= (0, .65, .25), normal tilt ~= 66°.
+            windshieldPosition = new Vector3(0f, 0.65f, 0.25f);
+            windshieldSize = new Vector2(0.98f, 0.45f);
+            windshieldSurfaceScale = new Vector2(0.92f, 0.90f);
+            windshieldTiltDegrees = 66f;
+        }
+        else if (usesImportedGreenCar)
+        {
+            // Measured from the imported green-car windshield triangles in
+            // piece-local space: center ~= (0, .86, .18), normal tilt ~= 73°.
+            windshieldPosition = new Vector3(0f, 0.86f, 0.18f);
+            windshieldSize = new Vector2(1.14f, 0.45f);
+            // The green model's physical frame narrows at both ends. Keep the
+            // white insert well inside that measured outline so no corners can
+            // protrude when the windshield is viewed edge-on.
+            windshieldSurfaceScale = new Vector2(0.62f, 0.84f);
+            windshieldTiltDegrees = 73f;
+        }
+        else
+        {
+            // The procedural windshield is an upright box face at local +Z.
+            windshieldPosition = new Vector3(0f, 0.74f, 0.595f);
+            windshieldSize = new Vector2(0.96f, 0.16f);
+            windshieldSurfaceScale = new Vector2(0.90f, 0.84f);
+            windshieldTiltDegrees = 90f;
+        }
+
+        eyeController.Initialize(
+            windshieldPosition,
+            windshieldSize,
+            windshieldTiltDegrees,
+            windshieldSurfaceScale,
+            true);
     }
 
     private static Material GetImportedRedCarMaterial()

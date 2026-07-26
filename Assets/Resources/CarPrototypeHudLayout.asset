@@ -37,11 +37,11 @@ MonoBehaviour:
   sceneParkingLineWidth: 0.0737
   sceneSideParkingHatchSpacing: 0.24
   levelPillPosition: {x: 0, y: 820}
-  levelPillSize: {x: 400, y: 120}
+  levelPillSize: {x: 450, y: 170}
   levelTextPosition: {x: 0, y: 820}
   levelTextSize: {x: 360, y: 90}
   levelTextFontSize: 55
-  mainMenuPlayPosition: {x: 0, y: -95}
+  mainMenuPlayPosition: {x: 0, y: -500}
   mainMenuPlaySize: {x: 640, y: 190}
   mainMenuPlayText: PLAY
   mainMenuPlayFontSize: 74
@@ -54,31 +54,34 @@ MonoBehaviour:
   mainMenuSelectedLabelOffset: {x: 0, y: -145}
   mainMenuSelectedLabelSize: {x: 260, y: 70}
   mainMenuSelectedLabelFontSize: 42
-  redDotPosition: {x: -365, y: 855}
-  greenDotPosition: {x: -365, y: 790}
-  blueDotPosition: {x: -365, y: 725}
-  yellowDotPosition: {x: -365, y: 660}
-  dotSize: {x: 38, y: 38}
-  redTextPosition: {x: -280, y: 855}
-  greenTextPosition: {x: -280, y: 790}
-  blueTextPosition: {x: -280, y: 725}
-  yellowTextPosition: {x: -280, y: 660}
-  progressTextSize: {x: 160, y: 58}
-  progressFontSize: 38
-  heartsPosition: {x: -285, y: 600}
-  heartsSize: {x: 210, y: 52}
-  heartsFontSize: 38
+  redObjectiveCarPosition: {x: -365, y: 855}
+  greenObjectiveCarPosition: {x: -365, y: 777}
+  blueObjectiveCarPosition: {x: -365, y: 699}
+  yellowObjectiveCarPosition: {x: -365, y: 621}
+  objectiveCarSize: {x: 88, y: 74}
+  redObjectiveStatusPosition: {x: -270, y: 855}
+  greenObjectiveStatusPosition: {x: -270, y: 777}
+  blueObjectiveStatusPosition: {x: -270, y: 699}
+  yellowObjectiveStatusPosition: {x: -270, y: 621}
+  objectiveStatusSize: {x: 86, y: 64}
+  objectiveCheckSize: {x: 58, y: 58}
+  objectiveStatusFontSize: 46
+  heartsPosition: {x: 0, y: 680}
+  heartSize: {x: 82, y: 82}
+  heartSpacing: 92
+  heartLossFallDistance: 160
+  heartLossDuration: 0.58
   extraSlotPosition: {x: -80, y: -765}
   undoPosition: {x: 80, y: -765}
   boosterSize: {x: 126, y: 126}
-  pausePosition: {x: 300, y: 820}
-  pauseSize: {x: 100, y: 100}
-  showLevelPreviewButtons: 1
+  pausePosition: {x: 390, y: 820}
+  pauseSize: {x: 126, y: 126}
+  showLevelPreviewButtons: 0
   previousLevelPosition: {x: 365, y: -555}
   nextLevelPosition: {x: 365, y: -655}
   levelPreviewButtonSize: {x: 150, y: 64}
-  settingsPanelPosition: {x: 0, y: 20}
-  settingsPanelSize: {x: 1000, y: 2000}
+  settingsPanelPosition: {x: 0, y: 0}
+  settingsPanelSize: {x: 1125, y: 2436}
   settingsTitlePosition: {x: 0, y: 550}
   hapticsPosition: {x: 0, y: 380}
   soundsPosition: {x: 0, y: 200}
@@ -86,15 +89,15 @@ MonoBehaviour:
   resumePosition: {x: 0, y: -180}
   quitPosition: {x: 0, y: -400}
   morePosition: {x: 0, y: -550}
-  settingsClosePosition: {x: 400, y: 600}
-  morePanelPosition: {x: 0, y: 20}
-  morePanelSize: {x: 800, y: 1500}
+  settingsClosePosition: {x: 365, y: 675}
+  morePanelPosition: {x: 0, y: 0}
+  morePanelSize: {x: 1125, y: 2436}
   moreTitlePosition: {x: 0, y: 400}
   termsPosition: {x: 0, y: 100}
   privacyPosition: {x: 0, y: -200}
   moreBackPosition: {x: 0, y: -400}
-  moreClosePosition: {x: 360, y: 480}
-  leavePanelSize: {x: 760, y: 620}
+  moreClosePosition: {x: 365, y: 675}
+  leavePanelSize: {x: 960, y: 1020}
   leaveTitlePosition: {x: 0, y: 125}
   leaveDescriptionPosition: {x: 0, y: 30}
   leaveCancelPosition: {x: -170, y: -150}

@@ -17,7 +17,7 @@ public static class ColorSortLevelDatabaseBuilder
             List<UnityGameManager.LevelConfig> generatedLevels = ColorSortLevelBuilder.BuildLevels(LevelCount);
 
             EditorUtility.DisplayProgressBar("Color Sort Levels", "Validating generated levels...", 0.75f);
-            ColorSortLevelDesignValidator.ValidateLevels(generatedLevels);
+            ColorSortLevelDesignValidator.ValidateLevelStructure(generatedLevels);
 
             Directory.CreateDirectory("Assets/Resources");
             ColorSortLevelDatabase database = AssetDatabase.LoadAssetAtPath<ColorSortLevelDatabase>(AssetPath);
@@ -31,6 +31,8 @@ public static class ColorSortLevelDatabaseBuilder
             EditorUtility.SetDirty(database);
             AssetDatabase.SaveAssets();
             AssetDatabase.ImportAsset(AssetPath);
+            string solverReport = CarLevelSimulator.ValidateStandardTrayRangeOrThrow(0, LevelCount);
+            Debug.Log(solverReport);
             Debug.Log($"Saved {database.levels.Count} fixed Color Sort levels to {AssetPath}.");
         }
         finally

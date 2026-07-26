@@ -20,9 +20,9 @@ MonoBehaviour:
     blocks:
     - row: 0
       col: 0
-      color: 4
+      color: 1
       direction: 2
-      textLabel: BLOCK
+      textLabel: GREEN
     - row: 0
       col: 1
       color: 0
@@ -30,19 +30,19 @@ MonoBehaviour:
       textLabel: RED
     - row: 0
       col: 2
-      color: 1
+      color: 0
       direction: 2
-      textLabel: GREEN
+      textLabel: RED
     - row: 1
       col: 0
-      color: 1
+      color: 4
       direction: 0
-      textLabel: GREEN
+      textLabel: BLOCK
     - row: 1
       col: 1
-      color: 4
+      color: 1
       direction: 3
-      textLabel: BLOCK
+      textLabel: GREEN
     - row: 1
       col: 2
       color: 1
@@ -50,9 +50,9 @@ MonoBehaviour:
       textLabel: GREEN
     - row: 2
       col: 0
-      color: 0
+      color: 4
       direction: 1
-      textLabel: RED
+      textLabel: BLOCK
     - row: 2
       col: 1
       color: 0
@@ -71,38 +71,38 @@ MonoBehaviour:
     - row: 0
       col: 0
       color: 1
-      direction: 0
-      textLabel: GREEN
-    - row: 0
-      col: 1
-      color: 0
-      direction: 2
-      textLabel: RED
-    - row: 0
-      col: 2
-      color: 0
-      direction: 2
-      textLabel: RED
-    - row: 1
-      col: 0
-      color: 4
-      direction: 0
-      textLabel: BLOCK
-    - row: 1
-      col: 1
-      color: 1
-      direction: 0
-      textLabel: GREEN
-    - row: 1
-      col: 2
-      color: 4
       direction: 3
-      textLabel: BLOCK
-    - row: 2
-      col: 0
+      textLabel: GREEN
+    - row: 0
+      col: 1
       color: 4
       direction: 1
       textLabel: BLOCK
+    - row: 0
+      col: 2
+      color: 4
+      direction: 0
+      textLabel: BLOCK
+    - row: 1
+      col: 0
+      color: 0
+      direction: 2
+      textLabel: RED
+    - row: 1
+      col: 1
+      color: 4
+      direction: 3
+      textLabel: BLOCK
+    - row: 1
+      col: 2
+      color: 0
+      direction: 0
+      textLabel: RED
+    - row: 2
+      col: 0
+      color: 1
+      direction: 2
+      textLabel: GREEN
     - row: 2
       col: 1
       color: 1
@@ -120,14 +120,14 @@ MonoBehaviour:
     blocks:
     - row: 0
       col: 0
-      color: 0
+      color: 4
       direction: 2
-      textLabel: RED
+      textLabel: BLOCK
     - row: 0
       col: 1
-      color: 4
+      color: 1
       direction: 0
-      textLabel: BLOCK
+      textLabel: GREEN
     - row: 0
       col: 2
       color: 0
@@ -135,19 +135,19 @@ MonoBehaviour:
       textLabel: RED
     - row: 1
       col: 0
-      color: 4
-      direction: 0
-      textLabel: BLOCK
-    - row: 1
-      col: 1
       color: 1
-      direction: 2
+      direction: 0
       textLabel: GREEN
     - row: 1
-      col: 2
+      col: 1
       color: 4
-      direction: 3
+      direction: 2
       textLabel: BLOCK
+    - row: 1
+      col: 2
+      color: 0
+      direction: 3
+      textLabel: RED
     - row: 2
       col: 0
       color: 0
@@ -155,9 +155,9 @@ MonoBehaviour:
       textLabel: RED
     - row: 2
       col: 1
-      color: 1
+      color: 4
       direction: 1
-      textLabel: GREEN
+      textLabel: BLOCK
     - row: 2
       col: 2
       color: 1
@@ -180,14 +180,14 @@ MonoBehaviour:
       textLabel: BLOCK
     - row: 0
       col: 2
-      color: 0
+      color: 1
       direction: 0
-      textLabel: RED
+      textLabel: GREEN
     - row: 1
       col: 0
-      color: 4
+      color: 0
       direction: 1
-      textLabel: BLOCK
+      textLabel: RED
     - row: 1
       col: 1
       color: 1
@@ -200,19 +200,19 @@ MonoBehaviour:
       textLabel: RED
     - row: 2
       col: 0
-      color: 1
+      color: 4
       direction: 2
-      textLabel: GREEN
+      textLabel: BLOCK
     - row: 2
       col: 1
-      color: 0
+      color: 4
       direction: 2
-      textLabel: RED
+      textLabel: BLOCK
     - row: 2
       col: 2
-      color: 4
+      color: 0
       direction: 3
-      textLabel: BLOCK
+      textLabel: RED
   - id: 5
     name: Board 5
     boardSize: 3
@@ -221,12 +221,12 @@ MonoBehaviour:
     - row: 0
       col: 0
       color: 0
-      direction: 0
+      direction: 2
       textLabel: RED
     - row: 0
       col: 1
       color: 1
-      direction: 0
+      direction: 3
       textLabel: GREEN
     - row: 0
       col: 2
@@ -235,34 +235,34 @@ MonoBehaviour:
       textLabel: GREEN
     - row: 1
       col: 0
+      color: 0
+      direction: 1
+      textLabel: RED
+    - row: 1
+      col: 1
       color: 4
       direction: 2
       textLabel: BLOCK
     - row: 1
-      col: 1
-      color: 0
-      direction: 0
-      textLabel: RED
-    - row: 1
       col: 2
-      color: 0
-      direction: 3
-      textLabel: RED
+      color: 4
+      direction: 0
+      textLabel: BLOCK
     - row: 2
       col: 0
-      color: 4
-      direction: 2
-      textLabel: BLOCK
-    - row: 2
-      col: 1
-      color: 4
-      direction: 1
-      textLabel: BLOCK
-    - row: 2
-      col: 2
       color: 1
       direction: 1
       textLabel: GREEN
+    - row: 2
+      col: 1
+      color: 0
+      direction: 2
+      textLabel: RED
+    - row: 2
+      col: 2
+      color: 4
+      direction: 0
+      textLabel: BLOCK
   - id: 6
     name: Board 6
     boardSize: 4
@@ -270,13 +270,13 @@ MonoBehaviour:
     blocks:
     - row: 0
       col: 0
-      color: 1
-      direction: 0
-      textLabel: GREEN
+      color: 0
+      direction: 2
+      textLabel: RED
     - row: 0
       col: 1
       color: 1
-      direction: 0
+      direction: 3
       textLabel: GREEN
     - row: 0
       col: 2
@@ -285,9 +285,9 @@ MonoBehaviour:
       textLabel: BLOCK
     - row: 0
       col: 3
-      color: 0
-      direction: 3
-      textLabel: RED
+      color: 4
+      direction: 0
+      textLabel: BLOCK
     - row: 1
       col: 0
       color: 4
@@ -300,54 +300,54 @@ MonoBehaviour:
       textLabel: BLOCK
     - row: 1
       col: 2
-      color: 1
-      direction: 3
-      textLabel: GREEN
+      color: 0
+      direction: 0
+      textLabel: RED
     - row: 1
       col: 3
-      color: 0
-      direction: 0
-      textLabel: RED
+      color: 4
+      direction: 1
+      textLabel: BLOCK
     - row: 2
       col: 0
-      color: 0
-      direction: 1
-      textLabel: RED
-    - row: 2
-      col: 1
       color: 4
       direction: 2
       textLabel: BLOCK
     - row: 2
-      col: 2
-      color: 4
-      direction: 2
-      textLabel: BLOCK
-    - row: 2
-      col: 3
-      color: 4
-      direction: 3
-      textLabel: BLOCK
-    - row: 3
-      col: 0
+      col: 1
       color: 0
       direction: 1
       textLabel: RED
-    - row: 3
-      col: 1
+    - row: 2
+      col: 2
       color: 4
       direction: 0
       textLabel: BLOCK
-    - row: 3
-      col: 2
-      color: 4
-      direction: 1
-      textLabel: BLOCK
-    - row: 3
+    - row: 2
       col: 3
       color: 1
-      direction: 1
+      direction: 3
       textLabel: GREEN
+    - row: 3
+      col: 0
+      color: 1
+      direction: 3
+      textLabel: GREEN
+    - row: 3
+      col: 1
+      color: 4
+      direction: 1
+      textLabel: BLOCK
+    - row: 3
+      col: 2
+      color: 1
+      direction: 0
+      textLabel: GREEN
+    - row: 3
+      col: 3
+      color: 0
+      direction: 1
+      textLabel: RED
   - id: 7
     name: Board 7
     boardSize: 4
@@ -355,19 +355,19 @@ MonoBehaviour:
     blocks:
     - row: 0
       col: 0
-      color: 4
-      direction: 0
-      textLabel: BLOCK
-    - row: 0
-      col: 1
       color: 1
-      direction: 0
+      direction: 2
       textLabel: GREEN
     - row: 0
-      col: 2
+      col: 1
       color: 0
       direction: 1
       textLabel: RED
+    - row: 0
+      col: 2
+      color: 4
+      direction: 3
+      textLabel: BLOCK
     - row: 0
       col: 3
       color: 4
@@ -375,58 +375,58 @@ MonoBehaviour:
       textLabel: BLOCK
     - row: 1
       col: 0
-      color: 4
-      direction: 2
-      textLabel: BLOCK
-    - row: 1
-      col: 1
       color: 0
       direction: 0
       textLabel: RED
     - row: 1
-      col: 2
+      col: 1
       color: 4
-      direction: 3
+      direction: 2
       textLabel: BLOCK
     - row: 1
-      col: 3
+      col: 2
       color: 0
-      direction: 1
+      direction: 3
       textLabel: RED
+    - row: 1
+      col: 3
+      color: 1
+      direction: 0
+      textLabel: GREEN
     - row: 2
       col: 0
-      color: 1
+      color: 0
       direction: 2
-      textLabel: GREEN
+      textLabel: RED
     - row: 2
       col: 1
       color: 4
-      direction: 2
+      direction: 1
       textLabel: BLOCK
     - row: 2
       col: 2
-      color: 1
-      direction: 3
-      textLabel: GREEN
-    - row: 2
-      col: 3
       color: 4
       direction: 3
       textLabel: BLOCK
+    - row: 2
+      col: 3
+      color: 1
+      direction: 3
+      textLabel: GREEN
     - row: 3
       col: 0
-      color: 0
-      direction: 1
-      textLabel: RED
+      color: 4
+      direction: 2
+      textLabel: BLOCK
     - row: 3
       col: 1
       color: 1
-      direction: 2
+      direction: 1
       textLabel: GREEN
     - row: 3
       col: 2
       color: 4
-      direction: 3
+      direction: 0
       textLabel: BLOCK
     - row: 3
       col: 3
@@ -440,19 +440,19 @@ MonoBehaviour:
     blocks:
     - row: 0
       col: 0
-      color: 1
+      color: 4
       direction: 2
-      textLabel: GREEN
+      textLabel: BLOCK
     - row: 0
       col: 1
+      color: 1
+      direction: 3
+      textLabel: GREEN
+    - row: 0
+      col: 2
       color: 4
       direction: 0
       textLabel: BLOCK
-    - row: 0
-      col: 2
-      color: 0
-      direction: 0
-      textLabel: RED
     - row: 0
       col: 3
       color: 1
@@ -460,64 +460,64 @@ MonoBehaviour:
       textLabel: GREEN
     - row: 1
       col: 0
-      color: 1
-      direction: 2
-      textLabel: GREEN
+      color: 4
+      direction: 0
+      textLabel: BLOCK
     - row: 1
+      col: 1
+      color: 0
+      direction: 1
+      textLabel: RED
+    - row: 1
+      col: 2
+      color: 0
+      direction: 1
+      textLabel: RED
+    - row: 1
+      col: 3
+      color: 1
+      direction: 3
+      textLabel: GREEN
+    - row: 2
+      col: 0
+      color: 1
+      direction: 1
+      textLabel: GREEN
+    - row: 2
       col: 1
       color: 4
       direction: 2
       textLabel: BLOCK
-    - row: 1
+    - row: 2
       col: 2
       color: 4
       direction: 3
       textLabel: BLOCK
-    - row: 1
-      col: 3
-      color: 0
-      direction: 0
-      textLabel: RED
     - row: 2
+      col: 3
+      color: 4
+      direction: 0
+      textLabel: BLOCK
+    - row: 3
       col: 0
       color: 4
       direction: 1
       textLabel: BLOCK
-    - row: 2
-      col: 1
-      color: 4
-      direction: 1
-      textLabel: BLOCK
-    - row: 2
-      col: 2
-      color: 0
-      direction: 3
-      textLabel: RED
-    - row: 2
-      col: 3
-      color: 4
-      direction: 3
-      textLabel: BLOCK
-    - row: 3
-      col: 0
-      color: 4
-      direction: 1
-      textLabel: BLOCK
     - row: 3
       col: 1
-      color: 0
+      color: 4
       direction: 2
-      textLabel: RED
-    - row: 3
-      col: 2
-      color: 4
-      direction: 1
       textLabel: BLOCK
     - row: 3
+      col: 2
+      color: 0
+      direction: 1
+      textLabel: RED
+    - row: 3
       col: 3
-      color: 1
+      color: 0
       direction: 0
-      textLabel: GREEN
+      textLabel: RED
   - id: 9
     name: Board 9
     boardSize: 4
@@ -525,83 +525,83 @@ MonoBehaviour:
     blocks:
     - row: 0
       col: 0
+      color: 4
+      direction: 1
+      textLabel: BLOCK
+    - row: 0
+      col: 1
       color: 1
       direction: 3
       textLabel: GREEN
     - row: 0
-      col: 1
-      color: 0
-      direction: 3
-      textLabel: RED
-    - row: 0
       col: 2
-      color: 4
-      direction: 3
-      textLabel: BLOCK
+      color: 1
+      direction: 0
+      textLabel: GREEN
     - row: 0
       col: 3
       color: 4
-      direction: 0
-      textLabel: BLOCK
-    - row: 1
-      col: 0
-      color: 4
-      direction: 2
-      textLabel: BLOCK
-    - row: 1
-      col: 1
-      color: 1
-      direction: 2
-      textLabel: GREEN
-    - row: 1
-      col: 2
-      color: 4
-      direction: 0
-      textLabel: BLOCK
-    - row: 1
-      col: 3
-      color: 0
-      direction: 2
-      textLabel: RED
-    - row: 2
-      col: 0
-      color: 1
-      direction: 1
-      textLabel: GREEN
-    - row: 2
-      col: 1
-      color: 4
-      direction: 0
-      textLabel: BLOCK
-    - row: 2
-      col: 2
-      color: 1
-      direction: 0
-      textLabel: GREEN
-    - row: 2
-      col: 3
-      color: 0
       direction: 3
-      textLabel: RED
-    - row: 3
+      textLabel: BLOCK
+    - row: 1
+      col: 0
+      color: 1
+      direction: 2
+      textLabel: GREEN
+    - row: 1
+      col: 1
+      color: 4
+      direction: 2
+      textLabel: BLOCK
+    - row: 1
+      col: 2
+      color: 4
+      direction: 0
+      textLabel: BLOCK
+    - row: 1
+      col: 3
+      color: 4
+      direction: 0
+      textLabel: BLOCK
+    - row: 2
       col: 0
       color: 0
       direction: 1
       textLabel: RED
-    - row: 3
+    - row: 2
       col: 1
       color: 4
       direction: 1
       textLabel: BLOCK
+    - row: 2
+      col: 2
+      color: 1
+      direction: 3
+      textLabel: GREEN
+    - row: 2
+      col: 3
+      color: 0
+      direction: 0
+      textLabel: RED
+    - row: 3
+      col: 0
+      color: 0
+      direction: 2
+      textLabel: RED
+    - row: 3
+      col: 1
+      color: 0
+      direction: 1
+      textLabel: RED
     - row: 3
       col: 2
       color: 4
-      direction: 1
+      direction: 2
       textLabel: BLOCK
     - row: 3
       col: 3
       color: 4
-      direction: 2
+      direction: 3
       textLabel: BLOCK
   - id: 10
     name: Board 10
@@ -610,13 +610,13 @@ MonoBehaviour:
     blocks:
     - row: 0
       col: 0
-      color: 0
-      direction: 0
-      textLabel: RED
+      color: 4
+      direction: 2
+      textLabel: BLOCK
     - row: 0
       col: 1
       color: 4
-      direction: 3
+      direction: 1
       textLabel: BLOCK
     - row: 0
       col: 2
@@ -625,68 +625,68 @@ MonoBehaviour:
       textLabel: BLOCK
     - row: 0
       col: 3
-      color: 0
-      direction: 3
-      textLabel: RED
-    - row: 1
-      col: 0
-      color: 1
-      direction: 2
-      textLabel: GREEN
-    - row: 1
-      col: 1
       color: 1
       direction: 0
       textLabel: GREEN
     - row: 1
+      col: 0
+      color: 4
+      direction: 0
+      textLabel: BLOCK
+    - row: 1
+      col: 1
+      color: 0
+      direction: 2
+      textLabel: RED
+    - row: 1
       col: 2
       color: 4
-      direction: 2
+      direction: 0
       textLabel: BLOCK
     - row: 1
       col: 3
-      color: 4
-      direction: 3
-      textLabel: BLOCK
+      color: 0
+      direction: 2
+      textLabel: RED
     - row: 2
+      col: 0
+      color: 0
+      direction: 2
+      textLabel: RED
+    - row: 2
+      col: 1
+      color: 0
+      direction: 3
+      textLabel: RED
+    - row: 2
+      col: 2
+      color: 1
+      direction: 1
+      textLabel: GREEN
+    - row: 2
+      col: 3
+      color: 4
+      direction: 1
+      textLabel: BLOCK
+    - row: 3
       col: 0
       color: 4
       direction: 1
       textLabel: BLOCK
-    - row: 2
+    - row: 3
       col: 1
-      color: 4
-      direction: 1
-      textLabel: BLOCK
-    - row: 2
-      col: 2
       color: 4
       direction: 3
       textLabel: BLOCK
-    - row: 2
-      col: 3
+    - row: 3
+      col: 2
       color: 1
-      direction: 0
+      direction: 3
       textLabel: GREEN
     - row: 3
-      col: 0
-      color: 4
-      direction: 2
-      textLabel: BLOCK
-    - row: 3
-      col: 1
-      color: 0
-      direction: 1
-      textLabel: RED
-    - row: 3
-      col: 2
-      color: 0
-      direction: 1
-      textLabel: RED
-    - row: 3
       col: 3
       color: 1
-      direction: 2
+      direction: 3
       textLabel: GREEN
   - id: 11
     name: Board 11
@@ -700,49 +700,49 @@ MonoBehaviour:
       textLabel: RED
     - row: 0
       col: 1
-      color: 4
-      direction: 0
-      textLabel: BLOCK
-    - row: 0
-      col: 2
       color: 1
       direction: 0
       textLabel: GREEN
     - row: 0
+      col: 2
+      color: 1
+      direction: 0
+      textLabel: GREEN
+    - row: 0
       col: 3
+      color: 0
+      direction: 3
+      textLabel: RED
+    - row: 1
+      col: 0
+      color: 4
+      direction: 1
+      textLabel: BLOCK
+    - row: 1
+      col: 1
+      color: 0
+      direction: 2
+      textLabel: RED
+    - row: 1
+      col: 2
       color: 4
       direction: 0
       textLabel: BLOCK
     - row: 1
+      col: 3
+      color: 0
+      direction: 3
+      textLabel: RED
+    - row: 2
       col: 0
-      color: 1
+      color: 4
       direction: 1
-      textLabel: GREEN
-    - row: 1
+      textLabel: BLOCK
+    - row: 2
       col: 1
       color: 4
-      direction: 2
-      textLabel: BLOCK
-    - row: 1
-      col: 2
-      color: 0
       direction: 0
-      textLabel: RED
-    - row: 1
-      col: 3
-      color: 4
-      direction: 3
       textLabel: BLOCK
-    - row: 2
-      col: 0
-      color: 1
-      direction: 2
-      textLabel: GREEN
-    - row: 2
-      col: 1
-      color: 0
-      direction: 2
-      textLabel: RED
     - row: 2
       col: 2
       color: 4
@@ -751,27 +751,27 @@ MonoBehaviour:
     - row: 2
       col: 3
       color: 1
-      direction: 3
+      direction: 1
       textLabel: GREEN
     - row: 3
       col: 0
       color: 4
-      direction: 1
+      direction: 2
       textLabel: BLOCK
     - row: 3
       col: 1
-      color: 0
+      color: 1
       direction: 2
-      textLabel: RED
+      textLabel: GREEN
     - row: 3
       col: 2
       color: 4
-      direction: 3
+      direction: 2
       textLabel: BLOCK
     - row: 3
       col: 3
       color: 4
-      direction: 1
+      direction: 3
       textLabel: BLOCK
   - id: 12
     name: Board 12
@@ -785,79 +785,79 @@ MonoBehaviour:
       textLabel: BLOCK
     - row: 0
       col: 1
-      color: 0
-      direction: 3
-      textLabel: RED
+      color: 1
+      direction: 2
+      textLabel: GREEN
     - row: 0
       col: 2
-      color: 1
+      color: 4
       direction: 3
-      textLabel: GREEN
+      textLabel: BLOCK
     - row: 0
       col: 3
-      color: 1
-      direction: 3
-      textLabel: GREEN
+      color: 4
+      direction: 0
+      textLabel: BLOCK
     - row: 1
       col: 0
-      color: 0
+      color: 1
       direction: 0
-      textLabel: RED
+      textLabel: GREEN
     - row: 1
       col: 1
       color: 4
-      direction: 2
+      direction: 1
       textLabel: BLOCK
     - row: 1
-      col: 2
-      color: 1
-      direction: 0
-      textLabel: GREEN
-    - row: 1
-      col: 3
-      color: 1
-      direction: 0
-      textLabel: GREEN
-    - row: 2
-      col: 0
-      color: 4
-      direction: 0
-      textLabel: BLOCK
-    - row: 2
-      col: 1
-      color: 4
-      direction: 2
-      textLabel: BLOCK
-    - row: 2
       col: 2
       color: 4
       direction: 1
       textLabel: BLOCK
-    - row: 2
+    - row: 1
       col: 3
+      color: 4
+      direction: 0
+      textLabel: BLOCK
+    - row: 2
+      col: 0
+      color: 1
+      direction: 0
+      textLabel: GREEN
+    - row: 2
+      col: 1
+      color: 4
+      direction: 2
+      textLabel: BLOCK
+    - row: 2
+      col: 2
       color: 0
       direction: 3
       textLabel: RED
+    - row: 2
+      col: 3
+      color: 0
+      direction: 3
+      textLabel: RED
     - row: 3
       col: 0
-      color: 4
+      color: 0
       direction: 1
-      textLabel: BLOCK
+      textLabel: RED
     - row: 3
       col: 1
+      color: 0
+      direction: 1
+      textLabel: RED
+    - row: 3
+      col: 2
       color: 4
       direction: 2
       textLabel: BLOCK
     - row: 3
-      col: 2
-      color: 4
-      direction: 1
-      textLabel: BLOCK
-    - row: 3
       col: 3
-      color: 0
-      direction: 1
-      textLabel: RED
+      color: 1
+      direction: 3
+      textLabel: GREEN
   - id: 13
     name: Board 13
     boardSize: 4
@@ -870,39 +870,39 @@ MonoBehaviour:
       textLabel: GREEN
     - row: 0
       col: 1
-      color: 4
-      direction: 1
-      textLabel: BLOCK
+      color: 1
+      direction: 2
+      textLabel: GREEN
     - row: 0
       col: 2
-      color: 4
+      color: 0
       direction: 0
-      textLabel: BLOCK
+      textLabel: RED
     - row: 0
       col: 3
       color: 4
-      direction: 0
+      direction: 3
       textLabel: BLOCK
     - row: 1
       col: 0
       color: 4
-      direction: 0
+      direction: 1
       textLabel: BLOCK
     - row: 1
       col: 1
-      color: 1
-      direction: 2
-      textLabel: GREEN
+      color: 4
+      direction: 1
+      textLabel: BLOCK
     - row: 1
       col: 2
-      color: 0
+      color: 4
       direction: 0
-      textLabel: RED
+      textLabel: BLOCK
     - row: 1
       col: 3
-      color: 0
-      direction: 3
-      textLabel: RED
+      color: 1
+      direction: 0
+      textLabel: GREEN
     - row: 2
       col: 0
       color: 0
@@ -910,19 +910,19 @@ MonoBehaviour:
       textLabel: RED
     - row: 2
       col: 1
-      color: 4
-      direction: 1
-      textLabel: BLOCK
+      color: 1
+      direction: 3
+      textLabel: GREEN
     - row: 2
       col: 2
       color: 0
-      direction: 3
+      direction: 0
       textLabel: RED
     - row: 2
       col: 3
-      color: 1
+      color: 4
       direction: 1
-      textLabel: GREEN
+      textLabel: BLOCK
     - row: 3
       col: 0
       color: 4
@@ -930,18 +930,18 @@ MonoBehaviour:
       textLabel: BLOCK
     - row: 3
       col: 1
-      color: 4
-      direction: 1
-      textLabel: BLOCK
+      color: 0
+      direction: 3
+      textLabel: RED
     - row: 3
       col: 2
-      color: 1
+      color: 4
       direction: 3
-      textLabel: GREEN
+      textLabel: BLOCK
     - row: 3
       col: 3
       color: 4
-      direction: 3
+      direction: 1
       textLabel: BLOCK
   - id: 14
     name: Board 14
@@ -950,18 +950,18 @@ MonoBehaviour:
     blocks:
     - row: 0
       col: 0
-      color: 0
+      color: 4
       direction: 2
-      textLabel: RED
+      textLabel: BLOCK
     - row: 0
       col: 1
-      color: 0
-      direction: 2
-      textLabel: RED
+      color: 4
+      direction: 3
+      textLabel: BLOCK
     - row: 0
       col: 2
       color: 4
-      direction: 0
+      direction: 3
       textLabel: BLOCK
     - row: 0
       col: 3
@@ -970,9 +970,9 @@ MonoBehaviour:
       textLabel: GREEN
     - row: 1
       col: 0
-      color: 4
-      direction: 2
-      textLabel: BLOCK
+      color: 1
+      direction: 3
+      textLabel: GREEN
     - row: 1
       col: 1
       color: 4
@@ -980,39 +980,39 @@ MonoBehaviour:
       textLabel: BLOCK
     - row: 1
       col: 2
-      color: 0
-      direction: 3
-      textLabel: RED
+      color: 4
+      direction: 0
+      textLabel: BLOCK
     - row: 1
       col: 3
-      color: 1
-      direction: 3
-      textLabel: GREEN
+      color: 0
+      direction: 1
+      textLabel: RED
     - row: 2
       col: 0
-      color: 1
-      direction: 0
-      textLabel: GREEN
+      color: 0
+      direction: 2
+      textLabel: RED
     - row: 2
       col: 1
-      color: 1
-      direction: 1
-      textLabel: GREEN
+      color: 0
+      direction: 2
+      textLabel: RED
     - row: 2
       col: 2
-      color: 4
-      direction: 1
-      textLabel: BLOCK
-    - row: 2
-      col: 3
-      color: 4
-      direction: 3
-      textLabel: BLOCK
-    - row: 3
-      col: 0
       color: 4
       direction: 2
       textLabel: BLOCK
+    - row: 2
+      col: 3
+      color: 4
+      direction: 1
+      textLabel: BLOCK
+    - row: 3
+      col: 0
+      color: 1
+      direction: 2
+      textLabel: GREEN
     - row: 3
       col: 1
       color: 4
@@ -1020,14 +1020,14 @@ MonoBehaviour:
       textLabel: BLOCK
     - row: 3
       col: 2
-      color: 0
-      direction: 1
-      textLabel: RED
+      color: 1
+      direction: 0
+      textLabel: GREEN
     - row: 3
       col: 3
-      color: 4
+      color: 0
       direction: 3
-      textLabel: BLOCK
+      textLabel: RED
   - id: 15
     name: Board 15
     boardSize: 4
@@ -1035,33 +1035,33 @@ MonoBehaviour:
     blocks:
     - row: 0
       col: 0
-      color: 4
-      direction: 2
-      textLabel: BLOCK
-    - row: 0
-      col: 1
-      color: 4
-      direction: 0
-      textLabel: BLOCK
-    - row: 0
-      col: 2
-      color: 1
-      direction: 3
-      textLabel: GREEN
-    - row: 0
-      col: 3
       color: 0
-      direction: 0
+      direction: 2
       textLabel: RED
-    - row: 1
-      col: 0
+    - row: 0
+      col: 1
+      color: 4
+      direction: 2
+      textLabel: BLOCK
+    - row: 0
+      col: 2
+      color: 4
+      direction: 2
+      textLabel: BLOCK
+    - row: 0
+      col: 3
       color: 1
       direction: 3
       textLabel: GREEN
     - row: 1
+      col: 0
+      color: 1
+      direction: 0
+      textLabel: GREEN
+    - row: 1
       col: 1
       color: 4
-      direction: 0
+      direction: 1
       textLabel: BLOCK
     - row: 1
       col: 2
@@ -1071,12 +1071,12 @@ MonoBehaviour:
     - row: 1
       col: 3
       color: 1
-      direction: 1
+      direction: 0
       textLabel: GREEN
     - row: 2
       col: 0
       color: 4
-      direction: 2
+      direction: 0
       textLabel: BLOCK
     - row: 2
       col: 1
@@ -1086,7 +1086,7 @@ MonoBehaviour:
     - row: 2
       col: 2
       color: 4
-      direction: 2
+      direction: 3
       textLabel: BLOCK
     - row: 2
       col: 3
@@ -1120,18 +1120,18 @@ MonoBehaviour:
     blocks:
     - row: 0
       col: 0
-      color: 1
-      direction: 2
-      textLabel: GREEN
-    - row: 0
-      col: 1
       color: 4
       direction: 2
       textLabel: BLOCK
     - row: 0
+      col: 1
+      color: 4
+      direction: 0
+      textLabel: BLOCK
+    - row: 0
       col: 2
       color: 1
-      direction: 0
+      direction: 3
       textLabel: GREEN
     - row: 0
       col: 3
@@ -1140,24 +1140,24 @@ MonoBehaviour:
       textLabel: BLOCK
     - row: 1
       col: 0
-      color: 0
-      direction: 2
-      textLabel: RED
+      color: 1
+      direction: 1
+      textLabel: GREEN
     - row: 1
       col: 1
       color: 0
-      direction: 2
+      direction: 1
       textLabel: RED
     - row: 1
       col: 2
       color: 4
-      direction: 3
+      direction: 0
       textLabel: BLOCK
     - row: 1
       col: 3
-      color: 4
-      direction: 0
-      textLabel: BLOCK
+      color: 0
+      direction: 3
+      textLabel: RED
     - row: 2
       col: 0
       color: 4
@@ -1165,14 +1165,14 @@ MonoBehaviour:
       textLabel: BLOCK
     - row: 2
       col: 1
-      color: 4
-      direction: 0
-      textLabel: BLOCK
+      color: 1
+      direction: 2
+      textLabel: GREEN
     - row: 2
       col: 2
-      color: 4
+      color: 0
       direction: 3
-      textLabel: BLOCK
+      textLabel: RED
     - row: 2
       col: 3
       color: 1
@@ -1180,13 +1180,13 @@ MonoBehaviour:
       textLabel: GREEN
     - row: 3
       col: 0
-      color: 1
-      direction: 1
-      textLabel: GREEN
+      color: 4
+      direction: 2
+      textLabel: BLOCK
     - row: 3
       col: 1
       color: 0
-      direction: 1
+      direction: 2
       textLabel: RED
     - row: 3
       col: 2
@@ -1195,9 +1195,9 @@ MonoBehaviour:
       textLabel: BLOCK
     - row: 3
       col: 3
-      color: 0
-      direction: 3
-      textLabel: RED
+      color: 4
+      direction: 0
+      textLabel: BLOCK
   - id: 17
     name: Board 17
     boardSize: 4
@@ -1205,34 +1205,34 @@ MonoBehaviour:
     blocks:
     - row: 0
       col: 0
+      color: 0
+      direction: 2
+      textLabel: RED
+    - row: 0
+      col: 1
+      color: 4
+      direction: 3
+      textLabel: BLOCK
+    - row: 0
+      col: 2
+      color: 0
+      direction: 0
+      textLabel: RED
+    - row: 0
+      col: 3
       color: 4
       direction: 0
       textLabel: BLOCK
-    - row: 0
-      col: 1
-      color: 0
-      direction: 3
-      textLabel: RED
-    - row: 0
-      col: 2
-      color: 1
-      direction: 0
-      textLabel: GREEN
-    - row: 0
-      col: 3
-      color: 0
-      direction: 3
-      textLabel: RED
     - row: 1
       col: 0
       color: 4
-      direction: 2
+      direction: 0
       textLabel: BLOCK
     - row: 1
       col: 1
-      color: 4
+      color: 1
       direction: 2
-      textLabel: BLOCK
+      textLabel: GREEN
     - row: 1
       col: 2
       color: 4
@@ -1240,49 +1240,49 @@ MonoBehaviour:
       textLabel: BLOCK
     - row: 1
       col: 3
-      color: 1
-      direction: 3
-      textLabel: GREEN
+      color: 0
+      direction: 1
+      textLabel: RED
     - row: 2
       col: 0
       color: 1
       direction: 2
       textLabel: GREEN
     - row: 2
+      col: 1
+      color: 4
+      direction: 1
+      textLabel: BLOCK
+    - row: 2
+      col: 2
+      color: 1
+      direction: 1
+      textLabel: GREEN
+    - row: 2
+      col: 3
+      color: 2
+      direction: 3
+      textLabel: BLUE
+    - row: 3
+      col: 0
+      color: 0
+      direction: 0
+      textLabel: RED
+    - row: 3
       col: 1
       color: 2
       direction: 1
       textLabel: BLUE
-    - row: 2
-      col: 2
-      color: 0
-      direction: 0
-      textLabel: RED
-    - row: 2
-      col: 3
-      color: 2
-      direction: 0
-      textLabel: BLUE
     - row: 3
-      col: 0
+      col: 2
       color: 1
-      direction: 1
+      direction: 2
       textLabel: GREEN
     - row: 3
-      col: 1
-      color: 4
-      direction: 2
-      textLabel: BLOCK
-    - row: 3
-      col: 2
-      color: 4
-      direction: 1
-      textLabel: BLOCK
-    - row: 3
       col: 3
-      color: 0
-      direction: 1
-      textLabel: RED
+      color: 4
+      direction: 3
+      textLabel: BLOCK
   - id: 18
     name: Board 18
     boardSize: 4
@@ -1290,84 +1290,84 @@ MonoBehaviour:
     blocks:
     - row: 0
       col: 0
+      color: 1
+      direction: 0
+      textLabel: GREEN
+    - row: 0
+      col: 1
+      color: 4
+      direction: 3
+      textLabel: BLOCK
+    - row: 0
+      col: 2
+      color: 4
+      direction: 0
+      textLabel: BLOCK
+    - row: 0
+      col: 3
       color: 2
-      direction: 2
+      direction: 0
       textLabel: BLUE
-    - row: 0
-      col: 1
-      color: 0
-      direction: 0
-      textLabel: RED
-    - row: 0
-      col: 2
-      color: 0
-      direction: 0
-      textLabel: RED
-    - row: 0
-      col: 3
-      color: 4
-      direction: 3
-      textLabel: BLOCK
     - row: 1
       col: 0
-      color: 1
-      direction: 0
-      textLabel: GREEN
-    - row: 1
-      col: 1
-      color: 1
-      direction: 2
-      textLabel: GREEN
-    - row: 1
-      col: 2
       color: 0
-      direction: 0
+      direction: 2
       textLabel: RED
     - row: 1
-      col: 3
-      color: 4
-      direction: 3
-      textLabel: BLOCK
-    - row: 2
-      col: 0
-      color: 1
-      direction: 2
-      textLabel: GREEN
-    - row: 2
       col: 1
-      color: 4
-      direction: 2
-      textLabel: BLOCK
-    - row: 2
-      col: 2
-      color: 4
-      direction: 3
-      textLabel: BLOCK
-    - row: 2
-      col: 3
-      color: 4
-      direction: 1
-      textLabel: BLOCK
-    - row: 3
-      col: 0
-      color: 0
-      direction: 1
-      textLabel: RED
-    - row: 3
-      col: 1
-      color: 1
-      direction: 1
-      textLabel: GREEN
-    - row: 3
-      col: 2
-      color: 4
-      direction: 3
-      textLabel: BLOCK
-    - row: 3
-      col: 3
       color: 2
       direction: 1
       textLabel: BLUE
+    - row: 1
+      col: 2
+      color: 1
+      direction: 2
+      textLabel: GREEN
+    - row: 1
+      col: 3
+      color: 4
+      direction: 0
+      textLabel: BLOCK
+    - row: 2
+      col: 0
+      color: 1
+      direction: 3
+      textLabel: GREEN
+    - row: 2
+      col: 1
+      color: 4
+      direction: 1
+      textLabel: BLOCK
+    - row: 2
+      col: 2
+      color: 4
+      direction: 3
+      textLabel: BLOCK
+    - row: 2
+      col: 3
+      color: 0
+      direction: 1
+      textLabel: RED
+    - row: 3
+      col: 0
+      color: 0
+      direction: 1
+      textLabel: RED
+    - row: 3
+      col: 1
+      color: 0
+      direction: 2
+      textLabel: RED
+    - row: 3
+      col: 2
+      color: 1
+      direction: 2
+      textLabel: GREEN
+    - row: 3
+      col: 3
+      color: 4
+      direction: 3
+      textLabel: BLOCK
   - id: 19
     name: Board 19
     boardSize: 4
@@ -1375,84 +1375,84 @@ MonoBehaviour:
     blocks:
     - row: 0
       col: 0
-      color: 1
-      direction: 0
-      textLabel: GREEN
-    - row: 0
-      col: 1
       color: 4
       direction: 0
       textLabel: BLOCK
     - row: 0
+      col: 1
+      color: 1
+      direction: 2
+      textLabel: GREEN
+    - row: 0
       col: 2
       color: 4
-      direction: 0
+      direction: 2
       textLabel: BLOCK
     - row: 0
       col: 3
-      color: 1
-      direction: 3
-      textLabel: GREEN
+      color: 2
+      direction: 0
+      textLabel: BLUE
     - row: 1
       col: 0
-      color: 0
-      direction: 2
-      textLabel: RED
-    - row: 1
-      col: 1
-      color: 0
-      direction: 2
-      textLabel: RED
-    - row: 1
-      col: 2
       color: 2
       direction: 2
       textLabel: BLUE
     - row: 1
-      col: 3
-      color: 4
-      direction: 1
-      textLabel: BLOCK
-    - row: 2
-      col: 0
+      col: 1
       color: 4
       direction: 0
       textLabel: BLOCK
+    - row: 1
+      col: 2
+      color: 0
+      direction: 2
+      textLabel: RED
+    - row: 1
+      col: 3
+      color: 0
+      direction: 3
+      textLabel: RED
+    - row: 2
+      col: 0
+      color: 1
+      direction: 2
+      textLabel: GREEN
     - row: 2
       col: 1
-      color: 2
-      direction: 2
-      textLabel: BLUE
+      color: 0
+      direction: 1
+      textLabel: RED
     - row: 2
       col: 2
-      color: 1
+      color: 4
       direction: 3
-      textLabel: GREEN
+      textLabel: BLOCK
     - row: 2
       col: 3
       color: 4
-      direction: 3
+      direction: 0
       textLabel: BLOCK
     - row: 3
       col: 0
-      color: 1
+      color: 4
       direction: 1
-      textLabel: GREEN
+      textLabel: BLOCK
     - row: 3
       col: 1
       color: 0
-      direction: 1
+      direction: 3
       textLabel: RED
     - row: 3
       col: 2
-      color: 4
+      color: 1
       direction: 3
-      textLabel: BLOCK
+      textLabel: GREEN
     - row: 3
       col: 3
-      color: 0
+      color: 1
       direction: 1
-      textLabel: RED
+      textLabel: GREEN
   - id: 20
     name: Board 20
     boardSize: 4
@@ -1460,79 +1460,79 @@ MonoBehaviour:
     blocks:
     - row: 0
       col: 0
-      color: 4
-      direction: 0
-      textLabel: BLOCK
-    - row: 0
-      col: 1
       color: 0
       direction: 2
       textLabel: RED
     - row: 0
+      col: 1
+      color: 1
+      direction: 3
+      textLabel: GREEN
+    - row: 0
       col: 2
-      color: 2
+      color: 1
       direction: 0
-      textLabel: BLUE
+      textLabel: GREEN
     - row: 0
       col: 3
       color: 0
-      direction: 3
+      direction: 0
       textLabel: RED
     - row: 1
       col: 0
-      color: 1
-      direction: 2
-      textLabel: GREEN
-    - row: 1
-      col: 1
-      color: 4
-      direction: 0
-      textLabel: BLOCK
-    - row: 1
-      col: 2
       color: 2
       direction: 0
       textLabel: BLUE
     - row: 1
-      col: 3
-      color: 1
-      direction: 3
-      textLabel: GREEN
-    - row: 2
-      col: 0
-      color: 0
-      direction: 2
-      textLabel: RED
-    - row: 2
       col: 1
       color: 4
-      direction: 1
+      direction: 0
+      textLabel: BLOCK
+    - row: 1
+      col: 2
+      color: 4
+      direction: 2
+      textLabel: BLOCK
+    - row: 1
+      col: 3
+      color: 4
+      direction: 3
       textLabel: BLOCK
     - row: 2
-      col: 2
+      col: 0
       color: 1
-      direction: 3
+      direction: 2
       textLabel: GREEN
     - row: 2
-      col: 3
-      color: 0
-      direction: 3
-      textLabel: RED
-    - row: 3
-      col: 0
-      color: 4
-      direction: 1
-      textLabel: BLOCK
-    - row: 3
       col: 1
       color: 4
       direction: 2
       textLabel: BLOCK
+    - row: 2
+      col: 2
+      color: 2
+      direction: 1
+      textLabel: BLUE
+    - row: 2
+      col: 3
+      color: 0
+      direction: 1
+      textLabel: RED
+    - row: 3
+      col: 0
+      color: 4
+      direction: 1
+      textLabel: BLOCK
+    - row: 3
+      col: 1
+      color: 1
+      direction: 2
+      textLabel: GREEN
     - row: 3
       col: 2
-      color: 1
-      direction: 1
-      textLabel: GREEN
+      color: 0
+      direction: 3
+      textLabel: RED
     - row: 3
       col: 3
       color: 4
@@ -1545,24 +1545,24 @@ MonoBehaviour:
     blocks:
     - row: 0
       col: 0
-      color: 1
+      color: 4
       direction: 2
-      textLabel: GREEN
+      textLabel: BLOCK
     - row: 0
       col: 1
       color: 4
-      direction: 3
+      direction: 2
       textLabel: BLOCK
     - row: 0
       col: 2
-      color: 0
-      direction: 0
-      textLabel: RED
-    - row: 0
-      col: 3
       color: 4
       direction: 3
       textLabel: BLOCK
+    - row: 0
+      col: 3
+      color: 1
+      direction: 3
+      textLabel: GREEN
     - row: 1
       col: 0
       color: 4
@@ -1570,39 +1570,39 @@ MonoBehaviour:
       textLabel: BLOCK
     - row: 1
       col: 1
-      color: 1
-      direction: 2
-      textLabel: GREEN
-    - row: 1
-      col: 2
       color: 2
       direction: 2
       textLabel: BLUE
     - row: 1
+      col: 2
+      color: 1
+      direction: 1
+      textLabel: GREEN
+    - row: 1
       col: 3
+      color: 0
+      direction: 3
+      textLabel: RED
+    - row: 2
+      col: 0
       color: 0
       direction: 0
       textLabel: RED
     - row: 2
-      col: 0
+      col: 1
+      color: 1
+      direction: 3
+      textLabel: GREEN
+    - row: 2
+      col: 2
       color: 4
       direction: 1
       textLabel: BLOCK
     - row: 2
-      col: 1
-      color: 1
-      direction: 1
-      textLabel: GREEN
-    - row: 2
-      col: 2
-      color: 1
-      direction: 0
-      textLabel: GREEN
-    - row: 2
       col: 3
-      color: 0
-      direction: 1
-      textLabel: RED
+      color: 2
+      direction: 0
+      textLabel: BLUE
     - row: 3
       col: 0
       color: 0
@@ -1615,14 +1615,14 @@ MonoBehaviour:
       textLabel: BLOCK
     - row: 3
       col: 2
-      color: 2
-      direction: 3
-      textLabel: BLUE
+      color: 0
+      direction: 1
+      textLabel: RED
     - row: 3
       col: 3
-      color: 4
-      direction: 3
-      textLabel: BLOCK
+      color: 1
+      direction: 0
+      textLabel: GREEN
   - id: 22
     name: Board 22
     boardSize: 4
@@ -1630,84 +1630,84 @@ MonoBehaviour:
     blocks:
     - row: 0
       col: 0
+      color: 4
+      direction: 2
+      textLabel: BLOCK
+    - row: 0
+      col: 1
+      color: 4
+      direction: 3
+      textLabel: BLOCK
+    - row: 0
+      col: 2
+      color: 1
+      direction: 0
+      textLabel: GREEN
+    - row: 0
+      col: 3
+      color: 1
+      direction: 3
+      textLabel: GREEN
+    - row: 1
+      col: 0
+      color: 1
+      direction: 0
+      textLabel: GREEN
+    - row: 1
+      col: 1
+      color: 0
+      direction: 1
+      textLabel: RED
+    - row: 1
+      col: 2
       color: 2
-      direction: 2
+      direction: 3
       textLabel: BLUE
-    - row: 0
-      col: 1
-      color: 0
-      direction: 2
-      textLabel: RED
-    - row: 0
-      col: 2
-      color: 1
-      direction: 0
-      textLabel: GREEN
-    - row: 0
+    - row: 1
       col: 3
       color: 4
       direction: 0
       textLabel: BLOCK
-    - row: 1
+    - row: 2
       col: 0
+      color: 4
+      direction: 2
+      textLabel: BLOCK
+    - row: 2
+      col: 1
+      color: 0
+      direction: 1
+      textLabel: RED
+    - row: 2
+      col: 2
+      color: 4
+      direction: 2
+      textLabel: BLOCK
+    - row: 2
+      col: 3
+      color: 0
+      direction: 2
+      textLabel: RED
+    - row: 3
+      col: 0
+      color: 4
+      direction: 3
+      textLabel: BLOCK
+    - row: 3
+      col: 1
       color: 2
-      direction: 0
+      direction: 1
       textLabel: BLUE
-    - row: 1
-      col: 1
-      color: 0
-      direction: 0
-      textLabel: RED
-    - row: 1
+    - row: 3
       col: 2
       color: 0
-      direction: 3
-      textLabel: RED
-    - row: 1
-      col: 3
-      color: 4
-      direction: 3
-      textLabel: BLOCK
-    - row: 2
-      col: 0
-      color: 4
-      direction: 2
-      textLabel: BLOCK
-    - row: 2
-      col: 1
-      color: 4
-      direction: 2
-      textLabel: BLOCK
-    - row: 2
-      col: 2
-      color: 4
       direction: 1
-      textLabel: BLOCK
-    - row: 2
+      textLabel: RED
+    - row: 3
       col: 3
       color: 1
       direction: 3
       textLabel: GREEN
-    - row: 3
-      col: 0
-      color: 4
-      direction: 1
-      textLabel: BLOCK
-    - row: 3
-      col: 1
-      color: 1
-      direction: 1
-      textLabel: GREEN
-    - row: 3
-      col: 2
-      color: 1
-      direction: 1
-      textLabel: GREEN
-    - row: 3
-      col: 3
-      color: 0
-      direction: 3
-      textLabel: RED
   - id: 23
     name: Board 23
     boardSize: 4
@@ -1720,79 +1720,79 @@ MonoBehaviour:
       textLabel: BLOCK
     - row: 0
       col: 1
-      color: 4
-      direction: 2
-      textLabel: BLOCK
-    - row: 0
-      col: 2
       color: 0
-      direction: 3
+      direction: 2
       textLabel: RED
     - row: 0
-      col: 3
-      color: 1
-      direction: 0
-      textLabel: GREEN
-    - row: 1
-      col: 0
-      color: 0
-      direction: 0
-      textLabel: RED
-    - row: 1
-      col: 1
-      color: 1
-      direction: 2
-      textLabel: GREEN
-    - row: 1
       col: 2
-      color: 4
-      direction: 3
-      textLabel: BLOCK
-    - row: 1
-      col: 3
-      color: 4
-      direction: 3
-      textLabel: BLOCK
-    - row: 2
-      col: 0
-      color: 1
-      direction: 0
-      textLabel: GREEN
-    - row: 2
-      col: 1
-      color: 1
-      direction: 2
-      textLabel: GREEN
-    - row: 2
-      col: 2
-      color: 2
-      direction: 1
-      textLabel: BLUE
-    - row: 2
-      col: 3
-      color: 0
-      direction: 0
-      textLabel: RED
-    - row: 3
-      col: 0
       color: 2
       direction: 3
       textLabel: BLUE
-    - row: 3
+    - row: 0
+      col: 3
+      color: 0
+      direction: 0
+      textLabel: RED
+    - row: 1
+      col: 0
+      color: 4
+      direction: 0
+      textLabel: BLOCK
+    - row: 1
       col: 1
       color: 4
+      direction: 2
+      textLabel: BLOCK
+    - row: 1
+      col: 2
+      color: 1
+      direction: 3
+      textLabel: GREEN
+    - row: 1
+      col: 3
+      color: 2
+      direction: 3
+      textLabel: BLUE
+    - row: 2
+      col: 0
+      color: 1
+      direction: 0
+      textLabel: GREEN
+    - row: 2
+      col: 1
+      color: 4
+      direction: 2
+      textLabel: BLOCK
+    - row: 2
+      col: 2
+      color: 1
       direction: 1
+      textLabel: GREEN
+    - row: 2
+      col: 3
+      color: 0
+      direction: 0
+      textLabel: RED
+    - row: 3
+      col: 0
+      color: 4
+      direction: 3
       textLabel: BLOCK
     - row: 3
-      col: 2
+      col: 1
       color: 0
       direction: 1
       textLabel: RED
     - row: 3
-      col: 3
+      col: 2
       color: 4
       direction: 1
       textLabel: BLOCK
+    - row: 3
+      col: 3
+      color: 1
+      direction: 1
+      textLabel: GREEN
   - id: 24
     name: Board 24
     boardSize: 4
@@ -1801,68 +1801,68 @@ MonoBehaviour:
     - row: 0
       col: 0
       color: 1
-      direction: 3
+      direction: 2
       textLabel: GREEN
     - row: 0
       col: 1
+      color: 0
+      direction: 2
+      textLabel: RED
+    - row: 0
+      col: 2
       color: 4
       direction: 0
       textLabel: BLOCK
     - row: 0
+      col: 3
+      color: 4
+      direction: 1
+      textLabel: BLOCK
+    - row: 1
+      col: 0
+      color: 0
+      direction: 0
+      textLabel: RED
+    - row: 1
+      col: 1
+      color: 4
+      direction: 0
+      textLabel: BLOCK
+    - row: 1
       col: 2
+      color: 1
+      direction: 3
+      textLabel: GREEN
+    - row: 1
+      col: 3
+      color: 0
+      direction: 3
+      textLabel: RED
+    - row: 2
+      col: 0
       color: 2
       direction: 0
       textLabel: BLUE
-    - row: 0
-      col: 3
-      color: 1
-      direction: 3
-      textLabel: GREEN
-    - row: 1
-      col: 0
-      color: 0
-      direction: 2
-      textLabel: RED
-    - row: 1
-      col: 1
-      color: 0
-      direction: 0
-      textLabel: RED
-    - row: 1
-      col: 2
-      color: 1
-      direction: 2
-      textLabel: GREEN
-    - row: 1
-      col: 3
-      color: 1
-      direction: 1
-      textLabel: GREEN
     - row: 2
-      col: 0
+      col: 1
       color: 4
       direction: 2
       textLabel: BLOCK
     - row: 2
-      col: 1
-      color: 4
-      direction: 0
-      textLabel: BLOCK
-    - row: 2
       col: 2
-      color: 0
+      color: 1
       direction: 1
-      textLabel: RED
+      textLabel: GREEN
     - row: 2
       col: 3
       color: 4
-      direction: 3
+      direction: 1
       textLabel: BLOCK
     - row: 3
       col: 0
-      color: 0
+      color: 1
       direction: 2
-      textLabel: RED
+      textLabel: GREEN
     - row: 3
       col: 1
       color: 4
@@ -1871,13 +1871,13 @@ MonoBehaviour:
     - row: 3
       col: 2
       color: 2
-      direction: 1
+      direction: 3
       textLabel: BLUE
     - row: 3
       col: 3
-      color: 4
+      color: 0
       direction: 3
-      textLabel: BLOCK
+      textLabel: RED
   - id: 25
     name: Board 25
     boardSize: 4
@@ -1885,84 +1885,84 @@ MonoBehaviour:
     blocks:
     - row: 0
       col: 0
+      color: 4
+      direction: 2
+      textLabel: BLOCK
+    - row: 0
+      col: 1
+      color: 0
+      direction: 2
+      textLabel: RED
+    - row: 0
+      col: 2
+      color: 4
+      direction: 2
+      textLabel: BLOCK
+    - row: 0
+      col: 3
       color: 0
       direction: 0
       textLabel: RED
-    - row: 0
-      col: 1
+    - row: 1
+      col: 0
       color: 4
-      direction: 0
+      direction: 2
       textLabel: BLOCK
-    - row: 0
+    - row: 1
+      col: 1
+      color: 0
+      direction: 0
+      textLabel: RED
+    - row: 1
       col: 2
       color: 1
       direction: 0
       textLabel: GREEN
-    - row: 0
-      col: 3
-      color: 1
-      direction: 3
-      textLabel: GREEN
-    - row: 1
-      col: 0
-      color: 2
-      direction: 2
-      textLabel: BLUE
-    - row: 1
-      col: 1
-      color: 1
-      direction: 0
-      textLabel: GREEN
-    - row: 1
-      col: 2
-      color: 4
-      direction: 3
-      textLabel: BLOCK
     - row: 1
       col: 3
-      color: 0
-      direction: 3
-      textLabel: RED
-    - row: 2
-      col: 0
       color: 2
-      direction: 2
+      direction: 1
       textLabel: BLUE
     - row: 2
-      col: 1
-      color: 1
-      direction: 2
-      textLabel: GREEN
-    - row: 2
-      col: 2
-      color: 4
-      direction: 3
-      textLabel: BLOCK
-    - row: 2
-      col: 3
+      col: 0
       color: 4
       direction: 1
       textLabel: BLOCK
+    - row: 2
+      col: 1
+      color: 4
+      direction: 0
+      textLabel: BLOCK
+    - row: 2
+      col: 2
+      color: 4
+      direction: 1
+      textLabel: BLOCK
+    - row: 2
+      col: 3
+      color: 1
+      direction: 1
+      textLabel: GREEN
     - row: 3
       col: 0
-      color: 0
-      direction: 2
-      textLabel: RED
+      color: 1
+      direction: 1
+      textLabel: GREEN
     - row: 3
       col: 1
-      color: 0
-      direction: 1
-      textLabel: RED
+      color: 1
+      direction: 3
+      textLabel: GREEN
     - row: 3
       col: 2
-      color: 4
-      direction: 1
-      textLabel: BLOCK
+      color: 0
+      direction: 3
+      textLabel: RED
     - row: 3
       col: 3
-      color: 4
-      direction: 1
-      textLabel: BLOCK
+      color: 2
+      direction: 3
+      textLabel: BLUE
   - id: 26
     name: Board 26
     boardSize: 4
@@ -1970,84 +1970,84 @@ MonoBehaviour:
     blocks:
     - row: 0
       col: 0
+      color: 4
+      direction: 2
+      textLabel: BLOCK
+    - row: 0
+      col: 1
       color: 0
       direction: 2
       textLabel: RED
     - row: 0
-      col: 1
+      col: 2
       color: 4
       direction: 0
       textLabel: BLOCK
     - row: 0
-      col: 2
-      color: 1
-      direction: 2
-      textLabel: GREEN
-    - row: 0
       col: 3
-      color: 2
-      direction: 0
-      textLabel: BLUE
-    - row: 1
-      col: 0
       color: 0
-      direction: 2
+      direction: 3
       textLabel: RED
     - row: 1
-      col: 1
-      color: 0
-      direction: 0
-      textLabel: RED
-    - row: 1
-      col: 2
-      color: 1
-      direction: 3
-      textLabel: GREEN
-    - row: 1
-      col: 3
-      color: 4
-      direction: 3
-      textLabel: BLOCK
-    - row: 2
       col: 0
       color: 1
       direction: 0
       textLabel: GREEN
+    - row: 1
+      col: 1
+      color: 2
+      direction: 2
+      textLabel: BLUE
+    - row: 1
+      col: 2
+      color: 0
+      direction: 0
+      textLabel: RED
+    - row: 1
+      col: 3
+      color: 1
+      direction: 1
+      textLabel: GREEN
+    - row: 2
+      col: 0
+      color: 2
+      direction: 2
+      textLabel: BLUE
     - row: 2
       col: 1
-      color: 1
-      direction: 2
-      textLabel: GREEN
+      color: 2
+      direction: 0
+      textLabel: BLUE
     - row: 2
       col: 2
       color: 4
-      direction: 1
+      direction: 3
       textLabel: BLOCK
     - row: 2
       col: 3
-      color: 0
+      color: 4
       direction: 1
-      textLabel: RED
+      textLabel: BLOCK
     - row: 3
       col: 0
       color: 4
-      direction: 1
+      direction: 3
       textLabel: BLOCK
     - row: 3
       col: 1
-      color: 4
-      direction: 3
-      textLabel: BLOCK
+      color: 1
+      direction: 1
+      textLabel: GREEN
     - row: 3
       col: 2
-      color: 2
-      direction: 3
-      textLabel: BLUE
+      color: 1
+      direction: 1
+      textLabel: GREEN
     - row: 3
       col: 3
-      color: 2
-      direction: 1
-      textLabel: BLUE
+      color: 0
+      direction: 3
+      textLabel: RED
   - id: 27
     name: Board 27
     boardSize: 4
@@ -2055,83 +2055,83 @@ MonoBehaviour:
     blocks:
     - row: 0
       col: 0
-      color: 0
-      direction: 0
-      textLabel: RED
-    - row: 0
-      col: 1
       color: 2
       direction: 2
       textLabel: BLUE
     - row: 0
-      col: 2
+      col: 1
       color: 4
       direction: 1
       textLabel: BLOCK
     - row: 0
-      col: 3
-      color: 4
-      direction: 0
-      textLabel: BLOCK
-    - row: 1
-      col: 0
-      color: 0
-      direction: 2
-      textLabel: RED
-    - row: 1
-      col: 1
-      color: 4
-      direction: 2
-      textLabel: BLOCK
-    - row: 1
-      col: 2
-      color: 1
-      direction: 2
-      textLabel: GREEN
-    - row: 1
-      col: 3
-      color: 1
-      direction: 3
-      textLabel: GREEN
-    - row: 2
-      col: 0
-      color: 2
-      direction: 0
-      textLabel: BLUE
-    - row: 2
-      col: 1
-      color: 4
-      direction: 0
-      textLabel: BLOCK
-    - row: 2
       col: 2
       color: 1
       direction: 1
       textLabel: GREEN
-    - row: 2
+    - row: 0
       col: 3
+      color: 1
+      direction: 3
+      textLabel: GREEN
+    - row: 1
+      col: 0
+      color: 1
+      direction: 0
+      textLabel: GREEN
+    - row: 1
+      col: 1
       color: 0
       direction: 3
       textLabel: RED
-    - row: 3
+    - row: 1
+      col: 2
+      color: 4
+      direction: 3
+      textLabel: BLOCK
+    - row: 1
+      col: 3
+      color: 0
+      direction: 0
+      textLabel: RED
+    - row: 2
       col: 0
+      color: 4
+      direction: 2
+      textLabel: BLOCK
+    - row: 2
+      col: 1
+      color: 0
+      direction: 3
+      textLabel: RED
+    - row: 2
+      col: 2
       color: 2
       direction: 1
       textLabel: BLUE
+    - row: 2
+      col: 3
+      color: 0
+      direction: 0
+      textLabel: RED
     - row: 3
-      col: 1
+      col: 0
       color: 1
-      direction: 3
+      direction: 2
       textLabel: GREEN
     - row: 3
-      col: 2
-      color: 0
+      col: 1
+      color: 4
       direction: 1
-      textLabel: RED
+      textLabel: BLOCK
+    - row: 3
+      col: 2
+      color: 2
+      direction: 1
+      textLabel: BLUE
     - row: 3
       col: 3
       color: 4
-      direction: 3
+      direction: 0
       textLabel: BLOCK
   - id: 28
     name: Board 28
@@ -2140,19 +2140,19 @@ MonoBehaviour:
     blocks:
     - row: 0
       col: 0
+      color: 1
+      direction: 0
+      textLabel: GREEN
+    - row: 0
+      col: 1
+      color: 2
+      direction: 0
+      textLabel: BLUE
+    - row: 0
+      col: 2
       color: 2
       direction: 3
       textLabel: BLUE
-    - row: 0
-      col: 1
-      color: 0
-      direction: 0
-      textLabel: RED
-    - row: 0
-      col: 2
-      color: 0
-      direction: 0
-      textLabel: RED
     - row: 0
       col: 3
       color: 4
@@ -2160,24 +2160,24 @@ MonoBehaviour:
       textLabel: BLOCK
     - row: 1
       col: 0
-      color: 4
-      direction: 2
-      textLabel: BLOCK
-    - row: 1
-      col: 1
-      color: 1
-      direction: 2
-      textLabel: GREEN
-    - row: 1
-      col: 2
-      color: 2
-      direction: 2
-      textLabel: BLUE
-    - row: 1
-      col: 3
       color: 1
       direction: 0
       textLabel: GREEN
+    - row: 1
+      col: 1
+      color: 0
+      direction: 3
+      textLabel: RED
+    - row: 1
+      col: 2
+      color: 0
+      direction: 0
+      textLabel: RED
+    - row: 1
+      col: 3
+      color: 4
+      direction: 3
+      textLabel: BLOCK
     - row: 2
       col: 0
       color: 4
@@ -2185,34 +2185,34 @@ MonoBehaviour:
       textLabel: BLOCK
     - row: 2
       col: 1
-      color: 4
-      direction: 3
-      textLabel: BLOCK
+      color: 0
+      direction: 2
+      textLabel: RED
     - row: 2
       col: 2
-      color: 1
-      direction: 1
-      textLabel: GREEN
-    - row: 2
-      col: 3
       color: 2
       direction: 1
       textLabel: BLUE
-    - row: 3
-      col: 0
+    - row: 2
+      col: 3
       color: 4
       direction: 1
       textLabel: BLOCK
     - row: 3
-      col: 1
+      col: 0
       color: 0
-      direction: 0
+      direction: 1
       textLabel: RED
     - row: 3
+      col: 1
+      color: 1
+      direction: 2
+      textLabel: GREEN
+    - row: 3
       col: 2
-      color: 0
-      direction: 3
-      textLabel: RED
+      color: 4
+      direction: 2
+      textLabel: BLOCK
     - row: 3
       col: 3
       color: 1
@@ -2245,9 +2245,9 @@ MonoBehaviour:
       textLabel: BLOCK
     - row: 1
       col: 0
-      color: 0
+      color: 4
       direction: 2
-      textLabel: RED
+      textLabel: BLOCK
     - row: 1
       col: 1
       color: 0
@@ -2260,9 +2260,9 @@ MonoBehaviour:
       textLabel: BLUE
     - row: 1
       col: 3
-      color: 4
+      color: 1
       direction: 1
-      textLabel: BLOCK
+      textLabel: GREEN
     - row: 2
       col: 0
       color: 1
@@ -2285,14 +2285,14 @@ MonoBehaviour:
       textLabel: RED
     - row: 3
       col: 0
-      color: 4
+      color: 0
       direction: 1
-      textLabel: BLOCK
+      textLabel: RED
     - row: 3
       col: 1
-      color: 1
+      color: 2
       direction: 2
-      textLabel: GREEN
+      textLabel: BLUE
     - row: 3
       col: 2
       color: 2
@@ -2300,9 +2300,9 @@ MonoBehaviour:
       textLabel: BLUE
     - row: 3
       col: 3
-      color: 2
+      color: 4
       direction: 2
-      textLabel: BLUE
+      textLabel: BLOCK
   - id: 30
     name: Board 30
     boardSize: 4
@@ -2310,84 +2310,84 @@ MonoBehaviour:
     blocks:
     - row: 0
       col: 0
-      color: 0
+      color: 2
       direction: 2
-      textLabel: RED
+      textLabel: BLUE
     - row: 0
       col: 1
-      color: 0
-      direction: 0
-      textLabel: RED
+      color: 1
+      direction: 3
+      textLabel: GREEN
     - row: 0
       col: 2
       color: 4
-      direction: 2
+      direction: 0
       textLabel: BLOCK
     - row: 0
       col: 3
-      color: 2
+      color: 0
       direction: 0
-      textLabel: BLUE
+      textLabel: RED
     - row: 1
       col: 0
-      color: 2
-      direction: 0
-      textLabel: BLUE
-    - row: 1
-      col: 1
-      color: 1
-      direction: 0
-      textLabel: GREEN
-    - row: 1
-      col: 2
-      color: 4
-      direction: 2
-      textLabel: BLOCK
-    - row: 1
-      col: 3
-      color: 4
-      direction: 3
-      textLabel: BLOCK
-    - row: 2
-      col: 0
-      color: 2
-      direction: 1
-      textLabel: BLUE
-    - row: 2
-      col: 1
-      color: 4
-      direction: 3
-      textLabel: BLOCK
-    - row: 2
-      col: 2
-      color: 1
-      direction: 1
-      textLabel: GREEN
-    - row: 2
-      col: 3
-      color: 1
-      direction: 3
-      textLabel: GREEN
-    - row: 3
-      col: 0
-      color: 1
-      direction: 1
-      textLabel: GREEN
-    - row: 3
-      col: 1
-      color: 4
-      direction: 1
-      textLabel: BLOCK
-    - row: 3
-      col: 2
       color: 0
       direction: 2
       textLabel: RED
-    - row: 3
+    - row: 1
+      col: 1
+      color: 1
+      direction: 3
+      textLabel: GREEN
+    - row: 1
+      col: 2
+      color: 1
+      direction: 0
+      textLabel: GREEN
+    - row: 1
       col: 3
+      color: 0
+      direction: 0
+      textLabel: RED
+    - row: 2
+      col: 0
+      color: 2
+      direction: 2
+      textLabel: BLUE
+    - row: 2
+      col: 1
+      color: 4
+      direction: 1
+      textLabel: BLOCK
+    - row: 2
+      col: 2
+      color: 2
+      direction: 1
+      textLabel: BLUE
+    - row: 2
+      col: 3
+      color: 1
+      direction: 2
+      textLabel: GREEN
+    - row: 3
+      col: 0
+      color: 4
+      direction: 1
+      textLabel: BLOCK
+    - row: 3
+      col: 1
       color: 0
       direction: 3
       textLabel: RED
+    - row: 3
+      col: 2
+      color: 4
+      direction: 3
+      textLabel: BLOCK
+    - row: 3
+      col: 3
+      color: 4
+      direction: 1
+      textLabel: BLOCK
   - id: 31
     name: Board 31
     boardSize: 4
@@ -2395,19 +2395,19 @@ MonoBehaviour:
     blocks:
     - row: 0
       col: 0
-      color: 1
-      direction: 1
-      textLabel: GREEN
+      color: 2
+      direction: 2
+      textLabel: BLUE
     - row: 0
       col: 1
+      color: 0
+      direction: 2
+      textLabel: RED
+    - row: 0
+      col: 2
       color: 4
       direction: 3
       textLabel: BLOCK
-    - row: 0
-      col: 2
-      color: 0
-      direction: 3
-      textLabel: RED
     - row: 0
       col: 3
       color: 4
@@ -2415,63 +2415,63 @@ MonoBehaviour:
       textLabel: BLOCK
     - row: 1
       col: 0
-      color: 0
-      direction: 2
-      textLabel: RED
+      color: 4
+      direction: 3
+      textLabel: BLOCK
     - row: 1
       col: 1
-      color: 2
-      direction: 2
-      textLabel: BLUE
-    - row: 1
-      col: 2
       color: 0
       direction: 0
       textLabel: RED
     - row: 1
-      col: 3
-      color: 1
+      col: 2
+      color: 0
       direction: 3
+      textLabel: RED
+    - row: 1
+      col: 3
+      color: 2
+      direction: 3
+      textLabel: BLUE
+    - row: 2
+      col: 0
+      color: 0
+      direction: 1
+      textLabel: RED
+    - row: 2
+      col: 1
+      color: 2
+      direction: 1
+      textLabel: BLUE
+    - row: 2
+      col: 2
+      color: 1
+      direction: 0
       textLabel: GREEN
     - row: 2
+      col: 3
+      color: 1
+      direction: 0
+      textLabel: GREEN
+    - row: 3
       col: 0
       color: 4
       direction: 2
       textLabel: BLOCK
-    - row: 2
+    - row: 3
       col: 1
+      color: 1
+      direction: 1
+      textLabel: GREEN
+    - row: 3
+      col: 2
+      color: 1
+      direction: 1
+      textLabel: GREEN
+    - row: 3
+      col: 3
       color: 4
       direction: 2
-      textLabel: BLOCK
-    - row: 2
-      col: 2
-      color: 1
-      direction: 0
-      textLabel: GREEN
-    - row: 2
-      col: 3
-      color: 2
-      direction: 0
-      textLabel: BLUE
-    - row: 3
-      col: 0
-      color: 2
-      direction: 1
-      textLabel: BLUE
-    - row: 3
-      col: 1
-      color: 0
-      direction: 1
-      textLabel: RED
-    - row: 3
-      col: 2
-      color: 1
-      direction: 3
-      textLabel: GREEN
-    - row: 3
-      col: 3
-      color: 4
-      direction: 1
       textLabel: BLOCK
   - id: 32
     name: Board 32
@@ -2485,79 +2485,79 @@ MonoBehaviour:
       textLabel: BLOCK
     - row: 0
       col: 1
-      color: 2
-      direction: 0
-      textLabel: BLUE
+      color: 0
+      direction: 2
+      textLabel: RED
     - row: 0
       col: 2
-      color: 4
+      color: 2
       direction: 2
-      textLabel: BLOCK
+      textLabel: BLUE
     - row: 0
       col: 3
-      color: 1
-      direction: 0
-      textLabel: GREEN
-    - row: 1
-      col: 0
-      color: 1
-      direction: 2
-      textLabel: GREEN
-    - row: 1
-      col: 1
-      color: 0
-      direction: 0
-      textLabel: RED
-    - row: 1
-      col: 2
-      color: 0
-      direction: 2
-      textLabel: RED
-    - row: 1
-      col: 3
-      color: 4
-      direction: 3
-      textLabel: BLOCK
-    - row: 2
-      col: 0
       color: 2
       direction: 2
       textLabel: BLUE
-    - row: 2
+    - row: 1
+      col: 0
+      color: 4
+      direction: 0
+      textLabel: BLOCK
+    - row: 1
       col: 1
       color: 0
-      direction: 1
+      direction: 0
       textLabel: RED
-    - row: 2
+    - row: 1
       col: 2
       color: 1
       direction: 3
       textLabel: GREEN
+    - row: 1
+      col: 3
+      color: 4
+      direction: 1
+      textLabel: BLOCK
+    - row: 2
+      col: 0
+      color: 1
+      direction: 2
+      textLabel: GREEN
+    - row: 2
+      col: 1
+      color: 1
+      direction: 1
+      textLabel: GREEN
+    - row: 2
+      col: 2
+      color: 4
+      direction: 3
+      textLabel: BLOCK
     - row: 2
       col: 3
-      color: 1
+      color: 0
       direction: 3
-      textLabel: GREEN
+      textLabel: RED
     - row: 3
       col: 0
-      color: 0
-      direction: 1
-      textLabel: RED
-    - row: 3
-      col: 1
-      color: 4
-      direction: 1
-      textLabel: BLOCK
-    - row: 3
-      col: 2
       color: 4
       direction: 3
       textLabel: BLOCK
     - row: 3
-      col: 3
-      color: 2
+      col: 1
+      color: 1
       direction: 1
+      textLabel: GREEN
+    - row: 3
+      col: 2
+      color: 2
+      direction: 0
       textLabel: BLUE
+    - row: 3
+      col: 3
+      color: 0
+      direction: 1
+      textLabel: RED
   - id: 33
     name: Board 33
     boardSize: 4
@@ -2566,18 +2566,18 @@ MonoBehaviour:
     - row: 0
       col: 0
       color: 1
-      direction: 0
+      direction: 2
       textLabel: GREEN
     - row: 0
       col: 1
+      color: 2
+      direction: 2
+      textLabel: BLUE
+    - row: 0
+      col: 2
       color: 4
       direction: 0
       textLabel: BLOCK
-    - row: 0
-      col: 2
-      color: 0
-      direction: 3
-      textLabel: RED
     - row: 0
       col: 3
       color: 1
@@ -2585,64 +2585,64 @@ MonoBehaviour:
       textLabel: GREEN
     - row: 1
       col: 0
-      color: 2
-      direction: 2
-      textLabel: BLUE
-    - row: 1
-      col: 1
-      color: 0
+      color: 4
       direction: 0
-      textLabel: RED
+      textLabel: BLOCK
+    - row: 1
+      col: 1
+      color: 4
+      direction: 2
+      textLabel: BLOCK
     - row: 1
       col: 2
-      color: 2
-      direction: 3
-      textLabel: BLUE
+      color: 1
+      direction: 1
+      textLabel: GREEN
     - row: 1
       col: 3
-      color: 1
-      direction: 3
-      textLabel: GREEN
-    - row: 2
-      col: 0
-      color: 4
-      direction: 1
-      textLabel: BLOCK
-    - row: 2
-      col: 1
       color: 0
       direction: 2
       textLabel: RED
     - row: 2
+      col: 0
+      color: 2
+      direction: 0
+      textLabel: BLUE
+    - row: 2
+      col: 1
+      color: 2
+      direction: 1
+      textLabel: BLUE
+    - row: 2
       col: 2
+      color: 0
+      direction: 3
+      textLabel: RED
+    - row: 2
+      col: 3
+      color: 1
+      direction: 3
+      textLabel: GREEN
+    - row: 3
+      col: 0
       color: 4
       direction: 1
       textLabel: BLOCK
-    - row: 2
-      col: 3
+    - row: 3
+      col: 1
       color: 0
       direction: 3
       textLabel: RED
     - row: 3
-      col: 0
-      color: 4
-      direction: 2
-      textLabel: BLOCK
-    - row: 3
-      col: 1
-      color: 1
-      direction: 1
-      textLabel: GREEN
-    - row: 3
       col: 2
       color: 4
       direction: 1
       textLabel: BLOCK
     - row: 3
       col: 3
-      color: 2
-      direction: 2
-      textLabel: BLUE
+      color: 0
+      direction: 3
+      textLabel: RED
   - id: 34
     name: Board 34
     boardSize: 4
@@ -2651,63 +2651,63 @@ MonoBehaviour:
     - row: 0
       col: 0
       color: 4
-      direction: 0
+      direction: 1
       textLabel: BLOCK
     - row: 0
+      col: 1
+      color: 4
+      direction: 3
+      textLabel: BLOCK
+    - row: 0
+      col: 2
+      color: 1
+      direction: 3
+      textLabel: GREEN
+    - row: 0
+      col: 3
+      color: 0
+      direction: 0
+      textLabel: RED
+    - row: 1
+      col: 0
+      color: 0
+      direction: 2
+      textLabel: RED
+    - row: 1
+      col: 1
+      color: 1
+      direction: 1
+      textLabel: GREEN
+    - row: 1
+      col: 2
+      color: 2
+      direction: 0
+      textLabel: BLUE
+    - row: 1
+      col: 3
+      color: 0
+      direction: 3
+      textLabel: RED
+    - row: 2
+      col: 0
+      color: 0
+      direction: 2
+      textLabel: RED
+    - row: 2
       col: 1
       color: 2
       direction: 2
       textLabel: BLUE
-    - row: 0
+    - row: 2
       col: 2
+      color: 1
+      direction: 0
+      textLabel: GREEN
+    - row: 2
+      col: 3
       color: 2
       direction: 0
       textLabel: BLUE
-    - row: 0
-      col: 3
-      color: 4
-      direction: 3
-      textLabel: BLOCK
-    - row: 1
-      col: 0
-      color: 0
-      direction: 0
-      textLabel: RED
-    - row: 1
-      col: 1
-      color: 4
-      direction: 3
-      textLabel: BLOCK
-    - row: 1
-      col: 2
-      color: 0
-      direction: 3
-      textLabel: RED
-    - row: 1
-      col: 3
-      color: 1
-      direction: 3
-      textLabel: GREEN
-    - row: 2
-      col: 0
-      color: 1
-      direction: 2
-      textLabel: GREEN
-    - row: 2
-      col: 1
-      color: 1
-      direction: 1
-      textLabel: GREEN
-    - row: 2
-      col: 2
-      color: 0
-      direction: 0
-      textLabel: RED
-    - row: 2
-      col: 3
-      color: 0
-      direction: 1
-      textLabel: RED
     - row: 3
       col: 0
       color: 1
@@ -2715,9 +2715,9 @@ MonoBehaviour:
       textLabel: GREEN
     - row: 3
       col: 1
-      color: 2
+      color: 4
       direction: 2
-      textLabel: BLUE
+      textLabel: BLOCK
     - row: 3
       col: 2
       color: 4
@@ -2726,7 +2726,7 @@ MonoBehaviour:
     - row: 3
       col: 3
       color: 4
-      direction: 2
+      direction: 3
       textLabel: BLOCK
   - id: 35
     name: Board 35
@@ -2735,74 +2735,74 @@ MonoBehaviour:
     blocks:
     - row: 0
       col: 0
-      color: 2
+      color: 0
       direction: 0
-      textLabel: BLUE
+      textLabel: RED
     - row: 0
       col: 1
+      color: 4
+      direction: 2
+      textLabel: BLOCK
+    - row: 0
+      col: 2
       color: 1
-      direction: 0
+      direction: 2
       textLabel: GREEN
     - row: 0
-      col: 2
-      color: 0
-      direction: 2
-      textLabel: RED
-    - row: 0
-      col: 3
-      color: 2
-      direction: 0
-      textLabel: BLUE
-    - row: 1
-      col: 0
-      color: 0
-      direction: 2
-      textLabel: RED
-    - row: 1
-      col: 1
-      color: 4
-      direction: 0
-      textLabel: BLOCK
-    - row: 1
-      col: 2
-      color: 4
-      direction: 1
-      textLabel: BLOCK
-    - row: 1
       col: 3
       color: 4
       direction: 3
       textLabel: BLOCK
-    - row: 2
+    - row: 1
       col: 0
       color: 4
       direction: 1
       textLabel: BLOCK
-    - row: 2
+    - row: 1
       col: 1
       color: 2
+      direction: 0
+      textLabel: BLUE
+    - row: 1
+      col: 2
+      color: 0
+      direction: 2
+      textLabel: RED
+    - row: 1
+      col: 3
+      color: 1
       direction: 3
+      textLabel: GREEN
+    - row: 2
+      col: 0
+      color: 2
+      direction: 2
       textLabel: BLUE
     - row: 2
+      col: 1
+      color: 4
+      direction: 0
+      textLabel: BLOCK
+    - row: 2
       col: 2
-      color: 0
+      color: 2
       direction: 1
-      textLabel: RED
+      textLabel: BLUE
     - row: 2
       col: 3
-      color: 1
-      direction: 3
-      textLabel: GREEN
+      color: 0
+      direction: 0
+      textLabel: RED
     - row: 3
       col: 0
-      color: 4
-      direction: 2
-      textLabel: BLOCK
+      color: 0
+      direction: 3
+      textLabel: RED
     - row: 3
       col: 1
-      color: 1
-      direction: 2
-      textLabel: GREEN
+      color: 4
+      direction: 1
+      textLabel: BLOCK
     - row: 3
       col: 2
       color: 1
@@ -2810,9 +2810,9 @@ MonoBehaviour:
       textLabel: GREEN
     - row: 3
       col: 3
-      color: 0
+      color: 1
       direction: 3
-      textLabel: RED
+      textLabel: GREEN
   - id: 36
     name: Board 36
     boardSize: 4
@@ -2821,83 +2821,83 @@ MonoBehaviour:
     - row: 0
       col: 0
       color: 1
-      direction: 0
+      direction: 2
       textLabel: GREEN
     - row: 0
       col: 1
-      color: 4
-      direction: 3
-      textLabel: BLOCK
+      color: 1
+      direction: 0
+      textLabel: GREEN
     - row: 0
       col: 2
-      color: 4
-      direction: 3
-      textLabel: BLOCK
+      color: 0
+      direction: 2
+      textLabel: RED
     - row: 0
       col: 3
-      color: 1
-      direction: 0
-      textLabel: GREEN
+      color: 2
+      direction: 1
+      textLabel: BLUE
     - row: 1
       col: 0
+      color: 0
+      direction: 0
+      textLabel: RED
+    - row: 1
+      col: 1
+      color: 0
+      direction: 0
+      textLabel: RED
+    - row: 1
+      col: 2
       color: 4
       direction: 2
       textLabel: BLOCK
     - row: 1
-      col: 1
-      color: 0
-      direction: 1
-      textLabel: RED
-    - row: 1
-      col: 2
-      color: 0
-      direction: 3
-      textLabel: RED
-    - row: 1
       col: 3
       color: 2
-      direction: 3
+      direction: 1
       textLabel: BLUE
     - row: 2
       col: 0
       color: 2
-      direction: 2
-      textLabel: BLUE
-    - row: 2
-      col: 1
-      color: 1
-      direction: 2
-      textLabel: GREEN
-    - row: 2
-      col: 2
-      color: 0
-      direction: 1
-      textLabel: RED
-    - row: 2
-      col: 3
-      color: 1
       direction: 0
-      textLabel: GREEN
-    - row: 3
-      col: 0
-      color: 2
-      direction: 1
       textLabel: BLUE
-    - row: 3
+    - row: 2
       col: 1
+      color: 2
+      direction: 2
+      textLabel: BLUE
+    - row: 2
+      col: 2
+      color: 1
+      direction: 3
+      textLabel: GREEN
+    - row: 2
+      col: 3
       color: 4
       direction: 1
       textLabel: BLOCK
     - row: 3
+      col: 0
+      color: 4
+      direction: 3
+      textLabel: BLOCK
+    - row: 3
+      col: 1
+      color: 0
+      direction: 1
+      textLabel: RED
+    - row: 3
       col: 2
-      color: 2
-      direction: 2
-      textLabel: BLUE
+      color: 4
+      direction: 3
+      textLabel: BLOCK
     - row: 3
       col: 3
-      color: 0
-      direction: 0
-      textLabel: RED
+      color: 1
+      direction: 3
+      textLabel: GREEN
   - id: 37
     name: Board 37
     boardSize: 4
@@ -2910,49 +2910,49 @@ MonoBehaviour:
       textLabel: RED
     - row: 0
       col: 1
-      color: 1
-      direction: 0
-      textLabel: GREEN
+      color: 0
+      direction: 2
+      textLabel: RED
     - row: 0
       col: 2
-      color: 2
+      color: 4
       direction: 0
-      textLabel: BLUE
+      textLabel: BLOCK
     - row: 0
       col: 3
       color: 4
-      direction: 3
-      textLabel: BLOCK
-    - row: 1
-      col: 0
-      color: 2
-      direction: 2
-      textLabel: BLUE
-    - row: 1
-      col: 1
-      color: 2
-      direction: 2
-      textLabel: BLUE
-    - row: 1
-      col: 2
-      color: 4
       direction: 0
       textLabel: BLOCK
     - row: 1
-      col: 3
-      color: 1
-      direction: 2
-      textLabel: GREEN
-    - row: 2
       col: 0
       color: 4
       direction: 1
       textLabel: BLOCK
-    - row: 2
+    - row: 1
       col: 1
+      color: 0
+      direction: 0
+      textLabel: RED
+    - row: 1
+      col: 2
+      color: 2
+      direction: 2
+      textLabel: BLUE
+    - row: 1
+      col: 3
       color: 1
       direction: 1
       textLabel: GREEN
+    - row: 2
+      col: 0
+      color: 1
+      direction: 2
+      textLabel: GREEN
+    - row: 2
+      col: 1
+      color: 2
+      direction: 1
+      textLabel: BLUE
     - row: 2
       col: 2
       color: 2
@@ -2961,18 +2961,18 @@ MonoBehaviour:
     - row: 2
       col: 3
       color: 0
-      direction: 3
+      direction: 1
       textLabel: RED
     - row: 3
       col: 0
-      color: 0
+      color: 2
       direction: 2
-      textLabel: RED
+      textLabel: BLUE
     - row: 3
       col: 1
-      color: 0
-      direction: 1
-      textLabel: RED
+      color: 1
+      direction: 3
+      textLabel: GREEN
     - row: 3
       col: 2
       color: 1
@@ -2981,7 +2981,7 @@ MonoBehaviour:
     - row: 3
       col: 3
       color: 4
-      direction: 1
+      direction: 3
       textLabel: BLOCK
   - id: 38
     name: Board 38
@@ -2990,19 +2990,19 @@ MonoBehaviour:
     blocks:
     - row: 0
       col: 0
-      color: 1
-      direction: 3
-      textLabel: GREEN
+      color: 2
+      direction: 0
+      textLabel: BLUE
     - row: 0
       col: 1
-      color: 2
-      direction: 0
-      textLabel: BLUE
+      color: 0
+      direction: 2
+      textLabel: RED
     - row: 0
       col: 2
-      color: 2
-      direction: 0
-      textLabel: BLUE
+      color: 0
+      direction: 2
+      textLabel: RED
     - row: 0
       col: 3
       color: 4
@@ -3010,64 +3010,64 @@ MonoBehaviour:
       textLabel: BLOCK
     - row: 1
       col: 0
-      color: 1
-      direction: 2
-      textLabel: GREEN
-    - row: 1
-      col: 1
-      color: 4
-      direction: 1
-      textLabel: BLOCK
-    - row: 1
-      col: 2
-      color: 0
-      direction: 3
-      textLabel: RED
-    - row: 1
-      col: 3
-      color: 0
-      direction: 0
-      textLabel: RED
-    - row: 2
-      col: 0
-      color: 4
-      direction: 2
-      textLabel: BLOCK
-    - row: 2
-      col: 1
-      color: 1
-      direction: 2
-      textLabel: GREEN
-    - row: 2
-      col: 2
-      color: 0
-      direction: 0
-      textLabel: RED
-    - row: 2
-      col: 3
       color: 2
-      direction: 1
-      textLabel: BLUE
-    - row: 3
-      col: 0
-      color: 0
       direction: 2
-      textLabel: RED
-    - row: 3
+      textLabel: BLUE
+    - row: 1
       col: 1
-      color: 4
-      direction: 1
-      textLabel: BLOCK
-    - row: 3
-      col: 2
       color: 1
-      direction: 1
+      direction: 3
       textLabel: GREEN
-    - row: 3
+    - row: 1
+      col: 2
+      color: 4
+      direction: 3
+      textLabel: BLOCK
+    - row: 1
       col: 3
       color: 2
       direction: 3
       textLabel: BLUE
+    - row: 2
+      col: 0
+      color: 0
+      direction: 0
+      textLabel: RED
+    - row: 2
+      col: 1
+      color: 1
+      direction: 1
+      textLabel: GREEN
+    - row: 2
+      col: 2
+      color: 4
+      direction: 1
+      textLabel: BLOCK
+    - row: 2
+      col: 3
+      color: 4
+      direction: 0
+      textLabel: BLOCK
+    - row: 3
+      col: 0
+      color: 1
+      direction: 0
+      textLabel: GREEN
+    - row: 3
+      col: 1
+      color: 0
+      direction: 1
+      textLabel: RED
+    - row: 3
+      col: 2
+      color: 2
+      direction: 1
+      textLabel: BLUE
+    - row: 3
+      col: 3
+      color: 1
+      direction: 2
+      textLabel: GREEN
   - id: 39
     name: Board 39
     boardSize: 4
@@ -3075,79 +3075,79 @@ MonoBehaviour:
     blocks:
     - row: 0
       col: 0
-      color: 2
-      direction: 0
-      textLabel: BLUE
+      color: 0
+      direction: 2
+      textLabel: RED
     - row: 0
       col: 1
       color: 1
-      direction: 2
+      direction: 1
       textLabel: GREEN
     - row: 0
       col: 2
+      color: 2
+      direction: 3
+      textLabel: BLUE
+    - row: 0
+      col: 3
       color: 0
       direction: 0
       textLabel: RED
-    - row: 0
+    - row: 1
+      col: 0
+      color: 0
+      direction: 0
+      textLabel: RED
+    - row: 1
+      col: 1
+      color: 0
+      direction: 1
+      textLabel: RED
+    - row: 1
+      col: 2
+      color: 1
+      direction: 2
+      textLabel: GREEN
+    - row: 1
       col: 3
       color: 4
       direction: 3
       textLabel: BLOCK
-    - row: 1
+    - row: 2
       col: 0
-      color: 0
+      color: 2
       direction: 2
-      textLabel: RED
-    - row: 1
+      textLabel: BLUE
+    - row: 2
       col: 1
       color: 2
       direction: 2
       textLabel: BLUE
-    - row: 1
+    - row: 2
       col: 2
       color: 1
       direction: 3
       textLabel: GREEN
-    - row: 1
+    - row: 2
       col: 3
-      color: 2
-      direction: 3
-      textLabel: BLUE
-    - row: 2
-      col: 0
-      color: 2
-      direction: 0
-      textLabel: BLUE
-    - row: 2
-      col: 1
       color: 4
       direction: 0
       textLabel: BLOCK
-    - row: 2
+    - row: 3
+      col: 0
+      color: 1
+      direction: 0
+      textLabel: GREEN
+    - row: 3
+      col: 1
+      color: 2
+      direction: 1
+      textLabel: BLUE
+    - row: 3
       col: 2
       color: 4
       direction: 1
       textLabel: BLOCK
-    - row: 2
-      col: 3
-      color: 1
-      direction: 1
-      textLabel: GREEN
-    - row: 3
-      col: 0
-      color: 1
-      direction: 2
-      textLabel: GREEN
-    - row: 3
-      col: 1
-      color: 0
-      direction: 1
-      textLabel: RED
-    - row: 3
-      col: 2
-      color: 0
-      direction: 1
-      textLabel: RED
     - row: 3
       col: 3
       color: 4
@@ -3160,78 +3160,78 @@ MonoBehaviour:
     blocks:
     - row: 0
       col: 0
-      color: 1
-      direction: 2
-      textLabel: GREEN
-    - row: 0
-      col: 1
-      color: 4
-      direction: 0
-      textLabel: BLOCK
-    - row: 0
-      col: 2
       color: 0
-      direction: 0
+      direction: 2
       textLabel: RED
     - row: 0
-      col: 3
-      color: 1
-      direction: 0
-      textLabel: GREEN
-    - row: 1
-      col: 0
-      color: 4
-      direction: 2
-      textLabel: BLOCK
-    - row: 1
       col: 1
-      color: 2
-      direction: 2
-      textLabel: BLUE
-    - row: 1
+      color: 4
+      direction: 0
+      textLabel: BLOCK
+    - row: 0
       col: 2
       color: 2
       direction: 3
       textLabel: BLUE
-    - row: 1
+    - row: 0
       col: 3
       color: 0
-      direction: 3
+      direction: 0
       textLabel: RED
-    - row: 2
+    - row: 1
       col: 0
+      color: 1
+      direction: 2
+      textLabel: GREEN
+    - row: 1
+      col: 1
       color: 2
       direction: 0
       textLabel: BLUE
-    - row: 2
-      col: 1
-      color: 4
-      direction: 3
-      textLabel: BLOCK
-    - row: 2
+    - row: 1
       col: 2
-      color: 0
-      direction: 1
-      textLabel: RED
-    - row: 2
-      col: 3
       color: 2
-      direction: 1
+      direction: 2
       textLabel: BLUE
-    - row: 3
-      col: 0
+    - row: 1
+      col: 3
       color: 4
       direction: 1
       textLabel: BLOCK
-    - row: 3
+    - row: 2
+      col: 0
+      color: 1
+      direction: 1
+      textLabel: GREEN
+    - row: 2
       col: 1
       color: 1
       direction: 2
       textLabel: GREEN
+    - row: 2
+      col: 2
+      color: 4
+      direction: 1
+      textLabel: BLOCK
+    - row: 2
+      col: 3
+      color: 4
+      direction: 3
+      textLabel: BLOCK
+    - row: 3
+      col: 0
+      color: 0
+      direction: 1
+      textLabel: RED
+    - row: 3
+      col: 1
+      color: 2
+      direction: 0
+      textLabel: BLUE
     - row: 3
       col: 2
       color: 1
-      direction: 1
+      direction: 3
       textLabel: GREEN
     - row: 3
       col: 3
@@ -3245,24 +3245,24 @@ MonoBehaviour:
     blocks:
     - row: 0
       col: 0
+      color: 1
+      direction: 0
+      textLabel: GREEN
+    - row: 0
+      col: 1
+      color: 1
+      direction: 2
+      textLabel: GREEN
+    - row: 0
+      col: 2
+      color: 0
+      direction: 3
+      textLabel: RED
+    - row: 0
+      col: 3
       color: 0
       direction: 0
       textLabel: RED
-    - row: 0
-      col: 1
-      color: 2
-      direction: 2
-      textLabel: BLUE
-    - row: 0
-      col: 2
-      color: 1
-      direction: 3
-      textLabel: GREEN
-    - row: 0
-      col: 3
-      color: 1
-      direction: 0
-      textLabel: GREEN
     - row: 1
       col: 0
       color: 4
@@ -3275,49 +3275,49 @@ MonoBehaviour:
       textLabel: BLUE
     - row: 1
       col: 2
-      color: 2
+      color: 4
       direction: 3
-      textLabel: BLUE
+      textLabel: BLOCK
     - row: 1
       col: 3
-      color: 0
-      direction: 3
-      textLabel: RED
-    - row: 2
-      col: 0
-      color: 1
-      direction: 1
-      textLabel: GREEN
-    - row: 2
-      col: 1
-      color: 0
-      direction: 2
-      textLabel: RED
-    - row: 2
-      col: 2
       color: 2
-      direction: 0
+      direction: 3
       textLabel: BLUE
     - row: 2
-      col: 3
-      color: 1
-      direction: 3
-      textLabel: GREEN
-    - row: 3
       col: 0
-      color: 4
-      direction: 2
-      textLabel: BLOCK
-    - row: 3
+      color: 1
+      direction: 1
+      textLabel: GREEN
+    - row: 2
       col: 1
-      color: 4
+      color: 2
       direction: 2
-      textLabel: BLOCK
-    - row: 3
+      textLabel: BLUE
+    - row: 2
       col: 2
       color: 4
-      direction: 1
+      direction: 0
       textLabel: BLOCK
+    - row: 2
+      col: 3
+      color: 4
+      direction: 3
+      textLabel: BLOCK
+    - row: 3
+      col: 0
+      color: 0
+      direction: 2
+      textLabel: RED
+    - row: 3
+      col: 1
+      color: 1
+      direction: 2
+      textLabel: GREEN
+    - row: 3
+      col: 2
+      color: 2
+      direction: 1
+      textLabel: BLUE
     - row: 3
       col: 3
       color: 0
@@ -3330,84 +3330,84 @@ MonoBehaviour:
     blocks:
     - row: 0
       col: 0
-      color: 4
-      direction: 2
-      textLabel: BLOCK
-    - row: 0
-      col: 1
       color: 2
       direction: 0
       textLabel: BLUE
     - row: 0
+      col: 1
+      color: 2
+      direction: 0
+      textLabel: BLUE
+    - row: 0
       col: 2
       color: 1
-      direction: 3
+      direction: 2
       textLabel: GREEN
     - row: 0
       col: 3
-      color: 2
-      direction: 3
-      textLabel: BLUE
-    - row: 1
-      col: 0
-      color: 2
-      direction: 0
-      textLabel: BLUE
-    - row: 1
-      col: 1
-      color: 0
-      direction: 0
-      textLabel: RED
-    - row: 1
-      col: 2
-      color: 4
-      direction: 2
-      textLabel: BLOCK
-    - row: 1
-      col: 3
       color: 0
       direction: 3
       textLabel: RED
-    - row: 2
+    - row: 1
       col: 0
       color: 4
       direction: 2
       textLabel: BLOCK
+    - row: 1
+      col: 1
+      color: 1
+      direction: 0
+      textLabel: GREEN
+    - row: 1
+      col: 2
+      color: 0
+      direction: 0
+      textLabel: RED
+    - row: 1
+      col: 3
+      color: 1
+      direction: 1
+      textLabel: GREEN
+    - row: 2
+      col: 0
+      color: 4
+      direction: 2
+      textLabel: BLOCK
     - row: 2
       col: 1
-      color: 4
-      direction: 0
-      textLabel: BLOCK
+      color: 1
+      direction: 1
+      textLabel: GREEN
     - row: 2
       col: 2
       color: 0
-      direction: 1
+      direction: 2
       textLabel: RED
     - row: 2
       col: 3
-      color: 1
-      direction: 3
-      textLabel: GREEN
+      color: 4
+      direction: 1
+      textLabel: BLOCK
     - row: 3
       col: 0
-      color: 1
-      direction: 1
-      textLabel: GREEN
-    - row: 3
-      col: 1
       color: 0
-      direction: 1
+      direction: 3
       textLabel: RED
     - row: 3
-      col: 2
+      col: 1
       color: 2
       direction: 1
       textLabel: BLUE
     - row: 3
+      col: 2
+      color: 4
+      direction: 3
+      textLabel: BLOCK
+    - row: 3
       col: 3
-      color: 1
-      direction: 2
-      textLabel: GREEN
+      color: 2
+      direction: 3
+      textLabel: BLUE
   - id: 43
     name: Board 43
     boardSize: 4
@@ -3416,23 +3416,23 @@ MonoBehaviour:
     - row: 0
       col: 0
       color: 0
-      direction: 0
+      direction: 2
       textLabel: RED
     - row: 0
       col: 1
-      color: 4
+      color: 2
       direction: 3
-      textLabel: BLOCK
+      textLabel: BLUE
     - row: 0
       col: 2
-      color: 1
-      direction: 3
-      textLabel: GREEN
+      color: 0
+      direction: 0
+      textLabel: RED
     - row: 0
       col: 3
-      color: 1
-      direction: 0
-      textLabel: GREEN
+      color: 4
+      direction: 1
+      textLabel: BLOCK
     - row: 1
       col: 0
       color: 2
@@ -3441,18 +3441,18 @@ MonoBehaviour:
     - row: 1
       col: 1
       color: 1
+      direction: 3
+      textLabel: GREEN
+    - row: 1
+      col: 2
+      color: 1
       direction: 0
       textLabel: GREEN
     - row: 1
-      col: 2
-      color: 2
-      direction: 1
-      textLabel: BLUE
-    - row: 1
       col: 3
-      color: 0
+      color: 4
       direction: 3
-      textLabel: RED
+      textLabel: BLOCK
     - row: 2
       col: 0
       color: 4
@@ -3460,39 +3460,39 @@ MonoBehaviour:
       textLabel: BLOCK
     - row: 2
       col: 1
+      color: 2
+      direction: 0
+      textLabel: BLUE
+    - row: 2
+      col: 2
+      color: 1
+      direction: 3
+      textLabel: GREEN
+    - row: 2
+      col: 3
+      color: 0
+      direction: 1
+      textLabel: RED
+    - row: 3
+      col: 0
       color: 1
       direction: 2
       textLabel: GREEN
-    - row: 2
-      col: 2
-      color: 0
-      direction: 2
-      textLabel: RED
-    - row: 2
-      col: 3
-      color: 4
-      direction: 3
-      textLabel: BLOCK
-    - row: 3
-      col: 0
-      color: 2
-      direction: 2
-      textLabel: BLUE
     - row: 3
       col: 1
-      color: 0
-      direction: 1
-      textLabel: RED
-    - row: 3
-      col: 2
       color: 4
-      direction: 1
+      direction: 2
       textLabel: BLOCK
     - row: 3
-      col: 3
+      col: 2
       color: 2
       direction: 1
       textLabel: BLUE
+    - row: 3
+      col: 3
+      color: 0
+      direction: 1
+      textLabel: RED
   - id: 44
     name: Board 44
     boardSize: 4
@@ -3500,79 +3500,79 @@ MonoBehaviour:
     blocks:
     - row: 0
       col: 0
-      color: 4
-      direction: 0
-      textLabel: BLOCK
-    - row: 0
-      col: 1
-      color: 4
-      direction: 0
-      textLabel: BLOCK
-    - row: 0
-      col: 2
-      color: 4
-      direction: 0
-      textLabel: BLOCK
-    - row: 0
-      col: 3
-      color: 1
-      direction: 2
-      textLabel: GREEN
-    - row: 1
-      col: 0
       color: 2
-      direction: 1
-      textLabel: BLUE
-    - row: 1
-      col: 1
-      color: 0
       direction: 0
-      textLabel: RED
-    - row: 1
-      col: 2
-      color: 0
-      direction: 3
-      textLabel: RED
-    - row: 1
-      col: 3
-      color: 4
-      direction: 3
-      textLabel: BLOCK
-    - row: 2
-      col: 0
-      color: 1
-      direction: 1
-      textLabel: GREEN
-    - row: 2
+      textLabel: BLUE
+    - row: 0
       col: 1
       color: 2
       direction: 2
       textLabel: BLUE
+    - row: 0
+      col: 2
+      color: 1
+      direction: 2
+      textLabel: GREEN
+    - row: 0
+      col: 3
+      color: 1
+      direction: 0
+      textLabel: GREEN
+    - row: 1
+      col: 0
+      color: 0
+      direction: 0
+      textLabel: RED
+    - row: 1
+      col: 1
+      color: 4
+      direction: 2
+      textLabel: BLOCK
+    - row: 1
+      col: 2
+      color: 1
+      direction: 1
+      textLabel: GREEN
+    - row: 1
+      col: 3
+      color: 1
+      direction: 0
+      textLabel: GREEN
+    - row: 2
+      col: 0
+      color: 4
+      direction: 3
+      textLabel: BLOCK
+    - row: 2
+      col: 1
+      color: 0
+      direction: 1
+      textLabel: RED
     - row: 2
       col: 2
       color: 0
-      direction: 1
+      direction: 3
       textLabel: RED
     - row: 2
       col: 3
-      color: 1
-      direction: 1
-      textLabel: GREEN
-    - row: 3
-      col: 0
       color: 2
-      direction: 2
+      direction: 3
       textLabel: BLUE
     - row: 3
-      col: 1
-      color: 0
+      col: 0
+      color: 4
       direction: 2
-      textLabel: RED
+      textLabel: BLOCK
+    - row: 3
+      col: 1
+      color: 4
+      direction: 1
+      textLabel: BLOCK
     - row: 3
       col: 2
-      color: 1
-      direction: 3
-      textLabel: GREEN
+      color: 0
+      direction: 1
+      textLabel: RED
     - row: 3
       col: 3
       color: 2
@@ -3590,34 +3590,34 @@ MonoBehaviour:
       textLabel: BLUE
     - row: 0
       col: 1
-      color: 2
+      color: 4
       direction: 0
-      textLabel: BLUE
+      textLabel: BLOCK
     - row: 0
       col: 2
-      color: 1
+      color: 2
       direction: 3
-      textLabel: GREEN
+      textLabel: BLUE
     - row: 0
       col: 3
-      color: 4
-      direction: 0
-      textLabel: BLOCK
+      color: 1
+      direction: 3
+      textLabel: GREEN
     - row: 1
       col: 0
-      color: 1
-      direction: 2
-      textLabel: GREEN
+      color: 2
+      direction: 1
+      textLabel: BLUE
     - row: 1
       col: 1
-      color: 4
-      direction: 2
-      textLabel: BLOCK
+      color: 1
+      direction: 0
+      textLabel: GREEN
     - row: 1
       col: 2
-      color: 1
-      direction: 1
-      textLabel: GREEN
+      color: 2
+      direction: 2
+      textLabel: BLUE
     - row: 1
       col: 3
       color: 0
@@ -3631,33 +3631,33 @@ MonoBehaviour:
     - row: 2
       col: 1
       color: 1
-      direction: 0
+      direction: 2
       textLabel: GREEN
     - row: 2
       col: 2
-      color: 4
+      color: 1
       direction: 3
-      textLabel: BLOCK
+      textLabel: GREEN
     - row: 2
       col: 3
-      color: 0
-      direction: 3
-      textLabel: RED
+      color: 4
+      direction: 0
+      textLabel: BLOCK
     - row: 3
       col: 0
-      color: 2
-      direction: 1
-      textLabel: BLUE
+      color: 0
+      direction: 2
+      textLabel: RED
     - row: 3
       col: 1
+      color: 4
+      direction: 1
+      textLabel: BLOCK
+    - row: 3
+      col: 2
       color: 0
       direction: 1
       textLabel: RED
-    - row: 3
-      col: 2
-      color: 2
-      direction: 2
-      textLabel: BLUE
     - row: 3
       col: 3
       color: 4
@@ -3670,83 +3670,83 @@ MonoBehaviour:
     blocks:
     - row: 0
       col: 0
-      color: 3
-      direction: 2
-      textLabel: YELLOW
-    - row: 0
-      col: 1
-      color: 2
-      direction: 0
-      textLabel: BLUE
-    - row: 0
-      col: 2
-      color: 0
-      direction: 2
-      textLabel: RED
-    - row: 0
-      col: 3
       color: 0
       direction: 0
       textLabel: RED
-    - row: 1
-      col: 0
-      color: 0
-      direction: 0
-      textLabel: RED
-    - row: 1
+    - row: 0
       col: 1
       color: 4
-      direction: 0
+      direction: 3
       textLabel: BLOCK
-    - row: 1
+    - row: 0
       col: 2
       color: 1
-      direction: 1
+      direction: 3
       textLabel: GREEN
-    - row: 1
+    - row: 0
       col: 3
       color: 1
       direction: 3
       textLabel: GREEN
-    - row: 2
+    - row: 1
       col: 0
-      color: 4
-      direction: 1
-      textLabel: BLOCK
-    - row: 2
-      col: 1
-      color: 1
-      direction: 2
-      textLabel: GREEN
-    - row: 2
-      col: 2
       color: 2
-      direction: 3
+      direction: 0
       textLabel: BLUE
-    - row: 2
-      col: 3
+    - row: 1
+      col: 1
+      color: 2
+      direction: 1
+      textLabel: BLUE
+    - row: 1
+      col: 2
       color: 3
       direction: 3
       textLabel: YELLOW
-    - row: 3
+    - row: 1
+      col: 3
+      color: 4
+      direction: 0
+      textLabel: BLOCK
+    - row: 2
       col: 0
-      color: 2
-      direction: 2
-      textLabel: BLUE
-    - row: 3
-      col: 1
       color: 0
       direction: 1
       textLabel: RED
-    - row: 3
+    - row: 2
+      col: 1
+      color: 0
+      direction: 2
+      textLabel: RED
+    - row: 2
       col: 2
+      color: 2
+      direction: 2
+      textLabel: BLUE
+    - row: 2
+      col: 3
       color: 2
       direction: 1
       textLabel: BLUE
     - row: 3
+      col: 0
+      color: 1
+      direction: 2
+      textLabel: GREEN
+    - row: 3
+      col: 1
+      color: 0
+      direction: 2
+      textLabel: RED
+    - row: 3
+      col: 2
+      color: 3
+      direction: 0
+      textLabel: YELLOW
+    - row: 3
       col: 3
       color: 1
-      direction: 3
+      direction: 1
       textLabel: GREEN
   - id: 47
     name: Board 47
@@ -3755,14 +3755,14 @@ MonoBehaviour:
     blocks:
     - row: 0
       col: 0
-      color: 4
+      color: 1
       direction: 0
-      textLabel: BLOCK
+      textLabel: GREEN
     - row: 0
       col: 1
-      color: 1
+      color: 2
       direction: 3
-      textLabel: GREEN
+      textLabel: BLUE
     - row: 0
       col: 2
       color: 0
@@ -3770,69 +3770,69 @@ MonoBehaviour:
       textLabel: RED
     - row: 0
       col: 3
-      color: 4
-      direction: 3
-      textLabel: BLOCK
-    - row: 1
-      col: 0
-      color: 0
-      direction: 2
-      textLabel: RED
-    - row: 1
-      col: 1
-      color: 2
-      direction: 2
-      textLabel: BLUE
-    - row: 1
-      col: 2
-      color: 1
-      direction: 0
-      textLabel: GREEN
-    - row: 1
-      col: 3
-      color: 2
-      direction: 0
-      textLabel: BLUE
-    - row: 2
-      col: 0
-      color: 3
-      direction: 2
-      textLabel: YELLOW
-    - row: 2
-      col: 1
-      color: 1
-      direction: 1
-      textLabel: GREEN
-    - row: 2
-      col: 2
-      color: 1
-      direction: 1
-      textLabel: GREEN
-    - row: 2
-      col: 3
       color: 2
       direction: 3
       textLabel: BLUE
-    - row: 3
+    - row: 1
       col: 0
-      color: 2
+      color: 1
       direction: 1
-      textLabel: BLUE
-    - row: 3
+      textLabel: GREEN
+    - row: 1
       col: 1
       color: 3
       direction: 2
       textLabel: YELLOW
-    - row: 3
+    - row: 1
       col: 2
-      color: 0
-      direction: 1
-      textLabel: RED
-    - row: 3
+      color: 1
+      direction: 0
+      textLabel: GREEN
+    - row: 1
       col: 3
       color: 0
       direction: 3
       textLabel: RED
+    - row: 2
+      col: 0
+      color: 0
+      direction: 2
+      textLabel: RED
+    - row: 2
+      col: 1
+      color: 2
+      direction: 1
+      textLabel: BLUE
+    - row: 2
+      col: 2
+      color: 2
+      direction: 1
+      textLabel: BLUE
+    - row: 2
+      col: 3
+      color: 3
+      direction: 0
+      textLabel: YELLOW
+    - row: 3
+      col: 0
+      color: 0
+      direction: 1
+      textLabel: RED
+    - row: 3
+      col: 1
+      color: 1
+      direction: 2
+      textLabel: GREEN
+    - row: 3
+      col: 2
+      color: 4
+      direction: 2
+      textLabel: BLOCK
+    - row: 3
+      col: 3
+      color: 4
+      direction: 3
+      textLabel: BLOCK
   - id: 48
     name: Board 48
     boardSize: 4
@@ -3840,79 +3840,79 @@ MonoBehaviour:
     blocks:
     - row: 0
       col: 0
-      color: 2
+      color: 1
       direction: 0
-      textLabel: BLUE
+      textLabel: GREEN
     - row: 0
       col: 1
-      color: 4
+      color: 1
       direction: 0
-      textLabel: BLOCK
+      textLabel: GREEN
     - row: 0
       col: 2
       color: 0
-      direction: 0
+      direction: 2
       textLabel: RED
     - row: 0
       col: 3
-      color: 0
-      direction: 3
-      textLabel: RED
+      color: 2
+      direction: 2
+      textLabel: BLUE
     - row: 1
+      col: 0
+      color: 2
+      direction: 0
+      textLabel: BLUE
+    - row: 1
+      col: 1
+      color: 3
+      direction: 3
+      textLabel: YELLOW
+    - row: 1
+      col: 2
+      color: 4
+      direction: 0
+      textLabel: BLOCK
+    - row: 1
+      col: 3
+      color: 1
+      direction: 3
+      textLabel: GREEN
+    - row: 2
       col: 0
       color: 3
       direction: 2
       textLabel: YELLOW
-    - row: 1
-      col: 1
-      color: 3
-      direction: 2
-      textLabel: YELLOW
-    - row: 1
-      col: 2
-      color: 1
-      direction: 0
-      textLabel: GREEN
-    - row: 1
-      col: 3
-      color: 0
-      direction: 3
-      textLabel: RED
     - row: 2
-      col: 0
+      col: 1
       color: 2
-      direction: 2
-      textLabel: BLUE
-    - row: 2
-      col: 1
-      color: 1
       direction: 1
-      textLabel: GREEN
+      textLabel: BLUE
     - row: 2
       col: 2
-      color: 1
-      direction: 3
-      textLabel: GREEN
-    - row: 2
-      col: 3
       color: 2
       direction: 3
       textLabel: BLUE
-    - row: 3
-      col: 0
+    - row: 2
+      col: 3
       color: 0
       direction: 1
       textLabel: RED
     - row: 3
-      col: 1
-      color: 2
-      direction: 2
-      textLabel: BLUE
-    - row: 3
-      col: 2
+      col: 0
       color: 4
-      direction: 1
+      direction: 2
       textLabel: BLOCK
+    - row: 3
+      col: 1
+      color: 0
+      direction: 3
+      textLabel: RED
+    - row: 3
+      col: 2
+      color: 0
+      direction: 1
+      textLabel: RED
     - row: 3
       col: 3
       color: 1
@@ -3925,84 +3925,84 @@ MonoBehaviour:
     blocks:
     - row: 0
       col: 0
-      color: 1
-      direction: 1
-      textLabel: GREEN
-    - row: 0
-      col: 1
       color: 0
       direction: 0
       textLabel: RED
     - row: 0
+      col: 1
+      color: 2
+      direction: 2
+      textLabel: BLUE
+    - row: 0
       col: 2
-      color: 3
-      direction: 0
-      textLabel: YELLOW
+      color: 2
+      direction: 3
+      textLabel: BLUE
     - row: 0
       col: 3
-      color: 2
-      direction: 0
-      textLabel: BLUE
-    - row: 1
-      col: 0
-      color: 2
-      direction: 2
-      textLabel: BLUE
-    - row: 1
-      col: 1
-      color: 3
-      direction: 2
-      textLabel: YELLOW
-    - row: 1
-      col: 2
-      color: 1
-      direction: 0
-      textLabel: GREEN
-    - row: 1
-      col: 3
-      color: 2
-      direction: 3
-      textLabel: BLUE
-    - row: 2
-      col: 0
-      color: 1
-      direction: 2
-      textLabel: GREEN
-    - row: 2
-      col: 1
-      color: 3
-      direction: 2
-      textLabel: YELLOW
-    - row: 2
-      col: 2
       color: 1
       direction: 3
       textLabel: GREEN
-    - row: 2
-      col: 3
-      color: 0
-      direction: 3
-      textLabel: RED
-    - row: 3
+    - row: 1
       col: 0
-      color: 2
-      direction: 1
-      textLabel: BLUE
-    - row: 3
-      col: 1
       color: 4
-      direction: 1
+      direction: 2
       textLabel: BLOCK
-    - row: 3
-      col: 2
-      color: 0
+    - row: 1
+      col: 1
+      color: 3
       direction: 1
+      textLabel: YELLOW
+    - row: 1
+      col: 2
+      color: 3
+      direction: 0
+      textLabel: YELLOW
+    - row: 1
+      col: 3
+      color: 1
+      direction: 0
+      textLabel: GREEN
+    - row: 2
+      col: 0
+      color: 1
+      direction: 0
+      textLabel: GREEN
+    - row: 2
+      col: 1
+      color: 0
+      direction: 2
       textLabel: RED
-    - row: 3
+    - row: 2
+      col: 2
+      color: 2
+      direction: 2
+      textLabel: BLUE
+    - row: 2
       col: 3
       color: 0
       direction: 3
       textLabel: RED
+    - row: 3
+      col: 0
+      color: 0
+      direction: 1
+      textLabel: RED
+    - row: 3
+      col: 1
+      color: 1
+      direction: 1
+      textLabel: GREEN
+    - row: 3
+      col: 2
+      color: 3
+      direction: 3
+      textLabel: YELLOW
+    - row: 3
+      col: 3
+      color: 2
+      direction: 1
+      textLabel: BLUE
   - id: 50
     name: Board 50
     boardSize: 4
@@ -4010,84 +4010,84 @@ MonoBehaviour:
     blocks:
     - row: 0
       col: 0
+      color: 2
+      direction: 2
+      textLabel: BLUE
+    - row: 0
+      col: 1
+      color: 3
+      direction: 1
+      textLabel: YELLOW
+    - row: 0
+      col: 2
       color: 1
       direction: 0
       textLabel: GREEN
     - row: 0
-      col: 1
-      color: 0
-      direction: 2
-      textLabel: RED
-    - row: 0
-      col: 2
-      color: 1
-      direction: 1
-      textLabel: GREEN
-    - row: 0
       col: 3
-      color: 2
-      direction: 3
-      textLabel: BLUE
-    - row: 1
-      col: 0
-      color: 3
-      direction: 2
-      textLabel: YELLOW
-    - row: 1
-      col: 1
       color: 0
       direction: 0
       textLabel: RED
     - row: 1
+      col: 0
+      color: 3
+      direction: 0
+      textLabel: YELLOW
+    - row: 1
+      col: 1
+      color: 2
+      direction: 3
+      textLabel: BLUE
+    - row: 1
       col: 2
       color: 2
-      direction: 2
+      direction: 0
       textLabel: BLUE
     - row: 1
       col: 3
-      color: 3
+      color: 1
       direction: 3
-      textLabel: YELLOW
+      textLabel: GREEN
     - row: 2
       col: 0
-      color: 0
-      direction: 0
-      textLabel: RED
+      color: 3
+      direction: 1
+      textLabel: YELLOW
     - row: 2
       col: 1
-      color: 1
+      color: 3
       direction: 2
-      textLabel: GREEN
+      textLabel: YELLOW
     - row: 2
       col: 2
       color: 2
-      direction: 1
+      direction: 3
       textLabel: BLUE
     - row: 2
       col: 3
-      color: 2
-      direction: 1
-      textLabel: BLUE
-    - row: 3
-      col: 0
       color: 0
       direction: 1
       textLabel: RED
     - row: 3
+      col: 0
+      color: 0
+      direction: 2
+      textLabel: RED
+    - row: 3
       col: 1
       color: 1
-      direction: 3
+      direction: 1
       textLabel: GREEN
     - row: 3
       col: 2
-      color: 3
-      direction: 1
-      textLabel: YELLOW
+      color: 0
+      direction: 2
+      textLabel: RED
     - row: 3
       col: 3
-      color: 3
+      color: 1
       direction: 3
-      textLabel: YELLOW
+      textLabel: GREEN
   - id: 51
     name: Board 51
     boardSize: 5
@@ -4095,24 +4095,24 @@ MonoBehaviour:
     blocks:
     - row: 0
       col: 0
-      color: 2
-      direction: 3
-      textLabel: BLUE
+      color: 1
+      direction: 0
+      textLabel: GREEN
     - row: 0
       col: 1
-      color: 0
+      color: 4
       direction: 0
-      textLabel: RED
+      textLabel: BLOCK
     - row: 0
       col: 2
-      color: 3
-      direction: 0
-      textLabel: YELLOW
+      color: 4
+      direction: 3
+      textLabel: BLOCK
     - row: 0
       col: 3
-      color: 3
-      direction: 0
-      textLabel: YELLOW
+      color: 4
+      direction: 3
+      textLabel: BLOCK
     - row: 0
       col: 4
       color: 0
@@ -4120,54 +4120,54 @@ MonoBehaviour:
       textLabel: RED
     - row: 1
       col: 0
-      color: 4
-      direction: 1
-      textLabel: BLOCK
-    - row: 1
-      col: 1
       color: 1
-      direction: 0
+      direction: 2
       textLabel: GREEN
     - row: 1
-      col: 2
-      color: 2
-      direction: 2
-      textLabel: BLUE
-    - row: 1
-      col: 3
-      color: 3
-      direction: 3
-      textLabel: YELLOW
-    - row: 1
-      col: 4
-      color: 1
-      direction: 3
-      textLabel: GREEN
-    - row: 2
-      col: 0
-      color: 4
-      direction: 2
-      textLabel: BLOCK
-    - row: 2
       col: 1
-      color: 3
-      direction: 2
-      textLabel: YELLOW
-    - row: 2
-      col: 2
-      color: 4
-      direction: 3
-      textLabel: BLOCK
-    - row: 2
-      col: 3
       color: 4
       direction: 0
       textLabel: BLOCK
+    - row: 1
+      col: 2
+      color: 3
+      direction: 2
+      textLabel: YELLOW
+    - row: 1
+      col: 3
+      color: 2
+      direction: 0
+      textLabel: BLUE
+    - row: 1
+      col: 4
+      color: 2
+      direction: 3
+      textLabel: BLUE
+    - row: 2
+      col: 0
+      color: 4
+      direction: 2
+      textLabel: BLOCK
+    - row: 2
+      col: 1
+      color: 4
+      direction: 1
+      textLabel: BLOCK
+    - row: 2
+      col: 2
+      color: 2
+      direction: 3
+      textLabel: BLUE
+    - row: 2
+      col: 3
+      color: 1
+      direction: 3
+      textLabel: GREEN
     - row: 2
       col: 4
-      color: 4
-      direction: 1
-      textLabel: BLOCK
+      color: 0
+      direction: 3
+      textLabel: RED
     - row: 3
       col: 0
       color: 0
@@ -4175,29 +4175,29 @@ MonoBehaviour:
       textLabel: RED
     - row: 3
       col: 1
-      color: 1
-      direction: 2
-      textLabel: GREEN
-    - row: 3
-      col: 2
-      color: 4
-      direction: 2
-      textLabel: BLOCK
-    - row: 3
-      col: 3
       color: 2
-      direction: 3
+      direction: 2
       textLabel: BLUE
     - row: 3
-      col: 4
-      color: 0
-      direction: 3
-      textLabel: RED
-    - row: 4
-      col: 0
+      col: 2
       color: 1
       direction: 1
       textLabel: GREEN
+    - row: 3
+      col: 3
+      color: 3
+      direction: 0
+      textLabel: YELLOW
+    - row: 3
+      col: 4
+      color: 3
+      direction: 0
+      textLabel: YELLOW
+    - row: 4
+      col: 0
+      color: 0
+      direction: 1
+      textLabel: RED
     - row: 4
       col: 1
       color: 0
@@ -4206,18 +4206,18 @@ MonoBehaviour:
     - row: 4
       col: 2
       color: 4
-      direction: 1
+      direction: 2
       textLabel: BLOCK
     - row: 4
       col: 3
-      color: 2
+      color: 1
       direction: 1
-      textLabel: BLUE
+      textLabel: GREEN
     - row: 4
       col: 4
-      color: 1
-      direction: 3
-      textLabel: GREEN
+      color: 3
+      direction: 1
+      textLabel: YELLOW
   - id: 52
     name: Board 52
     boardSize: 5
@@ -4225,89 +4225,89 @@ MonoBehaviour:
     blocks:
     - row: 0
       col: 0
-      color: 0
-      direction: 0
-      textLabel: RED
-    - row: 0
-      col: 1
-      color: 4
-      direction: 0
-      textLabel: BLOCK
-    - row: 0
-      col: 2
-      color: 1
-      direction: 0
-      textLabel: GREEN
-    - row: 0
-      col: 3
-      color: 2
-      direction: 2
-      textLabel: BLUE
-    - row: 0
-      col: 4
-      color: 4
-      direction: 1
-      textLabel: BLOCK
-    - row: 1
-      col: 0
       color: 1
       direction: 2
       textLabel: GREEN
-    - row: 1
-      col: 1
-      color: 0
-      direction: 2
-      textLabel: RED
-    - row: 1
-      col: 2
-      color: 2
-      direction: 0
-      textLabel: BLUE
-    - row: 1
-      col: 3
-      color: 3
-      direction: 3
-      textLabel: YELLOW
-    - row: 1
-      col: 4
-      color: 0
-      direction: 3
-      textLabel: RED
-    - row: 2
-      col: 0
-      color: 3
-      direction: 0
-      textLabel: YELLOW
-    - row: 2
-      col: 1
-      color: 4
-      direction: 2
-      textLabel: BLOCK
-    - row: 2
-      col: 2
-      color: 2
-      direction: 2
-      textLabel: BLUE
-    - row: 2
-      col: 3
-      color: 2
-      direction: 3
-      textLabel: BLUE
-    - row: 2
-      col: 4
-      color: 4
-      direction: 3
-      textLabel: BLOCK
-    - row: 3
-      col: 0
-      color: 4
-      direction: 0
-      textLabel: BLOCK
-    - row: 3
+    - row: 0
       col: 1
       color: 3
       direction: 1
       textLabel: YELLOW
+    - row: 0
+      col: 2
+      color: 3
+      direction: 3
+      textLabel: YELLOW
+    - row: 0
+      col: 3
+      color: 4
+      direction: 0
+      textLabel: BLOCK
+    - row: 0
+      col: 4
+      color: 1
+      direction: 3
+      textLabel: GREEN
+    - row: 1
+      col: 0
+      color: 4
+      direction: 0
+      textLabel: BLOCK
+    - row: 1
+      col: 1
+      color: 4
+      direction: 3
+      textLabel: BLOCK
+    - row: 1
+      col: 2
+      color: 2
+      direction: 0
+      textLabel: BLUE
+    - row: 1
+      col: 3
+      color: 0
+      direction: 0
+      textLabel: RED
+    - row: 1
+      col: 4
+      color: 0
+      direction: 3
+      textLabel: RED
+    - row: 2
+      col: 0
+      color: 1
+      direction: 0
+      textLabel: GREEN
+    - row: 2
+      col: 1
+      color: 0
+      direction: 2
+      textLabel: RED
+    - row: 2
+      col: 2
+      color: 2
+      direction: 2
+      textLabel: BLUE
+    - row: 2
+      col: 3
+      color: 2
+      direction: 0
+      textLabel: BLUE
+    - row: 2
+      col: 4
+      color: 0
+      direction: 3
+      textLabel: RED
+    - row: 3
+      col: 0
+      color: 4
+      direction: 2
+      textLabel: BLOCK
+    - row: 3
+      col: 1
+      color: 2
+      direction: 2
+      textLabel: BLUE
     - row: 3
       col: 2
       color: 4
@@ -4315,24 +4315,24 @@ MonoBehaviour:
       textLabel: BLOCK
     - row: 3
       col: 3
-      color: 3
-      direction: 3
-      textLabel: YELLOW
+      color: 4
+      direction: 1
+      textLabel: BLOCK
     - row: 3
       col: 4
-      color: 1
-      direction: 3
-      textLabel: GREEN
+      color: 3
+      direction: 1
+      textLabel: YELLOW
     - row: 4
       col: 0
-      color: 0
-      direction: 1
-      textLabel: RED
+      color: 3
+      direction: 2
+      textLabel: YELLOW
     - row: 4
       col: 1
-      color: 0
-      direction: 2
-      textLabel: RED
+      color: 1
+      direction: 1
+      textLabel: GREEN
     - row: 4
       col: 2
       color: 1
@@ -4340,13 +4340,13 @@ MonoBehaviour:
       textLabel: GREEN
     - row: 4
       col: 3
-      color: 1
+      color: 0
       direction: 1
-      textLabel: GREEN
+      textLabel: RED
     - row: 4
       col: 4
       color: 4
-      direction: 2
+      direction: 3
       textLabel: BLOCK
   - id: 53
     name: Board 53
@@ -4355,14 +4355,14 @@ MonoBehaviour:
     blocks:
     - row: 0
       col: 0
-      color: 4
+      color: 0
       direction: 2
-      textLabel: BLOCK
+      textLabel: RED
     - row: 0
       col: 1
-      color: 4
-      direction: 0
-      textLabel: BLOCK
+      color: 0
+      direction: 2
+      textLabel: RED
     - row: 0
       col: 2
       color: 1
@@ -4370,114 +4370,114 @@ MonoBehaviour:
       textLabel: GREEN
     - row: 0
       col: 3
-      color: 0
-      direction: 3
-      textLabel: RED
+      color: 4
+      direction: 0
+      textLabel: BLOCK
     - row: 0
       col: 4
-      color: 0
-      direction: 3
-      textLabel: RED
-    - row: 1
-      col: 0
-      color: 0
-      direction: 0
-      textLabel: RED
-    - row: 1
-      col: 1
       color: 4
-      direction: 2
+      direction: 3
       textLabel: BLOCK
     - row: 1
-      col: 2
-      color: 2
-      direction: 0
-      textLabel: BLUE
-    - row: 1
-      col: 3
-      color: 3
-      direction: 1
-      textLabel: YELLOW
-    - row: 1
-      col: 4
-      color: 3
-      direction: 3
-      textLabel: YELLOW
-    - row: 2
       col: 0
-      color: 4
-      direction: 1
-      textLabel: BLOCK
-    - row: 2
-      col: 1
-      color: 3
-      direction: 2
-      textLabel: YELLOW
-    - row: 2
-      col: 2
       color: 4
       direction: 0
       textLabel: BLOCK
-    - row: 2
-      col: 3
-      color: 2
-      direction: 3
-      textLabel: BLUE
-    - row: 2
-      col: 4
-      color: 1
-      direction: 3
-      textLabel: GREEN
-    - row: 3
-      col: 0
-      color: 1
-      direction: 2
-      textLabel: GREEN
-    - row: 3
+    - row: 1
       col: 1
       color: 3
       direction: 0
       textLabel: YELLOW
-    - row: 3
+    - row: 1
       col: 2
-      color: 1
-      direction: 1
-      textLabel: GREEN
-    - row: 3
-      col: 3
-      color: 4
-      direction: 2
-      textLabel: BLOCK
-    - row: 3
-      col: 4
       color: 2
-      direction: 3
+      direction: 2
       textLabel: BLUE
-    - row: 4
+    - row: 1
+      col: 3
+      color: 1
+      direction: 3
+      textLabel: GREEN
+    - row: 1
+      col: 4
+      color: 1
+      direction: 0
+      textLabel: GREEN
+    - row: 2
       col: 0
       color: 1
       direction: 2
       textLabel: GREEN
-    - row: 4
+    - row: 2
       col: 1
-      color: 0
-      direction: 1
-      textLabel: RED
-    - row: 4
-      col: 2
-      color: 0
-      direction: 1
-      textLabel: RED
-    - row: 4
-      col: 3
       color: 4
       direction: 1
       textLabel: BLOCK
-    - row: 4
+    - row: 2
+      col: 2
+      color: 3
+      direction: 0
+      textLabel: YELLOW
+    - row: 2
+      col: 3
+      color: 3
+      direction: 2
+      textLabel: YELLOW
+    - row: 2
       col: 4
       color: 2
       direction: 1
       textLabel: BLUE
+    - row: 3
+      col: 0
+      color: 2
+      direction: 2
+      textLabel: BLUE
+    - row: 3
+      col: 1
+      color: 3
+      direction: 2
+      textLabel: YELLOW
+    - row: 3
+      col: 2
+      color: 2
+      direction: 3
+      textLabel: BLUE
+    - row: 3
+      col: 3
+      color: 4
+      direction: 1
+      textLabel: BLOCK
+    - row: 3
+      col: 4
+      color: 0
+      direction: 3
+      textLabel: RED
+    - row: 4
+      col: 0
+      color: 0
+      direction: 1
+      textLabel: RED
+    - row: 4
+      col: 1
+      color: 4
+      direction: 3
+      textLabel: BLOCK
+    - row: 4
+      col: 2
+      color: 1
+      direction: 1
+      textLabel: GREEN
+    - row: 4
+      col: 3
+      color: 0
+      direction: 1
+      textLabel: RED
+    - row: 4
+      col: 4
+      color: 4
+      direction: 3
+      textLabel: BLOCK
   - id: 54
     name: Board 54
     boardSize: 5
@@ -4485,129 +4485,129 @@ MonoBehaviour:
     blocks:
     - row: 0
       col: 0
+      color: 0
+      direction: 2
+      textLabel: RED
+    - row: 0
+      col: 1
+      color: 3
+      direction: 2
+      textLabel: YELLOW
+    - row: 0
+      col: 2
+      color: 2
+      direction: 3
+      textLabel: BLUE
+    - row: 0
+      col: 3
       color: 1
       direction: 0
       textLabel: GREEN
     - row: 0
-      col: 1
+      col: 4
+      color: 4
+      direction: 3
+      textLabel: BLOCK
+    - row: 1
+      col: 0
       color: 0
       direction: 0
       textLabel: RED
-    - row: 0
-      col: 2
+    - row: 1
+      col: 1
       color: 2
       direction: 2
       textLabel: BLUE
-    - row: 0
-      col: 3
-      color: 1
-      direction: 0
-      textLabel: GREEN
-    - row: 0
-      col: 4
-      color: 2
-      direction: 0
-      textLabel: BLUE
-    - row: 1
-      col: 0
-      color: 2
-      direction: 3
-      textLabel: BLUE
-    - row: 1
-      col: 1
-      color: 0
-      direction: 1
-      textLabel: RED
     - row: 1
       col: 2
-      color: 4
-      direction: 3
-      textLabel: BLOCK
+      color: 3
+      direction: 0
+      textLabel: YELLOW
     - row: 1
       col: 3
       color: 4
-      direction: 3
+      direction: 0
       textLabel: BLOCK
     - row: 1
       col: 4
       color: 4
-      direction: 3
+      direction: 1
       textLabel: BLOCK
     - row: 2
       col: 0
-      color: 3
-      direction: 1
-      textLabel: YELLOW
+      color: 2
+      direction: 0
+      textLabel: BLUE
     - row: 2
       col: 1
-      color: 4
-      direction: 1
-      textLabel: BLOCK
+      color: 3
+      direction: 0
+      textLabel: YELLOW
     - row: 2
       col: 2
+      color: 2
+      direction: 3
+      textLabel: BLUE
+    - row: 2
+      col: 3
       color: 4
       direction: 0
       textLabel: BLOCK
     - row: 2
-      col: 3
-      color: 0
-      direction: 0
-      textLabel: RED
-    - row: 2
       col: 4
-      color: 3
+      color: 0
       direction: 3
-      textLabel: YELLOW
+      textLabel: RED
     - row: 3
       col: 0
-      color: 0
+      color: 1
       direction: 2
-      textLabel: RED
-    - row: 3
-      col: 1
-      color: 1
-      direction: 1
       textLabel: GREEN
     - row: 3
-      col: 2
-      color: 3
+      col: 1
+      color: 0
       direction: 2
-      textLabel: YELLOW
+      textLabel: RED
+    - row: 3
+      col: 2
+      color: 0
+      direction: 1
+      textLabel: RED
     - row: 3
       col: 3
-      color: 3
+      color: 4
       direction: 1
-      textLabel: YELLOW
+      textLabel: BLOCK
     - row: 3
       col: 4
-      color: 2
-      direction: 1
-      textLabel: BLUE
+      color: 1
+      direction: 3
+      textLabel: GREEN
     - row: 4
       col: 0
-      color: 4
+      color: 3
       direction: 2
-      textLabel: BLOCK
+      textLabel: YELLOW
     - row: 4
       col: 1
+      color: 4
+      direction: 1
+      textLabel: BLOCK
+    - row: 4
+      col: 2
+      color: 4
+      direction: 1
+      textLabel: BLOCK
+    - row: 4
+      col: 3
       color: 1
       direction: 1
       textLabel: GREEN
     - row: 4
-      col: 2
-      color: 4
-      direction: 2
-      textLabel: BLOCK
-    - row: 4
-      col: 3
-      color: 1
-      direction: 2
-      textLabel: GREEN
-    - row: 4
       col: 4
-      color: 0
+      color: 1
       direction: 3
-      textLabel: RED
+      textLabel: GREEN
   - id: 55
     name: Board 55
     boardSize: 5
@@ -4615,29 +4615,29 @@ MonoBehaviour:
     blocks:
     - row: 0
       col: 0
-      color: 4
+      color: 0
       direction: 0
-      textLabel: BLOCK
+      textLabel: RED
     - row: 0
       col: 1
-      color: 1
-      direction: 2
-      textLabel: GREEN
+      color: 2
+      direction: 0
+      textLabel: BLUE
     - row: 0
       col: 2
+      color: 3
+      direction: 3
+      textLabel: YELLOW
+    - row: 0
+      col: 3
       color: 1
       direction: 0
       textLabel: GREEN
     - row: 0
-      col: 3
-      color: 0
-      direction: 0
-      textLabel: RED
-    - row: 0
       col: 4
-      color: 0
+      color: 4
       direction: 3
-      textLabel: RED
+      textLabel: BLOCK
     - row: 1
       col: 0
       color: 0
@@ -4650,89 +4650,89 @@ MonoBehaviour:
       textLabel: YELLOW
     - row: 1
       col: 2
-      color: 2
-      direction: 0
-      textLabel: BLUE
+      color: 1
+      direction: 3
+      textLabel: GREEN
     - row: 1
       col: 3
-      color: 2
+      color: 1
       direction: 0
-      textLabel: BLUE
+      textLabel: GREEN
     - row: 1
       col: 4
-      color: 4
+      color: 0
       direction: 3
-      textLabel: BLOCK
+      textLabel: RED
     - row: 2
       col: 0
       color: 4
-      direction: 1
+      direction: 0
       textLabel: BLOCK
     - row: 2
       col: 1
-      color: 4
-      direction: 1
-      textLabel: BLOCK
-    - row: 2
-      col: 2
-      color: 2
-      direction: 3
-      textLabel: BLUE
-    - row: 2
-      col: 3
       color: 3
-      direction: 3
+      direction: 2
       textLabel: YELLOW
     - row: 2
-      col: 4
-      color: 1
+      col: 2
+      color: 4
       direction: 1
-      textLabel: GREEN
-    - row: 3
-      col: 0
-      color: 1
-      direction: 2
-      textLabel: GREEN
-    - row: 3
-      col: 1
+      textLabel: BLOCK
+    - row: 2
+      col: 3
+      color: 2
+      direction: 3
+      textLabel: BLUE
+    - row: 2
+      col: 4
       color: 2
       direction: 1
       textLabel: BLUE
     - row: 3
-      col: 2
+      col: 0
       color: 4
       direction: 2
       textLabel: BLOCK
     - row: 3
-      col: 3
+      col: 1
       color: 4
-      direction: 3
+      direction: 2
       textLabel: BLOCK
+    - row: 3
+      col: 2
+      color: 3
+      direction: 2
+      textLabel: YELLOW
+    - row: 3
+      col: 3
+      color: 2
+      direction: 3
+      textLabel: BLUE
     - row: 3
       col: 4
       color: 1
-      direction: 3
+      direction: 1
       textLabel: GREEN
     - row: 4
       col: 0
+      color: 4
+      direction: 2
+      textLabel: BLOCK
+    - row: 4
+      col: 1
+      color: 1
+      direction: 1
+      textLabel: GREEN
+    - row: 4
+      col: 2
       color: 0
       direction: 1
       textLabel: RED
     - row: 4
-      col: 1
-      color: 4
-      direction: 2
-      textLabel: BLOCK
-    - row: 4
-      col: 2
-      color: 3
-      direction: 2
-      textLabel: YELLOW
-    - row: 4
       col: 3
-      color: 3
+      color: 4
       direction: 3
-      textLabel: YELLOW
+      textLabel: BLOCK
     - row: 4
       col: 4
       color: 0
@@ -4745,89 +4745,89 @@ MonoBehaviour:
     blocks:
     - row: 0
       col: 0
-      color: 4
-      direction: 2
-      textLabel: BLOCK
+      color: 0
+      direction: 0
+      textLabel: RED
     - row: 0
       col: 1
-      color: 1
+      color: 0
       direction: 0
-      textLabel: GREEN
+      textLabel: RED
     - row: 0
       col: 2
-      color: 0
-      direction: 2
-      textLabel: RED
-    - row: 0
-      col: 3
-      color: 0
-      direction: 2
-      textLabel: RED
-    - row: 0
-      col: 4
-      color: 1
-      direction: 3
-      textLabel: GREEN
-    - row: 1
-      col: 0
-      color: 3
-      direction: 3
-      textLabel: YELLOW
-    - row: 1
-      col: 1
-      color: 0
-      direction: 0
-      textLabel: RED
-    - row: 1
-      col: 2
-      color: 0
-      direction: 0
-      textLabel: RED
-    - row: 1
-      col: 3
-      color: 1
-      direction: 3
-      textLabel: GREEN
-    - row: 1
-      col: 4
-      color: 1
-      direction: 0
-      textLabel: GREEN
-    - row: 2
-      col: 0
       color: 2
       direction: 2
       textLabel: BLUE
-    - row: 2
-      col: 1
-      color: 4
-      direction: 3
-      textLabel: BLOCK
-    - row: 2
-      col: 2
-      color: 4
-      direction: 0
-      textLabel: BLOCK
-    - row: 2
+    - row: 0
       col: 3
       color: 2
       direction: 0
       textLabel: BLUE
-    - row: 2
+    - row: 0
       col: 4
-      color: 3
-      direction: 3
-      textLabel: YELLOW
-    - row: 3
+      color: 1
+      direction: 0
+      textLabel: GREEN
+    - row: 1
       col: 0
+      color: 4
+      direction: 2
+      textLabel: BLOCK
+    - row: 1
+      col: 1
+      color: 4
+      direction: 2
+      textLabel: BLOCK
+    - row: 1
+      col: 2
       color: 3
       direction: 2
       textLabel: YELLOW
+    - row: 1
+      col: 3
+      color: 4
+      direction: 0
+      textLabel: BLOCK
+    - row: 1
+      col: 4
+      color: 0
+      direction: 3
+      textLabel: RED
+    - row: 2
+      col: 0
+      color: 4
+      direction: 2
+      textLabel: BLOCK
+    - row: 2
+      col: 1
+      color: 0
+      direction: 1
+      textLabel: RED
+    - row: 2
+      col: 2
+      color: 0
+      direction: 3
+      textLabel: RED
+    - row: 2
+      col: 3
+      color: 1
+      direction: 3
+      textLabel: GREEN
+    - row: 2
+      col: 4
+      color: 4
+      direction: 3
+      textLabel: BLOCK
+    - row: 3
+      col: 0
+      color: 1
+      direction: 2
+      textLabel: GREEN
     - row: 3
       col: 1
-      color: 3
+      color: 1
       direction: 1
-      textLabel: YELLOW
+      textLabel: GREEN
     - row: 3
       col: 2
       color: 4
@@ -4836,18 +4836,18 @@ MonoBehaviour:
     - row: 3
       col: 3
       color: 2
-      direction: 2
+      direction: 1
       textLabel: BLUE
     - row: 3
       col: 4
-      color: 2
-      direction: 1
-      textLabel: BLUE
+      color: 3
+      direction: 0
+      textLabel: YELLOW
     - row: 4
       col: 0
-      color: 0
-      direction: 1
-      textLabel: RED
+      color: 3
+      direction: 0
+      textLabel: YELLOW
     - row: 4
       col: 1
       color: 1
@@ -4855,9 +4855,9 @@ MonoBehaviour:
       textLabel: GREEN
     - row: 4
       col: 2
-      color: 4
-      direction: 2
-      textLabel: BLOCK
+      color: 3
+      direction: 3
+      textLabel: YELLOW
     - row: 4
       col: 3
       color: 4
@@ -4865,9 +4865,9 @@ MonoBehaviour:
       textLabel: BLOCK
     - row: 4
       col: 4
-      color: 4
+      color: 2
       direction: 3
-      textLabel: BLOCK
+      textLabel: BLUE
   - id: 57
     name: Board 57
     boardSize: 5
@@ -4935,44 +4935,44 @@ MonoBehaviour:
       textLabel: BLOCK
     - row: 2
       col: 2
-      color: 4
-      direction: 2
-      textLabel: BLOCK
-    - row: 2
-      col: 3
-      color: 4
-      direction: 2
-      textLabel: BLOCK
-    - row: 2
-      col: 4
-      color: 4
-      direction: 1
-      textLabel: BLOCK
-    - row: 3
-      col: 0
       color: 1
       direction: 2
       textLabel: GREEN
-    - row: 3
-      col: 1
-      color: 2
-      direction: 2
-      textLabel: BLUE
-    - row: 3
-      col: 2
-      color: 3
-      direction: 1
-      textLabel: YELLOW
-    - row: 3
+    - row: 2
       col: 3
       color: 3
       direction: 2
       textLabel: YELLOW
-    - row: 3
+    - row: 2
       col: 4
+      color: 2
+      direction: 1
+      textLabel: BLUE
+    - row: 3
+      col: 0
+      color: 4
+      direction: 2
+      textLabel: BLOCK
+    - row: 3
+      col: 1
+      color: 3
+      direction: 2
+      textLabel: YELLOW
+    - row: 3
+      col: 2
       color: 4
       direction: 1
       textLabel: BLOCK
+    - row: 3
+      col: 3
+      color: 4
+      direction: 2
+      textLabel: BLOCK
+    - row: 3
+      col: 4
+      color: 1
+      direction: 1
+      textLabel: GREEN
     - row: 4
       col: 0
       color: 3
@@ -4985,9 +4985,9 @@ MonoBehaviour:
       textLabel: BLOCK
     - row: 4
       col: 2
-      color: 1
+      color: 4
       direction: 1
-      textLabel: GREEN
+      textLabel: BLOCK
     - row: 4
       col: 3
       color: 1
@@ -5020,89 +5020,89 @@ MonoBehaviour:
       textLabel: RED
     - row: 0
       col: 3
-      color: 1
-      direction: 0
-      textLabel: GREEN
+      color: 2
+      direction: 2
+      textLabel: BLUE
     - row: 0
       col: 4
-      color: 2
-      direction: 3
-      textLabel: BLUE
+      color: 1
+      direction: 0
+      textLabel: GREEN
     - row: 1
       col: 0
-      color: 0
-      direction: 2
-      textLabel: RED
-    - row: 1
-      col: 1
       color: 2
       direction: 0
       textLabel: BLUE
     - row: 1
-      col: 2
-      color: 3
-      direction: 2
-      textLabel: YELLOW
-    - row: 1
-      col: 3
-      color: 4
-      direction: 2
-      textLabel: BLOCK
-    - row: 1
-      col: 4
+      col: 1
       color: 3
       direction: 3
       textLabel: YELLOW
-    - row: 2
-      col: 0
-      color: 0
-      direction: 2
-      textLabel: RED
-    - row: 2
-      col: 1
-      color: 3
-      direction: 0
-      textLabel: YELLOW
-    - row: 2
+    - row: 1
       col: 2
       color: 4
       direction: 1
       textLabel: BLOCK
-    - row: 2
+    - row: 1
       col: 3
-      color: 3
-      direction: 0
-      textLabel: YELLOW
-    - row: 2
-      col: 4
-      color: 1
+      color: 0
       direction: 3
-      textLabel: GREEN
-    - row: 3
-      col: 0
+      textLabel: RED
+    - row: 1
+      col: 4
       color: 4
-      direction: 2
+      direction: 3
       textLabel: BLOCK
-    - row: 3
-      col: 1
+    - row: 2
+      col: 0
       color: 0
       direction: 2
       textLabel: RED
-    - row: 3
-      col: 2
+    - row: 2
+      col: 1
       color: 2
-      direction: 3
+      direction: 1
       textLabel: BLUE
-    - row: 3
+    - row: 2
+      col: 2
+      color: 3
+      direction: 3
+      textLabel: YELLOW
+    - row: 2
       col: 3
       color: 2
       direction: 1
       textLabel: BLUE
+    - row: 2
+      col: 4
+      color: 3
+      direction: 3
+      textLabel: YELLOW
+    - row: 3
+      col: 0
+      color: 1
+      direction: 2
+      textLabel: GREEN
+    - row: 3
+      col: 1
+      color: 0
+      direction: 2
+      textLabel: RED
+    - row: 3
+      col: 2
+      color: 4
+      direction: 2
+      textLabel: BLOCK
+    - row: 3
+      col: 3
+      color: 4
+      direction: 1
+      textLabel: BLOCK
     - row: 3
       col: 4
-      color: 1
-      direction: 1
-      textLabel: GREEN
+      color: 3
+      direction: 0
+      textLabel: YELLOW
     - row: 4
       col: 0
       color: 4
@@ -5115,14 +5115,14 @@ MonoBehaviour:
       textLabel: GREEN
     - row: 4
       col: 2
-      color: 4
-      direction: 1
-      textLabel: BLOCK
-    - row: 4
-      col: 3
       color: 0
       direction: 3
       textLabel: RED
+    - row: 4
+      col: 3
+      color: 1
+      direction: 1
+      textLabel: GREEN
     - row: 4
       col: 4
       color: 4
@@ -5135,24 +5135,24 @@ MonoBehaviour:
     blocks:
     - row: 0
       col: 0
-      color: 1
-      direction: 0
-      textLabel: GREEN
-    - row: 0
-      col: 1
       color: 4
       direction: 0
       textLabel: BLOCK
     - row: 0
-      col: 2
-      color: 1
+      col: 1
+      color: 0
       direction: 0
-      textLabel: GREEN
+      textLabel: RED
+    - row: 0
+      col: 2
+      color: 2
+      direction: 2
+      textLabel: BLUE
     - row: 0
       col: 3
-      color: 0
-      direction: 3
-      textLabel: RED
+      color: 2
+      direction: 0
+      textLabel: BLUE
     - row: 0
       col: 4
       color: 4
@@ -5160,104 +5160,104 @@ MonoBehaviour:
       textLabel: BLOCK
     - row: 1
       col: 0
-      color: 0
-      direction: 2
-      textLabel: RED
-    - row: 1
-      col: 1
-      color: 2
-      direction: 2
-      textLabel: BLUE
-    - row: 1
-      col: 2
-      color: 2
-      direction: 1
-      textLabel: BLUE
-    - row: 1
-      col: 3
-      color: 4
-      direction: 3
-      textLabel: BLOCK
-    - row: 1
-      col: 4
-      color: 0
-      direction: 0
-      textLabel: RED
-    - row: 2
-      col: 0
       color: 1
-      direction: 2
+      direction: 0
       textLabel: GREEN
-    - row: 2
-      col: 1
-      color: 3
-      direction: 2
-      textLabel: YELLOW
-    - row: 2
-      col: 2
-      color: 2
-      direction: 1
-      textLabel: BLUE
-    - row: 2
-      col: 3
-      color: 2
-      direction: 1
-      textLabel: BLUE
-    - row: 2
-      col: 4
-      color: 4
-      direction: 3
-      textLabel: BLOCK
-    - row: 3
-      col: 0
-      color: 4
-      direction: 1
-      textLabel: BLOCK
-    - row: 3
-      col: 1
-      color: 4
-      direction: 0
-      textLabel: BLOCK
-    - row: 3
-      col: 2
-      color: 3
-      direction: 3
-      textLabel: YELLOW
-    - row: 3
-      col: 3
-      color: 3
-      direction: 1
-      textLabel: YELLOW
-    - row: 3
-      col: 4
-      color: 4
-      direction: 0
-      textLabel: BLOCK
-    - row: 4
-      col: 0
-      color: 0
-      direction: 2
-      textLabel: RED
-    - row: 4
+    - row: 1
       col: 1
       color: 1
       direction: 1
       textLabel: GREEN
-    - row: 4
+    - row: 1
       col: 2
+      color: 3
+      direction: 1
+      textLabel: YELLOW
+    - row: 1
+      col: 3
+      color: 0
+      direction: 3
+      textLabel: RED
+    - row: 1
+      col: 4
+      color: 0
+      direction: 3
+      textLabel: RED
+    - row: 2
+      col: 0
+      color: 0
+      direction: 2
+      textLabel: RED
+    - row: 2
+      col: 1
+      color: 1
+      direction: 2
+      textLabel: GREEN
+    - row: 2
+      col: 2
+      color: 4
+      direction: 2
+      textLabel: BLOCK
+    - row: 2
+      col: 3
+      color: 1
+      direction: 3
+      textLabel: GREEN
+    - row: 2
+      col: 4
+      color: 4
+      direction: 0
+      textLabel: BLOCK
+    - row: 3
+      col: 0
+      color: 1
+      direction: 2
+      textLabel: GREEN
+    - row: 3
+      col: 1
+      color: 4
+      direction: 1
+      textLabel: BLOCK
+    - row: 3
+      col: 2
+      color: 4
+      direction: 2
+      textLabel: BLOCK
+    - row: 3
+      col: 3
+      color: 3
+      direction: 1
+      textLabel: YELLOW
+    - row: 3
+      col: 4
+      color: 3
+      direction: 3
+      textLabel: YELLOW
+    - row: 4
+      col: 0
+      color: 2
+      direction: 0
+      textLabel: BLUE
+    - row: 4
+      col: 1
       color: 0
       direction: 1
       textLabel: RED
     - row: 4
-      col: 3
+      col: 2
       color: 3
-      direction: 2
+      direction: 3
       textLabel: YELLOW
     - row: 4
+      col: 3
+      color: 4
+      direction: 1
+      textLabel: BLOCK
+    - row: 4
       col: 4
-      color: 1
-      direction: 3
-      textLabel: GREEN
+      color: 2
+      direction: 1
+      textLabel: BLUE
   - id: 60
     name: Board 60
     boardSize: 5
@@ -5265,54 +5265,54 @@ MonoBehaviour:
     blocks:
     - row: 0
       col: 0
-      color: 0
-      direction: 2
-      textLabel: RED
+      color: 4
+      direction: 0
+      textLabel: BLOCK
     - row: 0
       col: 1
-      color: 3
-      direction: 3
-      textLabel: YELLOW
-    - row: 0
-      col: 2
       color: 1
       direction: 0
       textLabel: GREEN
     - row: 0
+      col: 2
+      color: 0
+      direction: 2
+      textLabel: RED
+    - row: 0
       col: 3
-      color: 1
+      color: 0
       direction: 0
-      textLabel: GREEN
+      textLabel: RED
     - row: 0
       col: 4
-      color: 4
+      color: 1
       direction: 3
-      textLabel: BLOCK
+      textLabel: GREEN
     - row: 1
       col: 0
-      color: 4
-      direction: 2
-      textLabel: BLOCK
-    - row: 1
-      col: 1
       color: 2
-      direction: 0
+      direction: 2
       textLabel: BLUE
     - row: 1
-      col: 2
+      col: 1
       color: 0
       direction: 0
       textLabel: RED
     - row: 1
-      col: 3
+      col: 2
       color: 4
       direction: 3
       textLabel: BLOCK
     - row: 1
-      col: 4
-      color: 0
+      col: 3
+      color: 2
       direction: 3
-      textLabel: RED
+      textLabel: BLUE
+    - row: 1
+      col: 4
+      color: 4
+      direction: 3
+      textLabel: BLOCK
     - row: 2
       col: 0
       color: 1
@@ -5326,65 +5326,65 @@ MonoBehaviour:
     - row: 2
       col: 2
       color: 3
-      direction: 0
+      direction: 1
       textLabel: YELLOW
     - row: 2
       col: 3
-      color: 3
-      direction: 0
-      textLabel: YELLOW
+      color: 0
+      direction: 3
+      textLabel: RED
     - row: 2
       col: 4
-      color: 2
-      direction: 0
-      textLabel: BLUE
+      color: 1
+      direction: 3
+      textLabel: GREEN
     - row: 3
       col: 0
-      color: 4
-      direction: 2
-      textLabel: BLOCK
-    - row: 3
-      col: 1
       color: 0
       direction: 1
       textLabel: RED
     - row: 3
-      col: 2
-      color: 0
+      col: 1
+      color: 2
       direction: 1
-      textLabel: RED
+      textLabel: BLUE
     - row: 3
-      col: 3
+      col: 2
       color: 2
       direction: 2
       textLabel: BLUE
     - row: 3
-      col: 4
+      col: 3
       color: 3
       direction: 1
       textLabel: YELLOW
+    - row: 3
+      col: 4
+      color: 3
+      direction: 0
+      textLabel: YELLOW
     - row: 4
       col: 0
-      color: 2
-      direction: 1
-      textLabel: BLUE
+      color: 1
+      direction: 2
+      textLabel: GREEN
     - row: 4
       col: 1
-      color: 1
+      color: 4
       direction: 1
-      textLabel: GREEN
+      textLabel: BLOCK
     - row: 4
       col: 2
-      color: 1
+      color: 4
       direction: 1
-      textLabel: GREEN
+      textLabel: BLOCK
     - row: 4
       col: 3
       color: 4
-      direction: 3
+      direction: 1
       textLabel: BLOCK
     - row: 4
       col: 4
-      color: 4
-      direction: 3
-      textLabel: BLOCK
+      color: 3
+      direction: 0
+      textLabel: YELLOW
