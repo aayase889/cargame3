@@ -63,13 +63,18 @@ public sealed class CarPrototypeHudLayoutEditor : EditorWindow
         DrawSection("3D Parking Markings", "sceneMatchTrayPosition", "sceneMatchTraySlotSpacing", "sceneMatchTrayBaySize", "sceneMatchTraySlotSpacing5", "sceneMatchTrayBaySize5", "sceneSideParkingPosition", "sceneSideParkingSize", "sceneParkingLineWidth", "sceneSideParkingHatchSpacing");
         DrawSection("Compact Top HUD", "levelPillPosition", "levelPillSize", "levelTextPosition", "levelTextSize", "levelTextFontSize");
         DrawSection("Main Menu", "mainMenuPlayPosition", "mainMenuPlaySize", "mainMenuPlayText", "mainMenuPlayFontSize", "mainMenuShopTabPosition", "mainMenuHomeTabPosition", "mainMenuLockedTabPosition", "mainMenuTabSize", "mainMenuTallTabSize", "mainMenuSelectedTabOffset", "mainMenuSelectedLabelOffset", "mainMenuSelectedLabelSize", "mainMenuSelectedLabelFontSize");
-        DrawSection("Color Progress and Hearts", "redDotPosition", "greenDotPosition", "blueDotPosition", "yellowDotPosition", "dotSize", "redTextPosition", "greenTextPosition", "blueTextPosition", "yellowTextPosition", "progressTextSize", "progressFontSize", "heartsPosition", "heartsSize", "heartsFontSize");
+        DrawSection("Car Objectives",
+            "redObjectiveCarPosition", "greenObjectiveCarPosition", "blueObjectiveCarPosition", "yellowObjectiveCarPosition",
+            "objectiveCarSize",
+            "redObjectiveStatusPosition", "greenObjectiveStatusPosition", "blueObjectiveStatusPosition", "yellowObjectiveStatusPosition",
+            "objectiveStatusSize", "objectiveCheckSize", "objectiveStatusFontSize");
+        DrawSection("Lives",
+            "heartsPosition", "heartSize", "heartSpacing", "heartLossFallDistance", "heartLossDuration");
         DrawSection("Bottom Controls", "extraSlotPosition", "undoPosition", "boosterSize", "pausePosition", "pauseSize");
         DrawSection("Level Preview Navigation", "showLevelPreviewButtons", "previousLevelPosition", "nextLevelPosition", "levelPreviewButtonSize");
         DrawSection("Settings", "settingsPanelPosition", "settingsPanelSize", "settingsTitlePosition", "hapticsPosition", "soundsPosition", "musicPosition", "resumePosition", "quitPosition", "morePosition", "settingsClosePosition");
         DrawSection("More Page", "morePanelPosition", "morePanelSize", "moreTitlePosition", "termsPosition", "privacyPosition", "moreBackPosition", "moreClosePosition");
         DrawSection("Leave Confirmation", "leavePanelSize", "leaveTitlePosition", "leaveDescriptionPosition", "leaveCancelPosition", "leaveConfirmPosition");
-        DrawSection("Loss Popup", "defeatPanelSize", "defeatTitlePosition", "defeatDescriptionPosition", "restartPosition");
         DrawSection("Font", "fontOverride");
         EditorGUILayout.EndScrollView();
 
@@ -159,6 +164,7 @@ public sealed class CarPrototypeHudLayoutEditor : EditorWindow
             if (GUILayout.Button("More")) RunHudAction(hud => hud.EditorShowMorePreview(), "Showing More-page preview.");
             if (GUILayout.Button("Leave")) RunHudAction(hud => hud.EditorShowLeavePreview(), "Showing leave-confirmation preview.");
             if (GUILayout.Button("Loss")) RunHudAction(hud => hud.EditorShowDefeatPreview(), "Showing loss-popup preview.");
+            if (GUILayout.Button("Win")) RunHudAction(hud => hud.EditorShowVictoryPreview(), "Showing win-popup preview.");
         }
     }
 

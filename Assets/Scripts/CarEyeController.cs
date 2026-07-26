@@ -2,8 +2,9 @@ using System.Collections;
 using UnityEngine;
 
 /// <summary>
-/// Lightweight character-eye rig shared by every colored puzzle car. The eyes
-/// live in car-local space, so glances and blinks follow every car orientation.
+/// Lightweight windshield-eye rig shared by every colored puzzle car. The
+/// windshield itself is the eye white; only the pupils animate above the glass.
+/// Everything lives in car-local space so it follows every car orientation.
 /// </summary>
 public sealed class CarEyeController : MonoBehaviour
 {
@@ -22,39 +23,76 @@ public sealed class CarEyeController : MonoBehaviour
     private Vector2 gazeOffset;
     private Vector2 gazeTarget;
     private Vector2 gazeVelocity;
+    private Vector2 windshieldSize;
+    private Vector2 gazeLimits;
     private float nextGazeTime;
     private bool initialized;
 
-    public void Initialize(Vector3 localWindshieldPosition)
+    public void Initialize(
+        Vector3 localWindshieldPosition,
+        Vector2 localWindshieldSize,
+        float localWindshieldTiltDegrees,
+        Vector2 windshieldSurfaceScale,
+        bool useModelWindshieldFrame)
     {
         if (initialized) return;
         initialized = true;
+        windshieldSize = new Vector2(
+            Mathf.Max(0.2f, localWindshieldSize.x),
+            Mathf.Max(0.12f, localWindshieldSize.y));
 
-        GameObject rootObject = new GameObject("Animated Eye Rig");
+        GameObject rootObject = new GameObject("Integrated Windshield Eye Rig");
         eyeRoot = rootObject.transform;
         eyeRoot.SetParent(transform, false);
         eyeRoot.localPosition = localWindshieldPosition;
-        eyeRoot.localRotation = Quaternion.identity;
+        eyeRoot.localRotation = Quaternion.Euler(localWindshieldTiltDegrees, 0f, 0f);
         eyeRoot.localScale = Vector3.one;
 
-        Transform leftOutline = CreateEyeSphere("Left Eye Outline", new Vector3(-0.20f, -0.01f, 0f), new Vector3(0.48f, 0.055f, 0.35f), GetEyeOutlineMaterial(), eyeRoot);
-        Transform rightOutline = CreateEyeSphere("Right Eye Outline", new Vector3(0.20f, -0.01f, 0f), new Vector3(0.48f, 0.055f, 0.35f), GetEyeOutlineMaterial(), eyeRoot);
-        Transform leftWhite = CreateEyeSphere("Left Eye White", new Vector3(-0.20f, 0.025f, 0f), new Vector3(0.43f, 0.07f, 0.31f), GetEyeWhiteMaterial(), eyeRoot);
-        Transform rightWhite = CreateEyeSphere("Right Eye White", new Vector3(0.20f, 0.025f, 0f), new Vector3(0.43f, 0.07f, 0.31f), GetEyeWhiteMaterial(), eyeRoot);
+        if (!useModelWindshieldFrame)
+        {
+            CreateWindshieldPanel(
+                "Windshield Eye Frame",
+                Vector3.zero,
+                windshieldSize,
+                GetEyeOutlineMaterial(),
+                eyeRoot);
+        }
+        Vector2 eyeSurfaceSize = useModelWindshieldFrame
+            ? Vector2.Scale(windshieldSize, windshieldSurfaceScale)
+            : windshieldSize * 0.89f;
+        CreateWindshieldPanel(
+            "Windshield Eye Surface",
+            new Vector3(0f, useModelWindshieldFrame ? 0.010f : 0.018f, 0f),
+            eyeSurfaceSize,
+            GetEyeWhiteMaterial(),
+            eyeRoot);
 
-        leftPupilBasePosition = new Vector3(-0.20f, 0.083f, 0.015f);
-        rightPupilBasePosition = new Vector3(0.20f, 0.083f, 0.015f);
-        leftPupil = CreateEyeSphere("Left Pupil", leftPupilBasePosition, new Vector3(0.16f, 0.075f, 0.15f), GetPupilMaterial(), eyeRoot);
-        rightPupil = CreateEyeSphere("Right Pupil", rightPupilBasePosition, new Vector3(0.16f, 0.075f, 0.15f), GetPupilMaterial(), eyeRoot);
+        float pupilOffset = windshieldSize.x * 0.19f;
+        Vector3 pupilScale = new Vector3(
+            windshieldSize.x * 0.20f,
+            0.034f,
+            windshieldSize.y * 0.49f);
+        leftPupilBasePosition = new Vector3(-pupilOffset, 0.033f, 0f);
+        rightPupilBasePosition = new Vector3(pupilOffset, 0.033f, 0f);
+        leftPupil = CreateEyeSphere("Left Pupil", leftPupilBasePosition, pupilScale, GetPupilMaterial(), eyeRoot);
+        rightPupil = CreateEyeSphere("Right Pupil", rightPupilBasePosition, pupilScale, GetPupilMaterial(), eyeRoot);
         CreateEyeSphere("Left Pupil Highlight", new Vector3(-0.20f, 0.50f, 0.15f), new Vector3(0.28f, 0.30f, 0.28f), GetHighlightMaterial(), leftPupil);
         CreateEyeSphere("Right Pupil Highlight", new Vector3(-0.20f, 0.50f, 0.15f), new Vector3(0.28f, 0.30f, 0.28f), GetHighlightMaterial(), rightPupil);
 
-        blinkParts = new[] { leftOutline, rightOutline, leftWhite, rightWhite, leftPupil, rightPupil };
+        // The windshield remains fixed during a blink. Squashing only the
+        // pupils makes the character blink without turning the glass back into
+        // two separate floating eyeballs.
+        blinkParts = new[] { leftPupil, rightPupil };
         blinkBaseScales = new Vector3[blinkParts.Length];
         for (int index = 0; index < blinkParts.Length; index++)
             blinkBaseScales[index] = blinkParts[index].localScale;
 
+        gazeLimits = new Vector2(
+            Mathf.Max(0f, eyeSurfaceSize.x * 0.49f - pupilOffset - pupilScale.x * 0.5f - 0.006f),
+            Mathf.Max(0f, eyeSurfaceSize.y * 0.49f - pupilScale.z * 0.5f - 0.006f));
         ChooseNewGaze();
+        gazeOffset = gazeTarget;
+        ApplyPupilPositions();
         StartCoroutine(BlinkLoop());
     }
 
@@ -66,6 +104,11 @@ public sealed class CarEyeController : MonoBehaviour
             ChooseNewGaze();
 
         gazeOffset = Vector2.SmoothDamp(gazeOffset, gazeTarget, ref gazeVelocity, 0.18f, 0.5f, Time.deltaTime);
+        ApplyPupilPositions();
+    }
+
+    private void ApplyPupilPositions()
+    {
         Vector3 offset = new Vector3(gazeOffset.x, 0f, gazeOffset.y);
         leftPupil.localPosition = leftPupilBasePosition + offset;
         rightPupil.localPosition = rightPupilBasePosition + offset;
@@ -73,7 +116,9 @@ public sealed class CarEyeController : MonoBehaviour
 
     private void ChooseNewGaze()
     {
-        gazeTarget = new Vector2(Random.Range(-0.065f, 0.065f), Random.Range(-0.042f, 0.045f));
+        gazeTarget = new Vector2(
+            Random.Range(-gazeLimits.x, gazeLimits.x),
+            Random.Range(-gazeLimits.y, gazeLimits.y));
         nextGazeTime = Time.time + Random.Range(0.85f, 2.25f);
     }
 
@@ -132,6 +177,65 @@ public sealed class CarEyeController : MonoBehaviour
         Collider collider = sphere.GetComponent<Collider>();
         if (collider != null) Destroy(collider);
         return sphere.transform;
+    }
+
+    private static Transform CreateWindshieldPanel(
+        string objectName,
+        Vector3 localPosition,
+        Vector2 localSize,
+        Material material,
+        Transform parent)
+    {
+        GameObject panel = new GameObject(objectName, typeof(MeshFilter), typeof(MeshRenderer));
+        panel.transform.SetParent(parent, false);
+        panel.transform.localPosition = localPosition;
+        panel.transform.localRotation = Quaternion.identity;
+        panel.transform.localScale = new Vector3(localSize.x, 1f, localSize.y);
+
+        // A softly rounded, slightly tapered windshield silhouette. The mesh
+        // lies directly on the car's XZ surface instead of sitting upright or
+        // hovering above it like the previous eyeball spheres.
+        Vector3[] vertices =
+        {
+            new Vector3(-0.32f, 0f,  0.50f),
+            new Vector3( 0.32f, 0f,  0.50f),
+            new Vector3( 0.40f, 0f,  0.46f),
+            new Vector3( 0.43f, 0f,  0.36f),
+            new Vector3( 0.49f, 0f, -0.34f),
+            new Vector3( 0.43f, 0f, -0.46f),
+            new Vector3( 0.33f, 0f, -0.50f),
+            new Vector3(-0.33f, 0f, -0.50f),
+            new Vector3(-0.43f, 0f, -0.46f),
+            new Vector3(-0.49f, 0f, -0.34f),
+            new Vector3(-0.43f, 0f,  0.36f),
+            new Vector3(-0.40f, 0f,  0.46f)
+        };
+        int[] triangles =
+        {
+            0, 1, 2,
+            0, 2, 3,
+            0, 3, 4,
+            0, 4, 5,
+            0, 5, 6,
+            0, 6, 7,
+            0, 7, 8,
+            0, 8, 9,
+            0, 9, 10,
+            0, 10, 11
+        };
+        Vector2[] uv = new Vector2[vertices.Length];
+        for (int index = 0; index < vertices.Length; index++)
+            uv[index] = new Vector2(vertices[index].x + 0.5f, vertices[index].z + 0.5f);
+
+        Mesh mesh = new Mesh { name = $"{objectName} Mesh" };
+        mesh.vertices = vertices;
+        mesh.triangles = triangles;
+        mesh.uv = uv;
+        mesh.RecalculateNormals();
+        mesh.RecalculateBounds();
+        panel.GetComponent<MeshFilter>().sharedMesh = mesh;
+        panel.GetComponent<MeshRenderer>().sharedMaterial = material;
+        return panel.transform;
     }
 
     private static Material GetEyeWhiteMaterial()

@@ -56,6 +56,16 @@ public static class ColorSortLevelDesignValidator
 
     public static void ValidateLevels(List<UnityGameManager.LevelConfig> levels)
     {
+        ValidateLevelsInternal(levels, true);
+    }
+
+    public static void ValidateLevelStructure(List<UnityGameManager.LevelConfig> levels)
+    {
+        ValidateLevelsInternal(levels, false);
+    }
+
+    private static void ValidateLevelsInternal(List<UnityGameManager.LevelConfig> levels, bool validatePlayability)
+    {
         var canonicalLayouts = new HashSet<string>();
 
         foreach (UnityGameManager.LevelConfig level in levels)
@@ -64,8 +74,9 @@ public static class ColorSortLevelDesignValidator
             ValidateDirectionMix(level);
             ValidateNoFacingArrows(level);
             ValidateColorMix(level);
+            ValidateDifficultyShape(level);
             ValidateUniqueLayout(level, canonicalLayouts);
-            ValidatePlayable(level);
+            if (validatePlayability) ValidatePlayable(level);
         }
     }
 
@@ -221,6 +232,48 @@ public static class ColorSortLevelDesignValidator
         if (!canonicalLayouts.Add(canonical))
         {
             throw new Exception($"{level.name} repeats or mirrors an earlier color layout.");
+        }
+    }
+
+    private static void ValidateDifficultyShape(UnityGameManager.LevelConfig level)
+    {
+        if (level.id <= 1) return;
+
+        int size = level.boardSize;
+        int count = size * size;
+        int fullMask = (1 << count) - 1;
+        var colors = new UnityGameManager.BlockColor[count];
+        var directions = new UnityGameManager.Direction[count];
+        foreach (UnityGameManager.BlockData block in level.blocks)
+        {
+            int index = block.row * size + block.col;
+            colors[index] = block.color;
+            directions[index] = block.direction;
+        }
+
+        int openingMoves = 0;
+        var openingColors = new HashSet<UnityGameManager.BlockColor>();
+        for (int index = 0; index < count; index++)
+        {
+            if (!IsPathClear(index, directions[index], fullMask, size)) continue;
+            openingMoves++;
+            if (colors[index] != UnityGameManager.BlockColor.Neutral)
+            {
+                openingColors.Add(colors[index]);
+            }
+        }
+
+        int minimumMoves = size == 3 ? 2 : size == 4 ? 3 : 2;
+        int maximumMoves = size == 3 ? 5 : size == 4 ? 7 : 12;
+        if (openingMoves < minimumMoves || openingMoves > maximumMoves)
+        {
+            throw new Exception($"{level.name} has {openingMoves} legal opening exits; expected {minimumMoves}-{maximumMoves} for its difficulty tier.");
+        }
+
+        int minimumOpeningColors = level.id <= 5 || size >= 5 ? 1 : 2;
+        if (openingColors.Count < minimumOpeningColors)
+        {
+            throw new Exception($"{level.name} does not present enough distinct colored opening choices.");
         }
     }
 

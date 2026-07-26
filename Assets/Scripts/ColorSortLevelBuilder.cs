@@ -19,7 +19,7 @@ public static class ColorSortLevelBuilder
     private const int MiddleYellowMatchTarget = 3;
     private const int LateYellowMatchTarget = 4;
     private const int MaxGenerationAttempts = 5000;
-    private const int MaxColorSequenceAttempts = 800;
+    private const int MaxColorSequenceAttempts = 120;
     private const char EmptyPark = '-';
 
     private static readonly UnityGameManager.Direction[] AllDirections =
@@ -55,6 +55,18 @@ public static class ColorSortLevelBuilder
         }
     }
 
+    private struct CostedTrayState
+    {
+        public TrayState state;
+        public int parkingActions;
+
+        public CostedTrayState(TrayState state, int parkingActions)
+        {
+            this.state = state;
+            this.parkingActions = parkingActions;
+        }
+    }
+
     public static List<UnityGameManager.LevelConfig> BuildLevels(int count)
     {
         var levels = new List<UnityGameManager.LevelConfig>();
@@ -64,6 +76,7 @@ public static class ColorSortLevelBuilder
         for (int i = 0; i < count; i++)
         {
             levels.Add(BuildLevel(i, canonicalShapes, acceptedLayouts));
+            Debug.Log($"Generated fixed puzzle Board {i + 1}/{count}.");
         }
 
         return levels;
@@ -81,17 +94,22 @@ public static class ColorSortLevelBuilder
         int yellowMatchTarget = GetYellowMatchTarget(boardIndex);
         int size = GetBoardSize(boardIndex, usesBlue, yellowMatchTarget);
         int matchTarget = size;
+        var sequenceRng = new System.Random(SeedFor(boardIndex, -31));
+        if (!TryBuildColorSequence(boardIndex, size, matchTarget, blueMatchTarget, yellowMatchTarget, sequenceRng, out List<UnityGameManager.BlockColor> colorSequence))
+        {
+            Debug.LogWarning($"Could not build the preferred hard color rhythm for Board {boardIndex + 1}; using the structured parking fallback.");
+            colorSequence = BuildStructuredColorSequence(boardIndex, size, blueMatchTarget, yellowMatchTarget, sequenceRng);
+            if (!IsTraySequenceSolvable(colorSequence, matchTarget, blueMatchTarget, yellowMatchTarget))
+            {
+                return BuildEmergencyLevel(boardIndex);
+            }
+        }
 
         for (int attempt = 0; attempt < MaxGenerationAttempts; attempt++)
         {
             var rng = new System.Random(SeedFor(boardIndex, attempt));
 
             if (!TryBuildRemovalPlan(size, rng, out int[] removalOrder, out UnityGameManager.Direction[] directions))
-            {
-                continue;
-            }
-
-            if (!TryBuildColorSequence(boardIndex, size, matchTarget, blueMatchTarget, yellowMatchTarget, rng, out List<UnityGameManager.BlockColor> colorSequence))
             {
                 continue;
             }
@@ -131,6 +149,11 @@ public static class ColorSortLevelBuilder
             }
 
             if (!IsTraySequenceSolvable(colorSequence, matchTarget, blueMatchTarget, yellowMatchTarget))
+            {
+                continue;
+            }
+
+            if (!HasDifficultyShape(level, boardIndex, removalOrder))
             {
                 continue;
             }
@@ -226,14 +249,16 @@ public static class ColorSortLevelBuilder
     {
         if (size >= 5)
         {
-            sequence = BuildFiveByFiveColorSequence(boardIndex, rng);
-            return IsTraySequenceSolvable(sequence, matchTarget, blueMatchTarget, yellowMatchTarget) &&
-                   !IsTraySequenceSolvableWithoutParking(sequence, matchTarget, blueMatchTarget, yellowMatchTarget);
+            sequence = BuildStructuredColorSequence(boardIndex, size, blueMatchTarget, yellowMatchTarget, rng);
+            return MinimumParkingActions(sequence, matchTarget, blueMatchTarget, yellowMatchTarget) >= RequiredPlannedParkingActions(boardIndex);
         }
 
         sequence = null;
         var colors = BuildColorBag(size, blueMatchTarget, yellowMatchTarget);
         bool shouldNeedParking = boardIndex > 0;
+        int requiredParkingActions = RequiredPlannedParkingActions(boardIndex);
+        int bestScore = int.MinValue;
+        List<UnityGameManager.BlockColor> bestCandidate = null;
 
         for (int attempt = 0; attempt < MaxColorSequenceAttempts; attempt++)
         {
@@ -245,17 +270,49 @@ public static class ColorSortLevelBuilder
                 continue;
             }
 
-            if (shouldNeedParking && IsTraySequenceSolvableWithoutParking(candidate, matchTarget, blueMatchTarget, yellowMatchTarget))
+            int parkingActions = MinimumParkingActions(candidate, matchTarget, blueMatchTarget, yellowMatchTarget);
+            if (parkingActions < 0)
             {
                 continue;
             }
 
-            if (!IsTraySequenceSolvable(candidate, matchTarget, blueMatchTarget, yellowMatchTarget))
+            if (shouldNeedParking && parkingActions == 0)
             {
                 continue;
             }
 
-            sequence = candidate;
+            int score = ScoreColorSequence(candidate, parkingActions, boardIndex, matchTarget);
+            if (score > bestScore)
+            {
+                bestScore = score;
+                bestCandidate = candidate;
+            }
+
+            if (parkingActions >= requiredParkingActions &&
+                HasChallengingColorRhythm(candidate, boardIndex, matchTarget))
+            {
+                sequence = candidate;
+                return true;
+            }
+        }
+
+        if (size >= 5)
+        {
+            List<UnityGameManager.BlockColor> fallback = BuildStructuredColorSequence(boardIndex, size, blueMatchTarget, yellowMatchTarget, rng);
+            int fallbackParking = MinimumParkingActions(fallback, matchTarget, blueMatchTarget, yellowMatchTarget);
+            if (fallbackParking >= 0 && (fallbackParking > 0 || !shouldNeedParking))
+            {
+                int fallbackScore = ScoreColorSequence(fallback, fallbackParking, boardIndex, matchTarget);
+                if (fallbackScore > bestScore)
+                {
+                    bestCandidate = fallback;
+                }
+            }
+        }
+
+        if (bestCandidate != null)
+        {
+            sequence = bestCandidate;
             return true;
         }
 
@@ -264,42 +321,51 @@ public static class ColorSortLevelBuilder
 
     private static List<UnityGameManager.BlockColor> BuildFiveByFiveColorSequence(int boardIndex, System.Random rng)
     {
-        var colored = new List<UnityGameManager.BlockColor>(18);
+        return BuildStructuredColorSequence(boardIndex, 5, LateBlueMatchTarget, LateYellowMatchTarget, rng);
+    }
+
+    private static List<UnityGameManager.BlockColor> BuildStructuredColorSequence(int boardIndex, int size, int blueMatchTarget, int yellowMatchTarget, System.Random rng)
+    {
+        var colored = new List<UnityGameManager.BlockColor>(size * size);
         bool greenFirst = (boardIndex & 1) != 0;
         UnityGameManager.BlockColor first = greenFirst ? UnityGameManager.BlockColor.Green : UnityGameManager.BlockColor.Red;
         UnityGameManager.BlockColor second = greenFirst ? UnityGameManager.BlockColor.Red : UnityGameManager.BlockColor.Green;
 
-        // Four matching cars, one interruption, then the fifth matching car
-        // guarantees that the side parking bay is genuinely needed.
-        AddColors(colored, first, 4);
+        // Fill the normal tray with an almost-complete set plus one blocker.
+        // The player must park that blocker, finish the first set, then return it
+        // to complete the second set.
+        AddColors(colored, first, size - 1);
         colored.Add(second);
         colored.Add(first);
-        AddColors(colored, second, 4);
+        AddColors(colored, second, size - 1);
 
-        // Alternate the two optional-color groups so consecutive late boards
-        // do not have the same matching rhythm. Blue remains consecutive as
-        // required by its special matching rule.
-        if ((boardIndex & 2) == 0)
+        if (blueMatchTarget > 0 && yellowMatchTarget > 0)
         {
-            AddColors(colored, UnityGameManager.BlockColor.Blue, 4);
-            AddColors(colored, UnityGameManager.BlockColor.Yellow, 4);
+            // Blue must stay adjacent in the tray. A yellow interruption just
+            // before the final blue adds a second intentional parking decision.
+            AddColors(colored, UnityGameManager.BlockColor.Blue, blueMatchTarget - 1);
+            colored.Add(UnityGameManager.BlockColor.Yellow);
+            colored.Add(UnityGameManager.BlockColor.Blue);
+            AddColors(colored, UnityGameManager.BlockColor.Yellow, yellowMatchTarget - 1);
         }
         else
         {
-            AddColors(colored, UnityGameManager.BlockColor.Yellow, 4);
-            AddColors(colored, UnityGameManager.BlockColor.Blue, 4);
+            AddColors(colored, UnityGameManager.BlockColor.Blue, blueMatchTarget);
+            AddColors(colored, UnityGameManager.BlockColor.Yellow, yellowMatchTarget);
         }
 
-        // Neutral police blocks never enter the matching tray. Distributing
-        // them throughout the known-solvable color order creates varied board
-        // pacing without changing the proof that every level can be finished.
-        var neutralSlots = new HashSet<int> { 1, 13, 22 };
-        while (neutralSlots.Count < 7)
-            neutralSlots.Add(rng.Next(0, 25));
+        int totalSlots = size * size;
+        int neutralCount = totalSlots - colored.Count;
+        var neutralSlots = new HashSet<int>();
+        if (neutralCount > 0) neutralSlots.Add(1);
+        if (neutralCount > 1) neutralSlots.Add(totalSlots / 2);
+        if (neutralCount > 2) neutralSlots.Add(totalSlots - 2);
+        while (neutralSlots.Count < neutralCount)
+            neutralSlots.Add(rng.Next(0, totalSlots));
 
-        var sequence = new List<UnityGameManager.BlockColor>(25);
+        var sequence = new List<UnityGameManager.BlockColor>(totalSlots);
         int coloredIndex = 0;
-        for (int slot = 0; slot < 25; slot++)
+        for (int slot = 0; slot < totalSlots; slot++)
         {
             sequence.Add(neutralSlots.Contains(slot)
                 ? UnityGameManager.BlockColor.Neutral
@@ -423,6 +489,73 @@ public static class ColorSortLevelBuilder
         return true;
     }
 
+    private static bool HasDifficultyShape(UnityGameManager.LevelConfig level, int boardIndex, int[] removalOrder)
+    {
+        if (boardIndex <= 0) return true;
+
+        int size = level.boardSize;
+        int count = size * size;
+        int fullMask = (1 << count) - 1;
+        var directions = new UnityGameManager.Direction[count];
+        var colors = new UnityGameManager.BlockColor[count];
+        foreach (UnityGameManager.BlockData block in level.blocks)
+        {
+            int index = block.row * size + block.col;
+            directions[index] = block.direction;
+            colors[index] = block.color;
+        }
+
+        int initialLegal = 0;
+        var openingColors = new HashSet<UnityGameManager.BlockColor>();
+        for (int index = 0; index < count; index++)
+        {
+            if (!IsPathClear(index, directions[index], fullMask, size)) continue;
+            initialLegal++;
+            if (colors[index] != UnityGameManager.BlockColor.Neutral)
+            {
+                openingColors.Add(colors[index]);
+            }
+        }
+
+        int minimumOpeningMoves = size == 3 ? 2 : size == 4 ? 3 : 2;
+        int maximumOpeningMoves = size == 3 ? 5 : size == 4 ? 7 : 12;
+        if (initialLegal < minimumOpeningMoves || initialLegal > maximumOpeningMoves)
+        {
+            return false;
+        }
+
+        int requiredOpeningColors = boardIndex < 5 || size >= 5 ? 1 : 2;
+        if (openingColors.Count < requiredOpeningColors)
+        {
+            return false;
+        }
+
+        int remainingMask = fullMask;
+        int decisionSteps = 0;
+        int constrainedSteps = 0;
+        int inspectedSteps = Mathf.Max(0, count - 2);
+        int constrainedLimit = size == 3 ? 3 : size == 4 ? 5 : 8;
+
+        for (int step = 0; step < inspectedSteps; step++)
+        {
+            int legalMoves = 0;
+            for (int index = 0; index < count; index++)
+            {
+                if ((remainingMask & (1 << index)) == 0) continue;
+                if (IsPathClear(index, directions[index], remainingMask, size)) legalMoves++;
+            }
+
+            if (legalMoves >= 2) decisionSteps++;
+            if (legalMoves <= constrainedLimit) constrainedSteps++;
+            remainingMask &= ~(1 << removalOrder[step]);
+        }
+
+        int requiredDecisionSteps = size == 3 ? 2 : size == 4 ? 5 : 6;
+        int requiredConstrainedSteps = size == 3 ? 3 : size == 4 ? 7 : 8;
+        return decisionSteps >= requiredDecisionSteps &&
+               constrainedSteps >= requiredConstrainedSteps;
+    }
+
     private static bool IsTraySequenceSolvable(List<UnityGameManager.BlockColor> sequence, int capacity, int blueMatchTarget, int yellowMatchTarget)
     {
         bool usesBlue = blueMatchTarget > 0;
@@ -493,6 +626,222 @@ public static class ColorSortLevelBuilder
         }
 
         return state.redCleared && state.greenCleared && (!usesBlue || state.blueCleared) && (!usesYellow || state.yellowCleared);
+    }
+
+    private static int MinimumParkingActions(List<UnityGameManager.BlockColor> sequence, int capacity, int blueMatchTarget, int yellowMatchTarget)
+    {
+        bool usesBlue = blueMatchTarget > 0;
+        bool usesYellow = yellowMatchTarget > 0;
+        TrayState start = NormalizeState(new TrayState { tray = string.Empty, park = EmptyPark }, capacity, blueMatchTarget, yellowMatchTarget);
+        var states = new List<CostedTrayState> { new CostedTrayState(start, 0) };
+
+        foreach (UnityGameManager.BlockColor color in sequence)
+        {
+            if (color == UnityGameManager.BlockColor.Neutral) continue;
+
+            states = ExpandParkingClosureWithCosts(states, capacity, blueMatchTarget, yellowMatchTarget);
+            var nextByKey = new Dictionary<string, CostedTrayState>();
+            char colorChar = ColorChar(color);
+
+            foreach (CostedTrayState costed in states)
+            {
+                TrayState state = costed.state;
+                if (state.tray.Length >= capacity) continue;
+
+                state.tray += colorChar;
+                state = NormalizeState(state, capacity, blueMatchTarget, yellowMatchTarget);
+                KeepCheapest(nextByKey, state, costed.parkingActions);
+            }
+
+            if (nextByKey.Count == 0) return -1;
+            states = new List<CostedTrayState>(nextByKey.Values);
+        }
+
+        states = ExpandParkingClosureWithCosts(states, capacity, blueMatchTarget, yellowMatchTarget);
+        int best = int.MaxValue;
+        foreach (CostedTrayState costed in states)
+        {
+            TrayState state = costed.state;
+            if (!state.redCleared || !state.greenCleared || (usesBlue && !state.blueCleared) || (usesYellow && !state.yellowCleared))
+            {
+                continue;
+            }
+
+            best = Mathf.Min(best, costed.parkingActions);
+        }
+
+        return best == int.MaxValue ? -1 : best;
+    }
+
+    private static List<CostedTrayState> ExpandParkingClosureWithCosts(List<CostedTrayState> startStates, int capacity, int blueMatchTarget, int yellowMatchTarget)
+    {
+        var queue = new Queue<CostedTrayState>();
+        var bestByKey = new Dictionary<string, CostedTrayState>();
+
+        foreach (CostedTrayState costed in startStates)
+        {
+            TrayState normalized = NormalizeState(costed.state, capacity, blueMatchTarget, yellowMatchTarget);
+            if (KeepCheapest(bestByKey, normalized, costed.parkingActions))
+            {
+                queue.Enqueue(new CostedTrayState(normalized, costed.parkingActions));
+            }
+        }
+
+        while (queue.Count > 0)
+        {
+            CostedTrayState current = queue.Dequeue();
+            string currentKey = current.state.Key();
+            if (!bestByKey.TryGetValue(currentKey, out CostedTrayState cheapest) ||
+                cheapest.parkingActions != current.parkingActions)
+            {
+                continue;
+            }
+
+            TrayState state = current.state;
+            int nextCost = current.parkingActions + 1;
+
+            if (state.park == EmptyPark)
+            {
+                for (int i = 0; i < state.tray.Length; i++)
+                {
+                    TrayState moved = state;
+                    moved.park = state.tray[i];
+                    moved.tray = state.tray.Remove(i, 1);
+                    moved = NormalizeState(moved, capacity, blueMatchTarget, yellowMatchTarget);
+                    if (KeepCheapest(bestByKey, moved, nextCost))
+                    {
+                        queue.Enqueue(new CostedTrayState(moved, nextCost));
+                    }
+                }
+            }
+            else
+            {
+                if (state.tray.Length < capacity)
+                {
+                    TrayState returned = state;
+                    returned.tray += state.park;
+                    returned.park = EmptyPark;
+                    returned = NormalizeState(returned, capacity, blueMatchTarget, yellowMatchTarget);
+                    if (KeepCheapest(bestByKey, returned, nextCost))
+                    {
+                        queue.Enqueue(new CostedTrayState(returned, nextCost));
+                    }
+                }
+
+                for (int i = 0; i < state.tray.Length; i++)
+                {
+                    char[] chars = state.tray.ToCharArray();
+                    char oldTrayChar = chars[i];
+                    chars[i] = state.park;
+
+                    TrayState swapped = state;
+                    swapped.tray = new string(chars);
+                    swapped.park = oldTrayChar;
+                    swapped = NormalizeState(swapped, capacity, blueMatchTarget, yellowMatchTarget);
+                    if (KeepCheapest(bestByKey, swapped, nextCost))
+                    {
+                        queue.Enqueue(new CostedTrayState(swapped, nextCost));
+                    }
+                }
+            }
+        }
+
+        return new List<CostedTrayState>(bestByKey.Values);
+    }
+
+    private static bool KeepCheapest(Dictionary<string, CostedTrayState> bestByKey, TrayState state, int cost)
+    {
+        string key = state.Key();
+        if (bestByKey.TryGetValue(key, out CostedTrayState existing) && existing.parkingActions <= cost)
+        {
+            return false;
+        }
+
+        bestByKey[key] = new CostedTrayState(state, cost);
+        return true;
+    }
+
+    private static int RequiredPlannedParkingActions(int boardIndex)
+    {
+        if (boardIndex <= 0) return 0;
+        if (boardIndex < 5) return 2;
+        if (boardIndex < 25) return 2;
+        if (boardIndex < 36) return 3;
+        if (boardIndex < 45) return 2;
+        if (boardIndex < 50) return 3;
+        return 3;
+    }
+
+    private static int ScoreColorSequence(List<UnityGameManager.BlockColor> sequence, int parkingActions, int boardIndex, int matchTarget)
+    {
+        int transitions = 0;
+        int longestNonBlueRun = 0;
+        int currentRun = 0;
+        UnityGameManager.BlockColor previous = UnityGameManager.BlockColor.Neutral;
+
+        foreach (UnityGameManager.BlockColor color in sequence)
+        {
+            if (color == UnityGameManager.BlockColor.Neutral) continue;
+            if (previous != UnityGameManager.BlockColor.Neutral && previous != color) transitions++;
+
+            if (color != UnityGameManager.BlockColor.Blue && color == previous)
+            {
+                currentRun++;
+            }
+            else
+            {
+                currentRun = color == UnityGameManager.BlockColor.Blue ? 0 : 1;
+            }
+
+            longestNonBlueRun = Mathf.Max(longestNonBlueRun, currentRun);
+            previous = color;
+        }
+
+        int runPenalty = Mathf.Max(0, longestNonBlueRun - Mathf.Max(1, matchTarget - 2));
+        return parkingActions * 100 + transitions * 6 - runPenalty * 12 + Mathf.Min(boardIndex, 50);
+    }
+
+    private static bool HasChallengingColorRhythm(List<UnityGameManager.BlockColor> sequence, int boardIndex, int matchTarget)
+    {
+        if (boardIndex <= 0) return true;
+
+        int transitions = 0;
+        int longestNonBlueRun = 0;
+        int currentRun = 0;
+        int coloredSeen = 0;
+        var earlyColors = new HashSet<UnityGameManager.BlockColor>();
+        UnityGameManager.BlockColor previous = UnityGameManager.BlockColor.Neutral;
+
+        foreach (UnityGameManager.BlockColor color in sequence)
+        {
+            if (color == UnityGameManager.BlockColor.Neutral) continue;
+            coloredSeen++;
+            if (coloredSeen <= matchTarget + 1) earlyColors.Add(color);
+            if (previous != UnityGameManager.BlockColor.Neutral && previous != color) transitions++;
+
+            if (color != UnityGameManager.BlockColor.Blue && color == previous)
+            {
+                currentRun++;
+            }
+            else
+            {
+                currentRun = color == UnityGameManager.BlockColor.Blue ? 0 : 1;
+            }
+
+            longestNonBlueRun = Mathf.Max(longestNonBlueRun, currentRun);
+            previous = color;
+        }
+
+        int requiredTransitions = boardIndex < 5 ? 3 :
+                                  boardIndex < 16 ? 4 :
+                                  boardIndex < 25 ? 5 :
+                                  boardIndex < 36 ? 6 :
+                                  boardIndex < 45 ? 7 :
+                                  boardIndex < 50 ? 8 : 10;
+
+        return earlyColors.Count >= 2 &&
+               transitions >= requiredTransitions &&
+               longestNonBlueRun < matchTarget;
     }
 
     private static List<TrayState> ExpandParkingClosure(List<TrayState> startStates, int capacity, int blueMatchTarget, int yellowMatchTarget)
@@ -1028,6 +1377,15 @@ public static class ColorSortLevelBuilder
         int yellowMatchTarget = GetYellowMatchTarget(boardIndex);
         int size = GetBoardSize(boardIndex, usesBlue, yellowMatchTarget);
         int matchTarget = size;
+        var sequenceRng = new System.Random(SeedFor(boardIndex, MaxGenerationAttempts + 11));
+        if (!TryBuildColorSequence(boardIndex, size, matchTarget, blueMatchTarget, yellowMatchTarget, sequenceRng, out List<UnityGameManager.BlockColor> colorSequence))
+        {
+            colorSequence = BuildStructuredColorSequence(boardIndex, size, blueMatchTarget, yellowMatchTarget, sequenceRng);
+            if (!IsTraySequenceSolvable(colorSequence, matchTarget, blueMatchTarget, yellowMatchTarget))
+            {
+                return BuildEmergencyLevel(boardIndex);
+            }
+        }
 
         for (int attempt = 0; attempt < MaxGenerationAttempts * 2; attempt++)
         {
@@ -1038,17 +1396,13 @@ public static class ColorSortLevelBuilder
                 continue;
             }
 
-            if (!TryBuildColorSequence(boardIndex, size, matchTarget, blueMatchTarget, yellowMatchTarget, rng, out List<UnityGameManager.BlockColor> colorSequence))
-            {
-                continue;
-            }
-
             UnityGameManager.LevelConfig level = CreateLevelFromPlan(boardIndex, size, matchTarget, removalOrder, directions, colorSequence);
             if (!HasHealthyColorMix(level.blocks, size)) continue;
             if (!HasHealthyDirectionMix(level.blocks, size)) continue;
             if (HasFacingArrows(level.blocks, size)) continue;
             if (!ValidatePlannedSolution(level.blocks, size, removalOrder)) continue;
             if (!IsTraySequenceSolvable(colorSequence, matchTarget, blueMatchTarget, yellowMatchTarget)) continue;
+            if (!HasDifficultyShape(level, boardIndex, removalOrder)) continue;
 
             return level;
         }
